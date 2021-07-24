@@ -1,5 +1,5 @@
 
-public class Stall {
+public class Stall { //Umar
 	private int stallNo;
 	private String storeName;
 	private String operationDate;
