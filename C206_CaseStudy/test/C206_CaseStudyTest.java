@@ -39,5 +39,17 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addStall(stallList, stall2);
 		assertEquals("Test that size of list is updated to 2", 2, stallList.size());
 	}
+	@Test
+	public void testViewStall() {
+		
+	}
+	@Test
+	public void testDeleteStall() {
+		
+	}
+	@Test
+	public void testUpdateStall() {
+		
+	}
 
 }
