@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class C206_CaseStudy {
 
 	public static void main(String[] args) {
-		Stall[] stallList = new Stall[10];
+		ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 		
 		int option = -1;
 		
@@ -13,7 +13,8 @@ public class C206_CaseStudy {
 			Helper.line(80, "=");
 		
 			if (option == 1) {
-				addStall(stallList);
+				Stall stall = inputStall();
+				addStall(stallList, stall);
 			}
 			else if (option == 2) {
 				viewStall(stallList);
@@ -74,40 +75,24 @@ public class C206_CaseStudy {
 
 
 	}
-	public static void addStall(Stall[] stallList) {
-		String storeName = Helper.readString("Please enter the name of the store > ");
-		String operationDate = Helper.readString("Please enter operation date of the store (DD/MM/YYYY) > ");
-		boolean isAdded = false;
-		for (int i = 0; i < stallList.length; i++) {
-			if (stallList[i] == null) {
-				stallList[i] = new Stall(storeName,operationDate);
-				isAdded = true;
-				System.out.println("Stall added!");
-				break;
-			}
-		}
-		if (isAdded == false) {
-			System.out.println("Stall list is full!");
-		}
-	}
-	public static void viewStall(Stall[] stallList) {
+	public static void viewStall(ArrayList<Stall> stallList) {
 		Helper.line(80, "=");
 		String output = "";
 		output = String.format("%-25s %-25s %-25s\n", "Store Number", "Store Name", "Operation Date");
 		
-		for (int i = 0; i < stallList.length; i++) {
-			if (stallList[i] != null) {
-				output += String.format("%-25s %-25s %-25s\n", i+1, stallList[i].getStoreName(), stallList[i].getOperationDate());
+		for (int i = 0; i < stallList.size(); i++) {
+			if (stallList.get(i) != null) {
+				output += String.format("%-25s %-25s %-25s\n", i+1, stallList.get(i).getStoreName(), stallList.get(i).getOperationDate());
 			}
 		}
 		System.out.println(output);
 	}
-	public static void deleteStall(Stall[] stallList) {
+	public static void deleteStall(ArrayList<Stall> stallList) {
 		int deleteStallNo = Helper.readInt("Enter store number to delete > ");
 		
-		for (int i = 0; i < stallList.length; i++) {
-			if (stallList[deleteStallNo-1] != null) {
-				stallList[deleteStallNo-1] = null;
+		for (int i = 0; i < stallList.size(); i++) {
+			if (stallList.get(i) != null) {
+				stallList.remove(deleteStallNo-1);
 				System.out.println("Stall deleted!");
 				break;
 			}
@@ -115,5 +100,18 @@ public class C206_CaseStudy {
 				System.out.println("No stall found!");
 			}
 		}
+	}
+	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
+		stallList.add(stall);
+		System.out.println("Stall added!");
+	}
+	public static Stall inputStall() {
+		Stall stall = null;
+		
+		String storeName = Helper.readString("Please enter the name of the store > ");
+		String operationDate = Helper.readString("Please enter operation date of the store (DD/MM/YYYY) > ");
+		
+		stall = new Stall(storeName, operationDate);
+		return stall;
 	}
 }
