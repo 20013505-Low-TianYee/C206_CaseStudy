@@ -20,10 +20,11 @@ public class C206_CaseStudy {
 				viewStall(stallList);
 			}
 			else if (option == 3) {
-				deleteStall(stallList);
+				int stallNo = inputStallNoRemove();
+				deleteStall(stallList, stallNo);
 			}
 			else if (option == 4) {
-				updateStall(stallList);
+				
 			}
 			else if (option == 5) {
 	
@@ -76,6 +77,7 @@ public class C206_CaseStudy {
 
 
 	}
+	//START OF STALL METHODS===========================================================================================
 	public static void viewStall(ArrayList<Stall> stallList) {
 		Helper.line(80, "=");
 		String output = "";
@@ -88,12 +90,11 @@ public class C206_CaseStudy {
 		}
 		System.out.println(output);
 	}
-	public static void deleteStall(ArrayList<Stall> stallList) {
-		int deleteStallNo = Helper.readInt("Enter store number to delete > ");
+	public static void deleteStall(ArrayList<Stall> stallList, int stallNo) {
 		
 		for (int i = 0; i < stallList.size(); i++) {
 			if (stallList.get(i) != null) {
-				stallList.remove(deleteStallNo-1);
+				stallList.remove(stallNo-1);
 				System.out.println("Stall deleted!");
 				break;
 			}
@@ -101,6 +102,11 @@ public class C206_CaseStudy {
 				System.out.println("No stall found!");
 			}
 		}
+	}
+	public static int inputStallNoRemove() {
+		
+		int deleteStallNo = Helper.readInt("Enter store number to delete > ");
+		return deleteStallNo;
 	}
 	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
 		stallList.add(stall);
@@ -116,17 +122,5 @@ public class C206_CaseStudy {
 		stall = new Stall(storeName, ownerName, operationDate);
 		return stall;
 	}
-	public static void updateStall(ArrayList<Stall> stallList) {
-		int storeNoRequest = Helper.readInt("Enter store number to update owner of the stall > ");
-		
-		if (stallList.get(storeNoRequest-1) != null) {
-			String newOwner = Helper.readString("Enter new owner name > ");
-			stallList.get(storeNoRequest-1).setOwnerName(newOwner);
-			System.out.println("Owner name changed successfully!");
-		}
-		else {
-			System.out.println("Stall not found!");
-		}
-		
-	}
+	//END OF STALL METHODS===========================================================================================
 }

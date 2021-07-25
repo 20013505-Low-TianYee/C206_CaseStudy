@@ -29,10 +29,11 @@ public class C206_CaseStudyTest {
 		//fail("Not yet implemented"); 
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
+	//STALL TESTS=====================================================================================================
 	@Test
 	public void testAddStall() {		
 		C206_CaseStudy.addStall(stallList, stall1);
-		assertNotNull("Test if stall is empty and can be added to the list.", stallList);
+		assertNotNull("Test if stall is not empty after adding to the list.", stallList);
 		
 		assertEquals("Test that the size of the list is 1 after adding.", 1, stallList.size());
 		
@@ -41,15 +42,28 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testViewStall() {
-		
+		C206_CaseStudy.addStall(stallList, stall1);
+		assertNotNull("Test if stall is not empty and can be displayed to the output.", stallList);
+
 	}
 	@Test
 	public void testDeleteStall() {
+		boolean outOfBounds = false;
+		C206_CaseStudy.addStall(stallList, stall1);
+		assertNotNull("Test if stall is not empty so that stall can be deleted.", stallList);
 		
-	}
-	@Test
-	public void testUpdateStall() {
+		C206_CaseStudy.deleteStall(stallList,1);
+		assertEquals("Test if list is empty.", 0 , stallList.size());
 		
-	}
+		if (stallList.size() < 0) {
+			outOfBounds = true;
+		}
+		else if (stallList.size() > 10) {
+			outOfBounds = true;
+		}
+		assertFalse("Test if size of stall is more than 10", outOfBounds);
 
+
+	}
+	//END OF STALL TESTS==============================================================================================
 }
