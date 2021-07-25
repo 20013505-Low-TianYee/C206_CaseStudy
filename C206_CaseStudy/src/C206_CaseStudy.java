@@ -23,7 +23,7 @@ public class C206_CaseStudy {
 				deleteStall(stallList);
 			}
 			else if (option == 4) {
-				
+				updateStall(stallList);
 			}
 			else if (option == 5) {
 	
@@ -72,17 +72,18 @@ public class C206_CaseStudy {
 		System.out.println("1. Add stall");
 		System.out.println("2. View stalls");
 		System.out.println("3. Delete stall");
+		System.out.println("4. Update owner of stall");
 
 
 	}
 	public static void viewStall(ArrayList<Stall> stallList) {
 		Helper.line(80, "=");
 		String output = "";
-		output = String.format("%-25s %-25s %-25s\n", "Store Number", "Store Name", "Operation Date");
+		output = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name", "Operation Date");
 		
 		for (int i = 0; i < stallList.size(); i++) {
 			if (stallList.get(i) != null) {
-				output += String.format("%-25s %-25s %-25s\n", i+1, stallList.get(i).getStoreName(), stallList.get(i).getOperationDate());
+				output += String.format("%-25s %-25s %-25s %-25s\n", i+1, stallList.get(i).getStoreName(), stallList.get(i).getOwnerName(), stallList.get(i).getOperationDate());
 			}
 		}
 		System.out.println(output);
@@ -109,9 +110,23 @@ public class C206_CaseStudy {
 		Stall stall = null;
 		
 		String storeName = Helper.readString("Please enter the name of the store > ");
+		String ownerName= Helper.readString("Enter the name of the stall owner > ");
 		String operationDate = Helper.readString("Please enter operation date of the store (DD/MM/YYYY) > ");
 		
-		stall = new Stall(storeName, operationDate);
+		stall = new Stall(storeName, ownerName, operationDate);
 		return stall;
+	}
+	public static void updateStall(ArrayList<Stall> stallList) {
+		int storeNoRequest = Helper.readInt("Enter store number to update owner of the stall > ");
+		
+		if (stallList.get(storeNoRequest-1) != null) {
+			String newOwner = Helper.readString("Enter new owner name > ");
+			stallList.get(storeNoRequest-1).setOwnerName(newOwner);
+			System.out.println("Owner name changed successfully!");
+		}
+		else {
+			System.out.println("Stall not found!");
+		}
+		
 	}
 }

@@ -2,13 +2,17 @@
 public class Stall { //Umar
 
 	private String storeName;
+	private String ownerName;
 	private String operationDate;
 	
-	public Stall(String storeName, String operationDate) {
+	public Stall(String storeName, String ownerName, String operationDate) {
 		this.storeName = storeName;
+		this.ownerName = ownerName;
 		this.operationDate = operationDate;
 	}
-
+	public String getOwnerName() {
+		return ownerName;
+	}
 	public String getStoreName() {
 		return storeName;
 	}
@@ -16,4 +20,8 @@ public class Stall { //Umar
 	public String getOperationDate() {
 		return operationDate;
 	}
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+	
 }

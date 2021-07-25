@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class C206_CaseStudyTest {
 	//stall
-	private Stall stall1= new Stall("Froot", "22/05/2021");
-	private Stall stall2= new Stall("Helperoo", "29/03/2019");
+	private Stall stall1= new Stall("Froot", "Jack", "22/05/2021");
+	private Stall stall2= new Stall("Helperoo", "Ruth", "29/03/2019");
 	
 	private ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 
