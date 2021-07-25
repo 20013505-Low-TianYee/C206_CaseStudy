@@ -5,9 +5,6 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		Stall[] stallList = new Stall[10];
 		
-		stallList[1] = new Stall("Froot", "15/05/2021");
-		stallList[4] = new Stall("Helperoo", "20/04/2020");
-		
 		int option = -1;
 		
 		while (option != 16) {
