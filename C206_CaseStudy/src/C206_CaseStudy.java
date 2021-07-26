@@ -70,22 +70,22 @@ public class C206_CaseStudy {
 		Helper.line(80, "=");
 		System.out.println("Stalls");
 		Helper.line(80, "=");
-		System.out.println(" 1. Add stall");
-		System.out.println(" 2. View stalls");
-		System.out.println(" 3. Delete stall");
-		System.out.println(" 4. Add food item");
-		System.out.println(" 5. View food items");
-		System.out.println(" 6. Delete food item");
-		System.out.println(" 7. Add purchase order");
-		System.out.println(" 8. Delete purchase order");
-		System.out.println(" 9. View purchase orders");
-		System.out.println("10. Add promotion offer");
-		System.out.println("11. View promotion offers");
-		System.out.println("12. Delete promotion offer");
-		System.out.println("13. Add food item to order");
-		System.out.println("14. View food order");
-		System.out.println("15. Delete food item from order");
-		System.out.println("16. Exit");
+		System.out.println(" 1. Add stall"); //Umar
+		System.out.println(" 2. View stalls"); //Umar
+		System.out.println(" 3. Delete stall"); //Umar
+		System.out.println(" 4. Add food item"); //TY
+		System.out.println(" 5. View food items"); //TY
+		System.out.println(" 6. Delete food item"); //TY
+		System.out.println(" 7. Add purchase order"); //WH
+		System.out.println(" 8. Delete purchase order"); //WH
+		System.out.println(" 9. View purchase orders"); //WH
+		System.out.println("10. Add promotion offer"); //YY
+		System.out.println("11. View promotion offers"); //YY
+		System.out.println("12. Delete promotion offer"); //YY
+		System.out.println("13. Add food item to order"); //Adam
+		System.out.println("14. View food order"); //Adam
+		System.out.println("15. Delete food item from order"); //Adam
+		System.out.println("16. Exit"); 
 
 	}
 	//START OF STALL METHODS===========================================================================================
