@@ -73,7 +73,7 @@ public class C206_CaseStudy {
 		System.out.println("1. Add stall");
 		System.out.println("2. View stalls");
 		System.out.println("3. Delete stall");
-		System.out.println("4. Update owner of stall");
+		System.out.println("4. ");
 		System.out.println("5. ");
 		System.out.println("6. ");
 		System.out.println("7. ");
