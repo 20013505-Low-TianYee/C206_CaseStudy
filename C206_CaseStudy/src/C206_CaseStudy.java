@@ -90,15 +90,7 @@ public class C206_CaseStudy {
 	}
 	//START OF STALL METHODS===========================================================================================
 	public static void viewStall(ArrayList<Stall> stallList) {
-		Helper.line(80, "=");
-		String output = "";
-		output = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name", "Operation Date");
-		
-		for (int i = 0; i < stallList.size(); i++) {
-			if (stallList.get(i) != null) {
-				output += String.format("%-25s %-25s %-25s %-25s\n", i+1, stallList.get(i).getStoreName(), stallList.get(i).getOwnerName(), stallList.get(i).getOperationDate());
-			}
-		}
+		String output = retrieveAllStalls(stallList);
 		System.out.println(output);
 	}
 	public static void deleteStall(ArrayList<Stall> stallList, int stallNo) {
@@ -132,6 +124,18 @@ public class C206_CaseStudy {
 		
 		stall = new Stall(storeName, ownerName, operationDate);
 		return stall;
+	}
+	public static String retrieveAllStalls(ArrayList<Stall> stallList) {
+		Helper.line(80, "=");
+		String output = "STALL LIST\n";
+		output = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name", "Operation Date");
+		
+		for (int i = 0; i < stallList.size(); i++) {
+			if (stallList.get(i) != null) {
+				output += String.format("%-25s %-25s %-25s %-25s\n", i+1, stallList.get(i).getStoreName(), stallList.get(i).getOwnerName(), stallList.get(i).getOperationDate());
+			}
+		}
+		return output;
 	}
 	//END OF STALL METHODS===========================================================================================
 }

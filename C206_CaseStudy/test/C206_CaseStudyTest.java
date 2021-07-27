@@ -42,8 +42,44 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testViewStall() {
-		C206_CaseStudy.addStall(stallList, stall1);
 		assertNotNull("Test if stall is not empty and can be displayed to the output.", stallList);
+		
+//				test if the list of camcorders retrieved from the SourceCentre is empty
+//						String allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
+//						String testOutput = "";
+//						assertEquals("Check that ViewAllCamcorderlist", testOutput, allCamcorder);
+//						
+//				Given an empty list, after adding 2 items, test if the size of the list is 2
+//				ResourceCentre.addCamcorder(camcorderList, cc1);
+//				ResourceCentre.addCamcorder(camcorderList, cc2);
+//				assertEquals("Test if that Camcorder arraylist size is 2?", 2, camcorderList.size());
+//				
+//				test if the expected output string same as the list of camcorders retrieved from the SourceCentre
+//				allCamcorder= ResourceCentre.retrieveAllCamcorder(camcorderList);
+//
+//				testOutput = String.format("%-10s %-30s %-10s %-10s %-20d\n","CC0011", "Nikon HDSLR", "Yes", "", 40);
+//				testOutput += String.format("%-10s %-30s %-10s %-10s %-20d\n","CC0012", "Sony DSC-RX100M7", "Yes", "", 20);
+//			
+//				assertEquals("Check that ViewAllCamcorderlist", testOutput, allCamcorder);
+		String allStalls = C206_CaseStudy.retrieveAllStalls(stallList);
+		String testOutput = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name", "Operation Date");
+		assertEquals("Check that list is stall list is empty", testOutput, allStalls);
+		
+		C206_CaseStudy.addStall(stallList, stall1);
+		C206_CaseStudy.addStall(stallList, stall2);
+		assertEquals("Test if that stall arraylist size is 2?", 2, stallList.size());
+		//
+		allStalls = C206_CaseStudy.retrieveAllStalls(stallList);
+		//update after adding in more stalls
+		
+		testOutput += String.format("%-25s %-25s %-25s %-25s\n", 1, "Froot", "Jack", "22/05/2021");
+		testOutput += String.format("%-25s %-25s %-25s %-25s\n", 2, "Helperoo", "Ruth", "29/03/2019");
+		
+		assertEquals("Check that the display outputs are as expected", testOutput, allStalls);
+
+
+		
+
 
 	}
 	@Test
