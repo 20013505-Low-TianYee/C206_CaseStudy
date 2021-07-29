@@ -65,14 +65,9 @@ public class C206_CaseStudy {
 		}
 	}
 	public static void menu() {
-		Helper.line(80, "=");
-		System.out.println("MENU");
-		Helper.line(80, "=");
-		System.out.println("Stalls");
-		Helper.line(80, "=");
-		System.out.println(" 1. Add stall"); //Umar
-		System.out.println(" 2. View stalls"); //Umar
-		System.out.println(" 3. Delete stall"); //Umar
+		menuHeader();
+		stallHeader();
+		manageStalls();//Umar
 		System.out.println(" 4. Add food item"); //TY
 		System.out.println(" 5. View food items"); //TY
 		System.out.println(" 6. Delete food item"); //TY
@@ -87,6 +82,20 @@ public class C206_CaseStudy {
 		System.out.println("15. Delete food item from order"); //Adam
 		System.out.println("16. Exit"); 
 
+	}
+	private static void menuHeader() {
+		Helper.line(80, "=");
+		System.out.println("MENU");
+		Helper.line(80, "=");
+	}
+	private static void stallHeader() {
+		System.out.println("Stalls");
+		Helper.line(80, "=");
+	}
+	private static void manageStalls() {
+		System.out.println(" 1. Add stall"); //Umar
+		System.out.println(" 2. View stalls"); //Umar
+		System.out.println(" 3. Delete stall"); //Umar
 	}
 	//START OF STALL METHODS===========================================================================================
 	public static void viewStall(ArrayList<Stall> stallList) {
