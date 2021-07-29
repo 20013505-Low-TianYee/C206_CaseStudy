@@ -24,7 +24,7 @@ public class Stall { //Umar
 		this.ownerName = ownerName;
 	}
 	public String toStringStall() {
-		String stallInfo = String.format("%-25s %-25s %-25s\n", storeName, ownerName, operationDate);
+		String stallInfo = String.format("%-25s %-25s %-25s", storeName, ownerName, operationDate);
 		return stallInfo;
 	}
 }

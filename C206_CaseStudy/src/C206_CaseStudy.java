@@ -136,8 +136,8 @@ public class C206_CaseStudy {
 	}
 	public static String retrieveAllStalls(ArrayList<Stall> stallList) {
 		Helper.line(80, "=");
-		String output = "STALL LIST\n";
-		output += String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name", "Operation Date");
+		System.out.println("STALL LIST");
+		String output = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name", "Operation Date");
 		
 		for (int i = 0; i < stallList.size(); i++) {
 			if (stallList.get(i) != null) {
