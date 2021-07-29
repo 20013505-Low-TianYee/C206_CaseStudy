@@ -13,15 +13,13 @@ public class C206_CaseStudy {
 			Helper.line(80, "=");
 		
 			if (option == 1) {
-				Stall stall = inputStall();
-				addStall(stallList, stall);
+				addStallInputMethodMenu(stallList);
 			}
 			else if (option == 2) {
 				viewStallIfElse(stallList);
 			}
 			else if (option == 3) {
-				int stallNo = inputStallNoRemove();
-				deleteStall(stallList, stallNo);
+				deleteStallIfElse(stallList);
 			}
 			else if (option == 4) {
 				//
@@ -98,6 +96,18 @@ public class C206_CaseStudy {
 		System.out.println(" 2. View stalls"); //Umar
 		System.out.println(" 3. Delete stall"); //Umar
 	}
+	public static String retrieveAllStalls(ArrayList<Stall> stallList) {
+		Helper.line(80, "=");
+		System.out.println("STALL LIST");
+		String output = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name", "Operation Date");
+		
+		for (int i = 0; i < stallList.size(); i++) {
+			if (stallList.get(i) != null) {
+				output += String.format("%-25s %-25s\n", i+1, stallList.get(i).toStringStall());
+			}
+		}
+		return output;
+	}
 	public static void viewStall(ArrayList<Stall> stallList) {
 		String output = retrieveAllStalls(stallList);
 		System.out.println(output);
@@ -109,6 +119,15 @@ public class C206_CaseStudy {
 		else {
 			viewStall(stallList);
 
+		}
+	}
+	private static void deleteStallIfElse(ArrayList<Stall> stallList) {
+		if (stallList.isEmpty() == true) {
+			System.out.println("No stalls available!");
+		}
+		else {
+			int stallNo = inputStallNoRemove();
+			deleteStall(stallList, stallNo);
 		}
 	}
 	public static void deleteStall(ArrayList<Stall> stallList, int stallNo) {
@@ -129,6 +148,10 @@ public class C206_CaseStudy {
 		int deleteStallNo = Helper.readInt("Enter store number to delete > ");
 		return deleteStallNo;
 	}
+	private static void addStallInputMethodMenu(ArrayList<Stall> stallList) {
+		Stall stall = inputStall();
+		addStall(stallList, stall);
+	}
 	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
 		stallList.add(stall);
 		System.out.println("Stall added!");
@@ -143,17 +166,6 @@ public class C206_CaseStudy {
 		stall = new Stall(storeName, ownerName, operationDate);
 		return stall;
 	}
-	public static String retrieveAllStalls(ArrayList<Stall> stallList) {
-		Helper.line(80, "=");
-		System.out.println("STALL LIST");
-		String output = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name", "Operation Date");
-		
-		for (int i = 0; i < stallList.size(); i++) {
-			if (stallList.get(i) != null) {
-				output += String.format("%-25s %-25s\n", i+1, stallList.get(i).toStringStall());
-			}
-		}
-		return output;
-	}
+	
 	//END OF STALL METHODS===========================================================================================
 }
