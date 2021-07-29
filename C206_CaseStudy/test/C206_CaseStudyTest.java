@@ -69,7 +69,8 @@ public class C206_CaseStudyTest {
 	public void testDeleteStall() {
 		boolean outOfBounds = false;
 		C206_CaseStudy.addStall(stallList, stall1);
-		assertNotNull("Test if stall is not empty so that stall can be deleted.", stallList);
+		assertNotNull("Test if stall is not empty", stallList);
+		assertEquals("Test if stall size is 1, so that an element can be deleted using the function", 1, stallList.size());
 		
 		C206_CaseStudy.deleteStall(stallList,1);
 		assertEquals("Test if list is empty.", 0 , stallList.size());
