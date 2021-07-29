@@ -17,7 +17,7 @@ public class C206_CaseStudy {
 				addStall(stallList, stall);
 			}
 			else if (option == 2) {
-				viewStall(stallList);
+				viewStallIfElse(stallList);
 			}
 			else if (option == 3) {
 				int stallNo = inputStallNoRemove();
@@ -101,6 +101,15 @@ public class C206_CaseStudy {
 	public static void viewStall(ArrayList<Stall> stallList) {
 		String output = retrieveAllStalls(stallList);
 		System.out.println(output);
+	}
+	private static void viewStallIfElse(ArrayList<Stall> stallList) {
+		if (stallList.isEmpty() == true) {
+			System.out.println("List is empty!");
+		}
+		else {
+			viewStall(stallList);
+
+		}
 	}
 	public static void deleteStall(ArrayList<Stall> stallList, int stallNo) {
 		
