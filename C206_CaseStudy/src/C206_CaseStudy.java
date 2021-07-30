@@ -173,7 +173,7 @@ public class C206_CaseStudy {
 		Helper.line(45, "-");
 		System.out.println("FOOD MENU");
 		Helper.line(45, "-");
-		System.out.printf("%-10s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE");
+		System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
 		for (Food f : foodList) {
 			f.display();
 		}
@@ -185,15 +185,20 @@ public class C206_CaseStudy {
 		Helper.line(45, "-");
 		int idFood = Helper.readInt("Enter id for food > ");
 		
+	
 		String nameFood = Helper.readString("Enter name of food > ");
 		int priceFood = Helper.readInt("Enter selling price of food ($3 - $15)> ");
+		String stallFood = Helper.readString("Enter stall > ");
+				
 		if (priceFood >= 3 && priceFood <= 15) {
-			Food newFood = new Food(idFood, nameFood, priceFood);
+			Food newFood = new Food(idFood, nameFood, priceFood, stallFood);
 			foodList.add(newFood);
 			System.out.println("Food Added!");
 		} else {
 			System.out.println("Please enter selling price between $3 to $15.");
 		}
+			
+		
 	}
 
 	private static void deleteFood(ArrayList<Food> foodList) { //delete 
@@ -204,7 +209,7 @@ public class C206_CaseStudy {
 		int id = Helper.readInt("Enter id of food to delete > ");
 		for (Food f : foodList) {
 			if (f.getId() == id) {
-				System.out.printf("%-10s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE");
+				System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
 				f.display();
 				isValid = true;
 				String confirm = Helper.readString("Are you sure you want to delete this? (Y/N)> ");

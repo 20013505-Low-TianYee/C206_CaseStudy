@@ -10,8 +10,13 @@ public class C206_CaseStudyTest {
 	private Stall stall1= new Stall("Froot", "Jack", "22/05/2021");
 	private Stall stall2= new Stall("Helperoo", "Ruth", "29/03/2019");
 	
+	private Food f1 = new Food(1,"Fries",3 );
+	private Food f2 = new Food(2,"Fries",3 );
+	private Food f3 = new Food(3,"Fries",3 );
+	
+	
 	private ArrayList<Stall> stallList = new ArrayList<Stall>(10);
-
+	private ArrayList<Food> foodList = new ArrayList<Food>(10);
 	//=============================================
 	@Before
 	public void setUp() throws Exception {
@@ -86,4 +91,9 @@ public class C206_CaseStudyTest {
 
 	}
 	//END OF STALL TESTS==============================================================================================
+	// fOOD TESTS ======================================================================================================
+	public void testAddFood() {
+		
+	}
+	// END OF FOOD =======================================================================================================
 }

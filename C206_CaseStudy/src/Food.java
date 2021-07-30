@@ -9,11 +9,23 @@ public class Food {
 	private int id;
 	private String name;
 	private int price;
+	private String stall;
 
-	public Food(int id, String name, int price) {
+	public Food(int id, String name, int price, String stall ) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.stall=stall;
+	}
+
+
+	public String getStall() {
+		return stall;
+	}
+
+	
+	public void setStall(String stall) {
+		this.stall = stall;
 	}
 
 	public int getId() {
@@ -42,7 +54,7 @@ public class Food {
 
 	public void display() {
 
-		System.out.printf("%-10s %-20s $%-10s\n", id, name, price);
+		System.out.printf("%-10s %-20s $%-20s %-10s\n", id, name, price, stall);
 
 	}
 }
