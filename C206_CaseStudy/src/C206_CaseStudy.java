@@ -169,7 +169,7 @@ public class C206_CaseStudy {
 	// END OF STALL METHODS===========================================================================================
 
 	// =================================== FOOD METHODS=============================================================================
-	private static void viewFoodMenu(ArrayList<Food> foodList) { // print food menu
+	public static void viewFoodMenu(ArrayList<Food> foodList) { // print food menu
 		Helper.line(45, "-");
 		System.out.println("FOOD MENU");
 		Helper.line(45, "-");
@@ -179,7 +179,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private static void addFood(ArrayList<Food> foodList) { // TY - add new food into food menu
+	public static void addFood(ArrayList<Food> foodList) { // TY - add new food into food menu
 		Helper.line(45, "-");
 		System.out.println("ADD FOOD");
 		Helper.line(45, "-");
@@ -201,7 +201,7 @@ public class C206_CaseStudy {
 		
 	}
 
-	private static void deleteFood(ArrayList<Food> foodList) { //delete 
+	public static void deleteFood(ArrayList<Food> foodList) { //delete 
 		Helper.line(45, "-");
 		System.out.println("DELETE FOOD");
 		Helper.line(45, "-");

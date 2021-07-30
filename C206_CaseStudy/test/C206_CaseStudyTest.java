@@ -10,9 +10,9 @@ public class C206_CaseStudyTest {
 	private Stall stall1= new Stall("Froot", "Jack", "22/05/2021");
 	private Stall stall2= new Stall("Helperoo", "Ruth", "29/03/2019");
 	
-	private Food f1 = new Food(1,"Fries",3 );
-	private Food f2 = new Food(2,"Fries",3 );
-	private Food f3 = new Food(3,"Fries",3 );
+	private Food f1 = new Food(1,"Fries",3, "Froot");
+	private Food f2 = new Food(2,"Rice",15, "Helperoo" );
+	private Food f3 = new Food(3,"Noodles",10, "Helperoo" );
 	
 	
 	private ArrayList<Stall> stallList = new ArrayList<Stall>(10);
@@ -93,6 +93,16 @@ public class C206_CaseStudyTest {
 	//END OF STALL TESTS==============================================================================================
 	// fOOD TESTS ======================================================================================================
 	public void testAddFood() {
+		C206_CaseStudy.addFood(foodList);
+		assertNotNull("Test that food list is not empty", foodList);
+		for (Food f : foodList) {
+		assertTrue("Test that price is more than or equals $3",f.getPrice() >= 3);
+		assertTrue("Test that price is less than or equals $15",f.getPrice() <= 15);
+		}
+	}
+	public void testViewFood() {
+		C206_CaseStudy.viewFoodMenu(foodList);
+		assertNotNull("Test that food list is not empty", foodList);
 		
 	}
 	// END OF FOOD =======================================================================================================
