@@ -11,7 +11,7 @@ public class Food {
 	private int price;
 	private String stall;
 
-	public Food(int id, String name, int price, String stall ) {
+	public Food(int id, String name, int price, String stall) {
 		this.id = id;
 		this.name = name;
 		this.price = price;

@@ -89,8 +89,6 @@ public class C206_CaseStudy {
 
 	}
 
-	
-
 
 	public static void setHeader(String header) { // Ty - i think we can just use this to set the header, to make our
 													// codes simpler
@@ -344,8 +342,70 @@ public class C206_CaseStudy {
 		System.out.println("14. View food order"); // Adam
 		System.out.println("15. Delete food item from order"); // Adam
 	}
-	
-	
+	public static void viewOrder(ArrayList<Order> orderList) {
+		C206_CaseStudy.setHeader("FOOD LIST");
+		String output = String.format("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+		if (retrieveFood(foodList).isEmpty()) {
+			System.out.println("Food List is empty!");
+		}else {
+		 output += retrieveFood(foodList);	
+		System.out.println(output);
+		}
+	}
+
+	public static String retrieveFood(ArrayList<Order> orderList) {
+		String output = "";
+		
+		for (Food f : foodList) {
+			output += String.format("%-10s %-20s $%-20s %-10s\n", f.getId(),f.getName(),f.getPrice(),f.getStall());
+		}
+		return output;
+	}
+	public static Order inputOrder() { // input details of new food
+		int idFood = Helper.readInt("Enter id for food > ");
+		String nameFood = Helper.readString("Enter name of food > ");
+		int priceFood = Helper.readInt("Enter selling price of food ($3 - $15)> ");
+		if (priceFood >= 3 && priceFood <= 15) {
+			String stallFood = Helper.readString("Enter stall > ");
+			Food f = new Food(idFood, nameFood, priceFood, stallFood);
+			return f;
+		} else {
+			System.out.println("Selling price must be between $3 to $15!");
+			return null;
+		}
+
+	}
+
+	public static void addOrder(ArrayList<Order> orderList, Food f) { // add the new food into list
+		foodList.add(f);
+		System.out.println("Food added!");
+	}
+
+	public static void orderToDelete(ArrayList<Order> orderList, int id) {
+		boolean isValid = false;
+		if (orderList.isEmpty()) {
+			System.out.println("Food List is empty");
+		} else {
+			for (int i = 0; i < orderList.size(); i++) {
+				if (orderList.get(i).getId() == id) {
+					
+					isValid = true;
+					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+					orderList.get(i).display();
+					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
+					if (confirm.equalsIgnoreCase("y")) {
+						orderList.remove(orderList.get(i));
+					System.out.println("Delete success!");
+					}
+				} 
+			} 
+			if (isValid == false) {
+				
+					System.out.println("Food does not exist!");
+				
+			}
+		}
+	}
 	
 	//===========================================END OF ORDERS BY CUSTOMERS METHODS ======================================================
 
