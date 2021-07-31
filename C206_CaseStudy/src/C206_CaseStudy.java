@@ -199,13 +199,7 @@ public class C206_CaseStudy {
 		System.out.println(" 6. Delete Food");
 	}
 
-//	public static void viewFoodMenu(ArrayList<Food> foodList) { // print food menu
-//		C206_CaseStudy.setHeader("FOOD MENU");
-//		System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
-//		for (Food f : foodList) {
-//			f.display();
-//		}
-//	}
+
 	public static void viewFood(ArrayList<Food> foodList) {
 		C206_CaseStudy.setHeader("FOOD LIST");
 		String output = String.format("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
@@ -280,7 +274,7 @@ public class C206_CaseStudy {
 	}
 	public static void viewPromo(ArrayList<Promo> promoList) {
 		C206_CaseStudy.setHeader("PROMOTION LIST");
-		String output = String.format("%-10s %-20s\n", "Promotion Offers name", "Description");
+		String output = String.format("%-20s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION");
 		if (retrievePromo(promoList).isEmpty()) {
 			System.out.println("Promotion List is empty!");
 		}else {
@@ -293,7 +287,7 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (Promo f : promoList) {
-			output += String.format("%-10s %-20s \n", f.getPromoName(), f.gerDescription());
+			output += String.format("%-20s %-20s \n", f.getPromoName(), f.gerDescription());
 		}
 		return output;
 	}
@@ -319,10 +313,10 @@ public class C206_CaseStudy {
 			System.out.println("Promotion List is empty");
 		} else {
 			for (int i = 0; i < promoList.size(); i++) {
-				if (promoList.get(i).getPromoName() == PromoName) {
+				if (promoList.get(i).getPromoName().equals(PromoName)) {
 					
 					isValid = true;
-					System.out.printf("%-10s %-20s\n", "Promotion Offers name", "Description");
+					System.out.printf("%-20s %-20s\n", "Promotion Offers name", "Description");
 					promoList.get(i).display();;
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {
