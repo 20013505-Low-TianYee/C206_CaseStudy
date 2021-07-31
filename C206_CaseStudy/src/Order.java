@@ -11,7 +11,7 @@ public class Order extends Food { //Adam
 	private int quantity;
 	private double totalPrice;
 	
-	public Order(int id, String name, int price, String stall, int quantity, double totalPrice) {
+	public Order(int id, String name, double price, String stall, int quantity, double totalPrice) {
 		super(id, name, price, stall);
 		this.quantity = quantity;
 		this.totalPrice = totalPrice;

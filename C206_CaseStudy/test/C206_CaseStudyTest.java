@@ -12,10 +12,13 @@ public class C206_CaseStudyTest {
 	private Food f2;
 	private Promo p1;
 	private Promo p2;
+	private Order o1;
+	private Order o2;
 
 	private ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 	private ArrayList<Food> foodList = new ArrayList<Food>(10);
 	private ArrayList<Promo> promoList = new ArrayList<Promo>();
+	private ArrayList<Order> orderList = new ArrayList<Order>();
 	//=============================================
 	@Before
 	public void setUp() throws Exception {
@@ -24,11 +27,14 @@ public class C206_CaseStudyTest {
 	stall2= new Stall("Helperoo", "Ruth", "29/03/2019");
 		//food
 	f1 = new Food(1,"Fries",3, "Froot");
-	f2 = new Food(2,"Rice",15, "Helperoo" );
-	
+	f2 = new Food(2,"Rice",15, "Helperoo");
+		//promotions
 	p1 = new Promo("Free delivery", "$0 Delivery Fee(min.$20 spend)");
 	p2 = new Promo("20% off Rice", "Available at selected outlets");
-		
+		//order
+	o1 = new Order(1, "Fries", 3, "Froot", 2, 6);
+	o2 = new Order(2, "Rice", 15, "Helperoo", 2, 30);
+	
 	}
 
 	@After
@@ -205,7 +211,46 @@ public class C206_CaseStudyTest {
 	
 //END OF PURCHASE ORDER =========================================================================================================
 //START OF ORDERS BY CUSTOMER======================================================================================================
+//Adam
+	@Test
+	public void testAddOrder() {
 	
+		assertNotNull("Test that there is a Order arrayList to add to", orderList);
+		
+		C206_CaseStudy.addOrder(orderList, o1);
+		assertEquals("Test if orderlist size is 1 ?", 1, orderList.size());
+		
+		C206_CaseStudy.addOrder(orderList, o2);
+		assertEquals("Test if orderlist size is 2 ?", 2, orderList.size());
+	}
+
+	@Test
+	public void testRetrieveOrder() {
+		assertNotNull("Test if there is valid Order arraylist to retrieve from", orderList);
+		String order = C206_CaseStudy.retrieveOrder(orderList);
+		String testOutput = "";
+		assertEquals("Test that list is empty in the beginning", testOutput, order);
+	
+	C206_CaseStudy.addOrder(orderList, o1);
+	C206_CaseStudy.addOrder(orderList, o2);
+	assertEquals("Test if that Order arraylist size is 2?", 2, orderList.size());
+	
+	order = C206_CaseStudy.retrieveOrder(orderList);
+	testOutput = String.format("%-10s %-20s $%-20s %-20s $%-20s %-10s\n", 1, "Fries", 3, "Froot", 2, 6);
+	testOutput += String.format("%-10s %-20s $%-20s %-20s $%-20s %-10s\n", 2, "Rice", 15, "Helperoo", 2, 30);
+	assertEquals("Test that output is in the correct format", testOutput, order);
+	}
+
+	@Test
+	public void testDeleteOrder() {
+		assertNotNull("Test if there is valid Food arraylist to delete objects", orderList);
+		C206_CaseStudy.addOrder(orderList, o1);
+		C206_CaseStudy.addOrder(orderList, o2);
+		C206_CaseStudy.deleteOrder(orderList, o1.getId());
+		assertEquals("Test if that Food arraylist size is 1?", 1, orderList.size());
+		C206_CaseStudy.deleteOrder(orderList, o2.getId());
+		assertEquals("Test if that Food arraylist is empty", 0, orderList.size());
+	}
 	
 	
 

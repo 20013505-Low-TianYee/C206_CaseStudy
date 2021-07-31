@@ -8,10 +8,10 @@
 public class Food {
 	private int id;
 	private String name;
-	private int price;
+	private double price;
 	private String stall;
 
-	public Food(int id, String name, int price, String stall) {
+	public Food(int id, String name, double price, String stall) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
@@ -44,11 +44,11 @@ public class Food {
 		this.name = name;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

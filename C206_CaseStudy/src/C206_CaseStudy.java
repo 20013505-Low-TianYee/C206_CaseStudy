@@ -53,7 +53,8 @@ public class C206_CaseStudy {
 
 			} else if (option == 13) {
 				// Add Order
-				addOrder(orderList);
+				Order o = inputOrder();
+				addOrder(orderList, o);
 			} else if (option == 14) {
 				// View Order
 				viewOrder(orderList);
@@ -367,21 +368,28 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	public static void addOrder(ArrayList<Order> orderList) { // add the new food into list
-		int foodItemID = Helper.readInt("Enter Food Item ID");
-		int quantity = Helper.readInt("Enter Quantity > ");
+	public static Order inputOrder() { // input details of new Order
+		int foodItemID = Helper.readInt("Enter Food Item ID > ");
+		String foodName = Helper.readString("Enter Name of Food > ");
+		double price = Helper.readDouble("Enter Price of Food ($3-$15) > ");
 		
-		for (Order o : orderList) {
-			if (foodItemID == o.getId()) {
-				Order newOrder = new Order(o.getId(),o.getName(),o.getPrice(), o.getStall(), quantity, o.getTotalPrice());
-				orderList.add(newOrder);
-			} else {
-				System.out.println("No Food Item with that ID. :(");
-			}
+		if (price >= 3 && price <= 15) {
+			String stall = Helper.readString("Enter stall name > ");
+			int quantity = Helper.readInt("Enter Quantity > ");
+			double totalPrice = quantity * price;
+			Order o = new Order(foodItemID, foodName, price, stall, quantity, totalPrice);
+			return o;
+		} else {
+			System.out.println("Food Price must be between $3 to $15!");
+			return null;
 		}
-		System.out.println("Order added!");
 	}
-
+	
+	public static void addOrder(ArrayList<Order> orderList, Order o) { // add the new Order into list
+		orderList.add(o);
+		System.out.println("Food Item added!");
+	}
+	
 	public static void deleteOrder(ArrayList<Order> orderList, int id) {
 		boolean isValid = false;
 		if (orderList.isEmpty()) {
