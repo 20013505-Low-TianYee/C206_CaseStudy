@@ -6,6 +6,7 @@ public class C206_CaseStudy {
 		ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 		ArrayList<Food> foodList = new ArrayList<Food>();
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
+		ArrayList<Order> orderList = new ArrayList<Order>();
 		int option = -1;
 
 		while (option != 16) {
@@ -51,11 +52,15 @@ public class C206_CaseStudy {
 				PromoToDelete(promoList, PromoName);
 
 			} else if (option == 13) {
-				//
+				// Add Order
+				addOrder(orderList);
 			} else if (option == 14) {
-				//
+				// View Order
+				viewOrder(orderList);
 			} else if (option == 15) {
-				//
+				// Delete Order
+				int id = Helper.readInt("Enter Food Item ID to remove for OrderList > ");
+				deleteOrder(orderList, id);
 			} else if (option == 16) {
 				System.out.println("We are sad to see you go =("); // added a goodbye message when application quit - TY
 			} else {
@@ -337,54 +342,51 @@ public class C206_CaseStudy {
 	
 // ============================================END OF PURCHASE ORDERS METHODS========================================================
 	// =======================================START OF ORDERS BY CUSTOMERS METHODS====================================================
+	// ======================================= ORDERS BY CUSTOMERS BY ADAM ===========================================================
 	private static void manageOrders() {
 		System.out.println("13. Add food item to order"); // Adam
 		System.out.println("14. View food order"); // Adam
 		System.out.println("15. Delete food item from order"); // Adam
 	}
 	public static void viewOrder(ArrayList<Order> orderList) {
-		C206_CaseStudy.setHeader("FOOD LIST");
-		String output = String.format("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
-		if (retrieveFood(foodList).isEmpty()) {
-			System.out.println("Food List is empty!");
+		C206_CaseStudy.setHeader("ORDER LIST");
+		String output = String.format("%-10s %-20s %-20s %-20s %-10s\n", "FOOD ITEM ID", "FOOD NAME", "STALL", "PRICE", "QUANTITY");
+		if (orderList.isEmpty()) {
+			System.out.println("Order List is empty!");
 		}else {
-		 output += retrieveFood(foodList);	
+		 output += retrieveOrder(orderList);	
 		System.out.println(output);
 		}
 	}
 
-	public static String retrieveFood(ArrayList<Order> orderList) {
+	public static String retrieveOrder(ArrayList<Order> orderList) {
 		String output = "";
 		
-		for (Food f : foodList) {
-			output += String.format("%-10s %-20s $%-20s %-10s\n", f.getId(),f.getName(),f.getPrice(),f.getStall());
+		for (Order o : orderList) {
+			output += String.format("%-10s %-20s $%-20s %-10s\n", o.getId(),o.getName(),o.getStall(),o.getPrice(), o.getQuantity());
 		}
 		return output;
 	}
-	public static Order inputOrder() { // input details of new food
-		int idFood = Helper.readInt("Enter id for food > ");
-		String nameFood = Helper.readString("Enter name of food > ");
-		int priceFood = Helper.readInt("Enter selling price of food ($3 - $15)> ");
-		if (priceFood >= 3 && priceFood <= 15) {
-			String stallFood = Helper.readString("Enter stall > ");
-			Food f = new Food(idFood, nameFood, priceFood, stallFood);
-			return f;
-		} else {
-			System.out.println("Selling price must be between $3 to $15!");
-			return null;
+
+	public static void addOrder(ArrayList<Order> orderList) { // add the new food into list
+		int foodItemID = Helper.readInt("Enter Food Item ID");
+		int quantity = Helper.readInt("Enter Quantity > ");
+		
+		for (Order o : orderList) {
+			if (foodItemID == o.getId()) {
+				Order newOrder = new Order(o.getId(),o.getName(),o.getPrice(), o.getStall(), quantity, o.getTotalPrice());
+				orderList.add(newOrder);
+			} else {
+				System.out.println("No Food Item with that ID. :(");
+			}
 		}
-
+		System.out.println("Order added!");
 	}
 
-	public static void addOrder(ArrayList<Order> orderList, Food f) { // add the new food into list
-		foodList.add(f);
-		System.out.println("Food added!");
-	}
-
-	public static void orderToDelete(ArrayList<Order> orderList, int id) {
+	public static void deleteOrder(ArrayList<Order> orderList, int id) {
 		boolean isValid = false;
 		if (orderList.isEmpty()) {
-			System.out.println("Food List is empty");
+			System.out.println("Order List is empty");
 		} else {
 			for (int i = 0; i < orderList.size(); i++) {
 				if (orderList.get(i).getId() == id) {
@@ -395,7 +397,7 @@ public class C206_CaseStudy {
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {
 						orderList.remove(orderList.get(i));
-					System.out.println("Delete success!");
+					System.out.println("Delete successfully!");
 					}
 				} 
 			} 

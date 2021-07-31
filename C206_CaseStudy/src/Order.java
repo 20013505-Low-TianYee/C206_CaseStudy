@@ -10,6 +10,7 @@ public class Order extends Food{ //Adam
 
 	private int quantity;
 	private double totalPrice;
+	
 	public Order(int id, String name, int price, String stall, int quantity, double totalPrice) {
 		super(id, name, price, stall);
 		this.quantity = quantity;
@@ -22,11 +23,16 @@ public class Order extends Food{ //Adam
 		this.quantity = quantity;
 	}
 	public double getTotalPrice() {
-		totalPrice = quantity * super.getPrice();
+		this.totalPrice = quantity * super.getPrice();
 		return totalPrice;
 	}
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 	
+	public void display() {
+
+		System.out.printf("%-10s %-20s %-20s %-20s %-10s\n", super.getId(), super.getName(), super.getStall(), super.getPrice(), totalPrice);
+
+	}
 }
