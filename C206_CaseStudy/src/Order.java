@@ -6,7 +6,7 @@
  *
  * 20024783, 31 Jul 2021 10:00:26 pm
  */
-public class Order extends Food{ //Adam
+public class Order extends Food { //Adam
 
 	private int quantity;
 	private double totalPrice;

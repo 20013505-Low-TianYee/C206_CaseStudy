@@ -187,10 +187,9 @@ public class C206_CaseStudy {
 		return stall;
 	}
 
-	// END OF STALL
-	// METHODS===========================================================================================
-
-	// =================================== FOOD METHODS by TY =============================================================================
+	//==============================================END OF STALL==========================================================================
+	// METHODS============================================================================================================================
+	// =================================== FOOD METHODS by TY ============================================================================
 	private static void manageFood() { //options
 		System.out.println(" 4. Add Food");
 		System.out.println(" 5. View Food");
@@ -263,75 +262,8 @@ public class C206_CaseStudy {
 		}
 	}
 
-//==============================================END OF FOOD===============================================================================
-// =============================================== START OF PROMOTION METHODS =======================================================
-	private static void managePromotion() {
-		System.out.println("10. Add promotion offer"); // YY
-		System.out.println("11. View promotion offers"); // YY
-		System.out.println("12. Delete promotion offer"); // YY
-	}
-	public static void viewPromo(ArrayList<Promo> promoList) {
-		C206_CaseStudy.setHeader("PROMOTION LIST");
-		String output = String.format("%-30s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION");
-		if (retrievePromo(promoList).isEmpty()) {
-			System.out.println("Promotion List is empty!");
-		}else {
-		 output += retrievePromo(promoList);	
-		System.out.println(output);
-		}
-	}
-
-	public static String retrievePromo(ArrayList<Promo> promoList) {
-		String output = "";
-		
-		for (Promo f : promoList) {
-			output += String.format("%-30s %-20s\n", f.getPromoName(), f.gerDescription());
-		}
-		return output;
-	}
-	public static Promo inputPromo() {  
-		String PromoName = Helper.readString("Please enter the name of the Promotion > ");
-		String Description = Helper.readString("Please enter the description of the promotion > ");
-		
-		
-		Promo f = new Promo(PromoName, Description);
-		return f;
-		
-
-	}
-
-	public static void addPromo(ArrayList<Promo> promoList, Promo f) {  
-		promoList.add(f);
-		System.out.println("Promotion offer added!");
-	}
-
-	public static void PromoToDelete(ArrayList<Promo> promoList, String PromoName) {
-		boolean isValid = false;
-		if (promoList.isEmpty()) {
-			System.out.println("Promotion List is empty");
-		} else {
-			for (int i = 0; i < promoList.size(); i++) {
-				if (promoList.get(i).getPromoName().equalsIgnoreCase(PromoName)) {
-					
-					isValid = true;
-					System.out.printf("%-30s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION");
-					promoList.get(i).display();;
-					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
-					if (confirm.equalsIgnoreCase("y")) {
-						promoList.remove(promoList.get(i));
-					System.out.println("Delete success!");
-					}
-				} 
-			} 
-			if (isValid == false) {
-				
-					System.out.println("Promotion does not exist!");
-				
-			}
-		}
-	}
-	// =============================================== END OF PROMOTION METHODS =======================================================
-// ==========================================START OF PURCHASE ORDERS METHODS==================================================
+//==============================================END OF FOOD===========================================================================
+// ==========================================START OF PURCHASE ORDERS METHODS BY WH===================================================
 	private static void managePurchaseOrders() {
 		System.out.println(" 7. Add purchase order"); // WH
 		System.out.println(" 8. Delete purchase order"); // WH
@@ -340,9 +272,76 @@ public class C206_CaseStudy {
 	
 	
 	
-// ============================================END OF PURCHASE ORDERS METHODS========================================================
-	// =======================================START OF ORDERS BY CUSTOMERS METHODS====================================================
-	// ======================================= ORDERS BY CUSTOMERS BY ADAM ===========================================================
+// ============================================END OF PURCHASE ORDERS METHODS=========================================================
+// ================================================START OF PROMOTION METHODS BY YY===================================================
+		private static void managePromotion() {
+			System.out.println("10. Add promotion offer"); // YY
+			System.out.println("11. View promotion offers"); // YY
+			System.out.println("12. Delete promotion offer"); // YY
+		}
+		public static void viewPromo(ArrayList<Promo> promoList) {
+			C206_CaseStudy.setHeader("PROMOTION LIST");
+			String output = String.format("%-30s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION");
+			if (retrievePromo(promoList).isEmpty()) {
+				System.out.println("Promotion List is empty!");
+			}else {
+			 output += retrievePromo(promoList);	
+			System.out.println(output);
+			}
+		}
+
+		public static String retrievePromo(ArrayList<Promo> promoList) {
+			String output = "";
+			
+			for (Promo f : promoList) {
+				output += String.format("%-30s %-20s\n", f.getPromoName(), f.gerDescription());
+			}
+			return output;
+		}
+		public static Promo inputPromo() {  
+			String PromoName = Helper.readString("Please enter the name of the Promotion > ");
+			String Description = Helper.readString("Please enter the description of the promotion > ");
+			
+			
+			Promo f = new Promo(PromoName, Description);
+			return f;
+			
+
+		}
+
+		public static void addPromo(ArrayList<Promo> promoList, Promo f) {  
+			promoList.add(f);
+			System.out.println("Promotion offer added!");
+		}
+
+		public static void PromoToDelete(ArrayList<Promo> promoList, String PromoName) {
+			boolean isValid = false;
+			if (promoList.isEmpty()) {
+				System.out.println("Promotion List is empty");
+			} else {
+				for (int i = 0; i < promoList.size(); i++) {
+					if (promoList.get(i).getPromoName().equalsIgnoreCase(PromoName)) {
+						
+						isValid = true;
+						System.out.printf("%-30s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION");
+						promoList.get(i).display();;
+						String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
+						if (confirm.equalsIgnoreCase("y")) {
+							promoList.remove(promoList.get(i));
+						System.out.println("Delete success!");
+						}
+					} 
+				} 
+				if (isValid == false) {
+					
+						System.out.println("Promotion does not exist!");
+					
+				}
+			}
+		}
+// =============================================== END OF PROMOTION METHODS =======================================================
+// =======================================START OF ORDERS BY CUSTOMERS METHODS BY ADAM=============================================
+
 	private static void manageOrders() {
 		System.out.println("13. Add food item to order"); // Adam
 		System.out.println("14. View food order"); // Adam
@@ -410,7 +409,4 @@ public class C206_CaseStudy {
 	}
 	
 	//===========================================END OF ORDERS BY CUSTOMERS METHODS ======================================================
-
-
-
 }
