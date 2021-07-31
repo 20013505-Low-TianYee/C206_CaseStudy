@@ -6,27 +6,33 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class C206_CaseStudyTest {
-	//stall
-	private Stall stall1= new Stall("Froot", "Jack", "22/05/2021");
-	private Stall stall2= new Stall("Helperoo", "Ruth", "29/03/2019");
-	
-	private Food f1 = new Food(1,"Fries",3, "Froot");
-	private Food f2 = new Food(2,"Rice",15, "Helperoo" );
-	private Food f3 = new Food(3,"Noodles",10, "Helperoo" );
-	
-	
+	private Stall stall1;
+	private Stall stall2;
+	private Food f1;
+	private Food f2;
+
 	private ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 	private ArrayList<Food> foodList = new ArrayList<Food>(10);
 	//=============================================
 	@Before
 	public void setUp() throws Exception {
-
+		//stall
+	stall1= new Stall("Froot", "Jack", "22/05/2021");
+	stall2= new Stall("Helperoo", "Ruth", "29/03/2019");
+		//food
+	f1 = new Food(1,"Fries",3, "Froot");
+	f2 = new Food(2,"Rice",15, "Helperoo" );
 		
 	}
 
 	@After
-	public void tearDown() throws Exception {
-		
+	public void tearDown() throws Exception {  
+		stall1 = null;
+		stall2 = null;
+		f1 = null;
+		f2=null;
+		stallList = null;
+		foodList = null;
 	}
 
 	@Test
@@ -92,17 +98,36 @@ public class C206_CaseStudyTest {
 	}
 	//END OF STALL TESTS==============================================================================================
 	// fOOD TESTS ======================================================================================================
+//done by TY
+	@Test
 	public void testAddFood() {
-		C206_CaseStudy.addFood(foodList);
+	
 		assertNotNull("Test that food list is not empty", foodList);
-		for (Food f : foodList) {
-		assertTrue("Test that price is more than or equals $3",f.getPrice() >= 3);
-		assertTrue("Test that price is less than or equals $15",f.getPrice() <= 15);
-		}
+		C206_CaseStudy.addFood(foodList, f1);
+		assertTrue("Test that price is more than or equals $3",f1.getPrice() >= 3);
+		assertTrue("Test that price is less than or equals $15",f1.getPrice() <= 15);
+		
+		C206_CaseStudy.addFood(foodList, f2);
+		assertTrue("Test that price is more than or equals $3",f1.getPrice() >= 3);
+		assertTrue("Test that price is less than or equals $15",f1.getPrice() <= 15);
+		
 	}
+
 	public void testViewFood() {
-		C206_CaseStudy.viewFoodMenu(foodList);
+		C206_CaseStudy.addFood(foodList, f1);
+		C206_CaseStudy.addFood(foodList, f2);
 		assertNotNull("Test that food list is not empty", foodList);
+		
+		
+	}
+	
+	
+	public void testDeleteFood() {
+		
+		C206_CaseStudy.addFood(foodList, f1);
+		C206_CaseStudy.addFood(foodList, f2);
+		assertNotNull("Test that food list is not empty", foodList);
+		
 		
 	}
 	// END OF FOOD =======================================================================================================
