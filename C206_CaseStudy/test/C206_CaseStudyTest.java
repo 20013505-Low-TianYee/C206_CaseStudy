@@ -10,9 +10,12 @@ public class C206_CaseStudyTest {
 	private Stall stall2;
 	private Food f1;
 	private Food f2;
+	private Promo p1;
+	private Promo p2;
 
 	private ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 	private ArrayList<Food> foodList = new ArrayList<Food>(10);
+	private ArrayList<Promo> promoList = new ArrayList<Promo>();
 	//=============================================
 	@Before
 	public void setUp() throws Exception {
@@ -22,6 +25,9 @@ public class C206_CaseStudyTest {
 		//food
 	f1 = new Food(1,"Fries",3, "Froot");
 	f2 = new Food(2,"Rice",15, "Helperoo" );
+	
+	p1 = new Promo("Free delivery", "$0 Delivery Fee(min.$20 spend)!");
+	p2 = new Promo("20% off Rice", "Available at selected outlets");
 		
 	}
 
@@ -31,8 +37,11 @@ public class C206_CaseStudyTest {
 		stall2 = null;
 		f1 = null;
 		f2=null;
+		p1=null;
+		p2=null;
 		stallList = null;
 		foodList = null;
+		promoList = null;
 	}
 
 	@Test
@@ -145,4 +154,48 @@ public class C206_CaseStudyTest {
 	}
 
 	// END OF FOOD =======================================================================================================
+	// PROMO TEST==========================================================================================================
+	public void testAddPromo() {
+		
+		assertNotNull("Test that there is a Promo arrayList to add to", promoList);
+		
+		C206_CaseStudy.addPromo(promoList, p1);
+		assertEquals("Test if promoList size is 1 ?", 1, promoList.size());
+		
+		
+		C206_CaseStudy.addPromo(promoList, p2);
+		assertEquals("Test if promoList size is 2 ?", 2, promoList.size());
+		 
+		
+	}
+
+	@Test
+	public void testRetrievePromo() {
+		assertNotNull("Test if there is valid Promo arraylist to retrieve from", promoList);
+		String pro = C206_CaseStudy.retrievePromo(promoList);
+		String testOutput = "";
+		assertEquals("Test that list is empty in the beginning", testOutput, pro);
+	
+	C206_CaseStudy.addPromo(promoList, p1);
+	C206_CaseStudy.addPromo(promoList, p2);
+	assertEquals("Test if that Promo arraylist size is 2?", 2, promoList.size());
+	
+	pro = C206_CaseStudy.retrievePromo(promoList);
+	testOutput = String.format("%-10s %-20s  \n","Free delivery", "$0 Delivery Fee(min.$20 spend)!");
+	testOutput += String.format("%-10s %-20s \n", "20% off Rice", "Available at selected outlets");
+	assertEquals("Test that output is in the correct format", testOutput, pro);
+	}
+	
+	@Test
+	public void testDeletePromo() {
+		assertNotNull("Test if there is valid Promo arraylist to delete objects", promoList);
+		C206_CaseStudy.addPromo(promoList, p1);
+		C206_CaseStudy.addPromo(promoList, p2);
+		C206_CaseStudy.PromoToDelete(promoList, p1.getPromoName());
+		assertEquals("Test if that Promo arraylist size is 1?", 1, promoList.size());
+		C206_CaseStudy.PromoToDelete(promoList, p2.getPromoName());
+		assertEquals("Test if that Promo arraylist is empty", 0, promoList.size());
+	}
+	// END OF PROMO =======================================================================================================
+
 }
