@@ -266,8 +266,8 @@ public class C206_CaseStudy {
 // ==========================================START OF PURCHASE ORDERS METHODS BY WH===================================================
 	private static void managePurchaseOrders() {
 		System.out.println(" 7. Add purchase order"); // WH
-		System.out.println(" 8. Delete purchase order"); // WH
-		System.out.println(" 9. View purchase orders"); // WH
+		System.out.println(" 8. View purchase order"); // WH
+		System.out.println(" 9. Delete purchase orders"); // WH
 	}
 	
 	
