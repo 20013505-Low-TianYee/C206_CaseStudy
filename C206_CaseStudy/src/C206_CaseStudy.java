@@ -22,7 +22,7 @@ public class C206_CaseStudy {
 				Food f = inputFood();
 				addFood(foodList, f);
 			} else if (option == 5) { // view food
-				viewFoodMenu(foodList);
+				viewFood(foodList);
 			} else if (option == 6) { // delete food
 				int id = Helper.readInt("Enter id of food to delete > ");
 
@@ -180,22 +180,39 @@ public class C206_CaseStudy {
 	// END OF STALL
 	// METHODS===========================================================================================
 
-	// =================================== FOOD METHODS by TY
-	// =============================================================================
+	// =================================== FOOD METHODS by TY =============================================================================
 	private static void manageFood() { //options
 		System.out.println(" 4. Add Food");
 		System.out.println(" 5. View Food");
 		System.out.println(" 6. Delete Food");
 	}
 
-	public static void viewFoodMenu(ArrayList<Food> foodList) { // print food menu
-		C206_CaseStudy.setHeader("FOOD MENU");
-		System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
-		for (Food f : foodList) {
-			f.display();
+//	public static void viewFoodMenu(ArrayList<Food> foodList) { // print food menu
+//		C206_CaseStudy.setHeader("FOOD MENU");
+//		System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+//		for (Food f : foodList) {
+//			f.display();
+//		}
+//	}
+	public static void viewFood(ArrayList<Food> foodList) {
+		C206_CaseStudy.setHeader("FOOD LIST");
+		String output = String.format("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+		if (retrieveFood(foodList).isEmpty()) {
+			System.out.println("Food List is empty!");
+		}else {
+		 output += retrieveFood(foodList);	
+		System.out.println(output);
 		}
 	}
 
+	public static String retrieveFood(ArrayList<Food> foodList) {
+		String output = "";
+		
+		for (Food f : foodList) {
+			output += String.format("%-10s %-20s $%-20s %-10s\n", f.getId(),f.getName(),f.getPrice(),f.getStall());
+		}
+		return output;
+	}
 	public static Food inputFood() { // input details of new food
 		int idFood = Helper.readInt("Enter id for food > ");
 		String nameFood = Helper.readString("Enter name of food > ");
@@ -216,7 +233,7 @@ public class C206_CaseStudy {
 		System.out.println("Food added!");
 	}
 
-	private static void foodToDelete(ArrayList<Food> foodList, int id) {
+	public static void foodToDelete(ArrayList<Food> foodList, int id) {
 		boolean isValid = false;
 		if (foodList.isEmpty()) {
 			System.out.println("Food List is empty");

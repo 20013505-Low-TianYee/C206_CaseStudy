@@ -99,36 +99,50 @@ public class C206_CaseStudyTest {
 	//END OF STALL TESTS==============================================================================================
 	// fOOD TESTS ======================================================================================================
 //done by TY
-	
+	@Test
 	public void testAddFood() {
 	
-		assertNotNull("Test that food list is not empty", foodList);
+		assertNotNull("Test that there is a Food arrayList to add to", foodList);
+		
 		C206_CaseStudy.addFood(foodList, f1);
+		assertEquals("Test if foodList size is 1 ?", 1, foodList.size());
 		assertTrue("Test that price is more than or equals $3",f1.getPrice() >= 3);
 		assertTrue("Test that price is less than or equals $15",f1.getPrice() <= 15);
 		
 		C206_CaseStudy.addFood(foodList, f2);
+		assertEquals("Test if foodList size is 2 ?", 2, foodList.size());
 		assertTrue("Test that price is more than or equals $3",f1.getPrice() >= 3);
 		assertTrue("Test that price is less than or equals $15",f1.getPrice() <= 15);
 		
 	}
 
-	public void testViewFood() {
-		C206_CaseStudy.addFood(foodList, f1);
-		C206_CaseStudy.addFood(foodList, f2);
-		assertNotNull("Test that food list is not empty", foodList);
-		
-		
+	@Test
+	public void testRetrieveFood() {
+		assertNotNull("Test if there is valid Food arraylist to retrieve from", foodList);
+		String food = C206_CaseStudy.retrieveFood(foodList);
+		String testOutput = "";
+		assertEquals("Test that list is empty in the beginning", testOutput, food);
+	
+	C206_CaseStudy.addFood(foodList, f1);
+	C206_CaseStudy.addFood(foodList, f2);
+	assertEquals("Test if that Food arraylist size is 2?", 2, foodList.size());
+	
+	food = C206_CaseStudy.retrieveFood(foodList);
+	testOutput = String.format("%-10s %-20s $%-20s %-10s\n", 1, "Fries", 3, "Froot");
+	testOutput += String.format("%-10s %-20s $%-20s %-10s\n", 2, "Rice", 15, "Helperoo");
+	assertEquals("Test that output is in the correct format", testOutput, food);
 	}
 	
-	
+	@Test
 	public void testDeleteFood() {
-		
+		assertNotNull("Test if there is valid Food arraylist to delete objects", foodList);
 		C206_CaseStudy.addFood(foodList, f1);
 		C206_CaseStudy.addFood(foodList, f2);
-		assertNotNull("Test that food list is not empty", foodList);
-		
-		
+		C206_CaseStudy.foodToDelete(foodList, f1.getId());
+		assertEquals("Test if that Food arraylist size is 1?", 1, foodList.size());
+		C206_CaseStudy.foodToDelete(foodList, f2.getId());
+		assertEquals("Test if that Food arraylist is empty", 0, foodList.size());
 	}
+
 	// END OF FOOD =======================================================================================================
 }
