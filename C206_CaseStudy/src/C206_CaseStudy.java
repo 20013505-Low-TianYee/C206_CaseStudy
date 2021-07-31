@@ -38,12 +38,19 @@ public class C206_CaseStudy {
 			} else if (option == 10) {
 				//
 				//addPromo(promoList);
+				Promo f = inputPromo();
+				addPromo(promoList, f);
 			} else if (option == 11) {
 				//
 				//viewPromo(promoList);
+				viewPromo(promoList);
 			} else if (option == 12) {
 				//
 				//deletePromo(promoList);
+				String PromoName = Helper.readString("Enter Promotion name of the promotion to delete > ");
+
+				PromoToDelete(promoList, PromoName);
+
 			} else if (option == 13) {
 				//
 			} else if (option == 14) {
@@ -270,8 +277,66 @@ public class C206_CaseStudy {
 		System.out.println("10. Add promotion offer"); // YY
 		System.out.println("11. View promotion offers"); // YY
 		System.out.println("12. Delete promotion offer"); // YY
+	}
+	public static void viewPromo(ArrayList<Promo> promoList) {
+		C206_CaseStudy.setHeader("PROMOTION LIST");
+		String output = String.format("%-10s %-20s\n", "Promotion Offers name", "Description");
+		if (retrievePromo(promoList).isEmpty()) {
+			System.out.println("Promotion List is empty!");
+		}else {
+		 output += retrievePromo(promoList);	
+		System.out.println(output);
+		}
+	}
 
+	public static String retrievePromo(ArrayList<Promo> promoList) {
+		String output = "";
 		
+		for (Promo f : promoList) {
+			output += String.format("%-10s %-20s \n", f.getPromoName(), f.gerDescription());
+		}
+		return output;
+	}
+	public static Promo inputPromo() {  
+		String PromoName = Helper.readString("Please enter the name of the Promotion > ");
+		String Description = Helper.readString("Please enter the description of the promotion > ");
+		
+		
+		Promo f = new Promo(PromoName, Description);
+		return f;
+		
+
+	}
+
+	public static void addPromo(ArrayList<Promo> promoList, Promo f) {  
+		promoList.add(f);
+		System.out.println("Promotion offer added!");
+	}
+
+	public static void PromoToDelete(ArrayList<Promo> promoList, String PromoName) {
+		boolean isValid = false;
+		if (promoList.isEmpty()) {
+			System.out.println("Promotion List is empty");
+		} else {
+			for (int i = 0; i < promoList.size(); i++) {
+				if (promoList.get(i).getPromoName() == PromoName) {
+					
+					isValid = true;
+					System.out.printf("%-10s %-20s\n", "Promotion Offers name", "Description");
+					promoList.get(i).display();;
+					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
+					if (confirm.equalsIgnoreCase("y")) {
+						promoList.remove(promoList.get(i));
+					System.out.println("Delete success!");
+					}
+				} 
+			} 
+			if (isValid == false) {
+				
+					System.out.println("Promotion does not exist!");
+				
+			}
+		}
 	}
 
 

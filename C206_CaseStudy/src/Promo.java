@@ -14,6 +14,11 @@ public class Promo {//YY
 	public String gerDescription() {
 		return Description;
 	}
+	public void display() {
+
+		System.out.printf("%-10s %-20s \n",PromoName, Description);
+
+	}
 	
 
 }
