@@ -26,7 +26,6 @@ public class C206_CaseStudy {
 				viewFood(foodList);
 			} else if (option == 6) { // delete food
 				int id = Helper.readInt("Enter id of food to delete > ");
-
 				foodToDelete(foodList, id);
 
 			} else if (option == 7) {
@@ -77,17 +76,13 @@ public class C206_CaseStudy {
 		manageFood(); // TY
 
 		C206_CaseStudy.setHeader("PURCHASE ORDER");
-		System.out.println(" 7. Add purchase order"); // WH90
-		System.out.println(" 8. Delete purchase order"); // WH
-		System.out.println(" 9. View purchase orders"); // WH
+		managePurchaseOrders();//WH
 
 		C206_CaseStudy.setHeader("PROMOTION OFFERS");
-		managePromotion();
+		managePromotion(); //YY
 		
 		C206_CaseStudy.setHeader("CUSTOMER");
-		System.out.println("13. Add food item to order"); // Adam
-		System.out.println("14. View food order"); // Adam
-		System.out.println("15. Delete food item from order"); // Adam
+		manageOrders(); //Adam
 
 		C206_CaseStudy.setHeader("EXIT");
 		System.out.println("16. Exit");
@@ -333,7 +328,26 @@ public class C206_CaseStudy {
 		}
 	}
 	// =============================================== END OF PROMOTION METHODS =======================================================
-
+// ==========================================START OF PURCHASE ORDERS METHODS==================================================
+	private static void managePurchaseOrders() {
+		System.out.println(" 7. Add purchase order"); // WH
+		System.out.println(" 8. Delete purchase order"); // WH
+		System.out.println(" 9. View purchase orders"); // WH
+	}
+	
+	
+	
+// ============================================END OF PURCHASE ORDERS METHODS========================================================
+	// =======================================START OF ORDERS BY CUSTOMERS METHODS====================================================
+	private static void manageOrders() {
+		System.out.println("13. Add food item to order"); // Adam
+		System.out.println("14. View food order"); // Adam
+		System.out.println("15. Delete food item from order"); // Adam
+	}
+	
+	
+	
+	//===========================================END OF ORDERS BY CUSTOMERS METHODS =====================================================
 
 
 
