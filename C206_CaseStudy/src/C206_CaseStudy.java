@@ -371,12 +371,12 @@ public class C206_CaseStudy {
 	public static Order inputOrder() { // input details of new Order
 		int foodItemID = Helper.readInt("Enter Food Item ID > ");
 		String foodName = Helper.readString("Enter Name of Food > ");
-		double price = Helper.readDouble("Enter Price of Food ($3-$15) > ");
+		int price = Helper.readInt("Enter Price of Food ($3-$15) > ");
 		
 		if (price >= 3 && price <= 15) {
 			String stall = Helper.readString("Enter stall name > ");
 			int quantity = Helper.readInt("Enter Quantity > ");
-			double totalPrice = quantity * price;
+			int totalPrice = quantity * price;
 			Order o = new Order(foodItemID, foodName, price, stall, quantity, totalPrice);
 			return o;
 		} else {
