@@ -99,7 +99,7 @@ public class C206_CaseStudyTest {
 	//END OF STALL TESTS==============================================================================================
 	// fOOD TESTS ======================================================================================================
 //done by TY
-	@Test
+	
 	public void testAddFood() {
 	
 		assertNotNull("Test that food list is not empty", foodList);

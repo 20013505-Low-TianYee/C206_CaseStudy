@@ -12,20 +12,22 @@ public class C206_CaseStudy {
 			option = Helper.readInt("Enter choice > ");
 			Helper.line(80, "=");
 
-			if (option == 1) { 
+			if (option == 1) {
 				addStallInputMethodMenu(stallList);
 			} else if (option == 2) {
 				viewStallIfElse(stallList);
 			} else if (option == 3) {
 				deleteStallIfElse(stallList);
-			} else if (option == 4) { //add food
+			} else if (option == 4) { // add food
 				Food f = inputFood();
 				addFood(foodList, f);
 			} else if (option == 5) { // view food
 				viewFoodMenu(foodList);
 			} else if (option == 6) { // delete food
 				int id = Helper.readInt("Enter id of food to delete > ");
-				deleteFood(foodList,id);
+
+				foodToDelete(foodList, id);
+
 			} else if (option == 7) {
 				//
 			} else if (option == 8) {
@@ -59,47 +61,38 @@ public class C206_CaseStudy {
 //		menuHeader();
 //		stallHeader();
 		manageStalls();// Umar
-		
+
 		C206_CaseStudy.setHeader("FOOD");
-		manageFood(); //TY
-		
+		manageFood(); // TY
+
 		C206_CaseStudy.setHeader("PURCHASE ORDER");
 		System.out.println(" 7. Add purchase order"); // WH
 		System.out.println(" 8. Delete purchase order"); // WH
 		System.out.println(" 9. View purchase orders"); // WH
-		
+
 		C206_CaseStudy.setHeader("PROMOTION OFFERS");
 		System.out.println("10. Add promotion offer"); // YY
 		System.out.println("11. View promotion offers"); // YY
 		System.out.println("12. Delete promotion offer"); // YY
-		
+
 		C206_CaseStudy.setHeader("CUSTOMER");
 		System.out.println("13. Add food item to order"); // Adam
 		System.out.println("14. View food order"); // Adam
 		System.out.println("15. Delete food item from order"); // Adam
-		
-		
+
 		C206_CaseStudy.setHeader("EXIT");
 		System.out.println("16. Exit");
 
 	}
 
-public static void setHeader(String header) { // Ty - i think we can just use this to set the header, to make our codes simpler
-	Helper.line(80, "-");
-	System.out.println(header);
-	Helper.line(80, "-");
-}
-//	private static void menuHeader() {
-//		Helper.line(80, "=");
-//		System.out.println("MENU");
-//		Helper.line(80, "=");
-//	}
-
-	// START OF STALL METHODS===========================================================================================
-//	private static void stallHeader() {
-//		System.out.println("Stalls");
-//		Helper.line(80, "=");
-//	}
+	public static void setHeader(String header) { // Ty - i think we can just use this to set the header, to make our
+													// codes simpler
+		Helper.line(80, "-");
+		System.out.println(header);
+		Helper.line(80, "-");
+	}
+	
+	//=========================================STALL METHODS=========================================================
 
 	private static void manageStalls() {
 		System.out.println(" 1. Add stall"); // Umar
@@ -184,13 +177,15 @@ public static void setHeader(String header) { // Ty - i think we can just use th
 		return stall;
 	}
 
-	// END OF STALL METHODS===========================================================================================
+	// END OF STALL
+	// METHODS===========================================================================================
 
-	// =================================== FOOD METHODS by TY =============================================================================
-	private static void manageFood() {
-		System.out.println(" 1. Add Food"); 
-		System.out.println(" 2. View Food"); 
-		System.out.println(" 3. Delete Food"); 
+	// =================================== FOOD METHODS by TY
+	// =============================================================================
+	private static void manageFood() { //options
+		System.out.println(" 4. Add Food");
+		System.out.println(" 5. View Food");
+		System.out.println(" 6. Delete Food");
 	}
 
 	public static void viewFoodMenu(ArrayList<Food> foodList) { // print food menu
@@ -201,47 +196,51 @@ public static void setHeader(String header) { // Ty - i think we can just use th
 		}
 	}
 
-	public static Food inputFood() {
+	public static Food inputFood() { // input details of new food
 		int idFood = Helper.readInt("Enter id for food > ");
 		String nameFood = Helper.readString("Enter name of food > ");
 		int priceFood = Helper.readInt("Enter selling price of food ($3 - $15)> ");
-		if(priceFood >= 3 && priceFood <=15) {
-		String stallFood = Helper.readString("Enter stall > ");
-		Food f = new Food(idFood, nameFood, priceFood, stallFood);
-		return f;
-		}else {
+		if (priceFood >= 3 && priceFood <= 15) {
+			String stallFood = Helper.readString("Enter stall > ");
+			Food f = new Food(idFood, nameFood, priceFood, stallFood);
+			return f;
+		} else {
 			System.out.println("Selling price must be between $3 to $15!");
 			return null;
 		}
-		
-	}
-	public static void addFood(ArrayList<Food> foodList, Food f) { 
-	foodList.add(f);
-	System.out.println("Food added!");
+
 	}
 
-	public static void deleteFood(ArrayList<Food> foodList, int id) { //delete 
-		
+	public static void addFood(ArrayList<Food> foodList, Food f) { // add the new food into list
+		foodList.add(f);
+		System.out.println("Food added!");
+	}
+
+	private static void foodToDelete(ArrayList<Food> foodList, int id) {
 		boolean isValid = false;
-
-		for (Food f : foodList) {
-			if (f.getId() == id) {
-				System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
-				f.display();
-				isValid = true;
-				String confirm = Helper.readString("Are you sure you want to delete this? (Y/N)> ");
-				if (confirm.equalsIgnoreCase("y")) {
-					foodList.remove(f);
+		if (foodList.isEmpty()) {
+			System.out.println("Food List is empty");
+		} else {
+			for (int i = 0; i < foodList.size(); i++) {
+				if (foodList.get(i).getId() == id) {
+					
+					isValid = true;
+					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+					foodList.get(i).display();
+					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
+					if (confirm.equalsIgnoreCase("y")) {
+						foodList.remove(foodList.get(i));
 					System.out.println("Delete success!");
-					break;
-				}
+					}
+				} 
+			} 
+			if (isValid == false) {
+				
+					System.out.println("Food does not exist!");
+				
 			}
-			
-		
-		}	if (isValid == false) {
-			System.out.println("Food Id does not exist!");
 		}
-
 	}
+
 //==============================================END OF FOOD===============================================================================
 }
