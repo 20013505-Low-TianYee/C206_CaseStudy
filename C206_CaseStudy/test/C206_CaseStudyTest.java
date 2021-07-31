@@ -26,7 +26,7 @@ public class C206_CaseStudyTest {
 	f1 = new Food(1,"Fries",3, "Froot");
 	f2 = new Food(2,"Rice",15, "Helperoo" );
 	
-	p1 = new Promo("Free delivery", "$0 Delivery Fee(min.$20 spend)!");
+	p1 = new Promo("Free delivery", "$0 Delivery Fee(min.$20 spend)");
 	p2 = new Promo("20% off Rice", "Available at selected outlets");
 		
 	}
@@ -181,8 +181,8 @@ public class C206_CaseStudyTest {
 	assertEquals("Test if that Promo arraylist size is 2?", 2, promoList.size());
 	
 	pro = C206_CaseStudy.retrievePromo(promoList);
-	testOutput = String.format("%-10s %-20s  \n","Free delivery", "$0 Delivery Fee(min.$20 spend)!");
-	testOutput += String.format("%-10s %-20s \n", "20% off Rice", "Available at selected outlets");
+	testOutput = String.format("%-30s %-20s\n","Free delivery", "$0 Delivery Fee(min.$20 spend)");
+	testOutput += String.format("%-30s %-20s\n", "20% off Rice", "Available at selected outlets");
 	assertEquals("Test that output is in the correct format", testOutput, pro);
 	}
 	

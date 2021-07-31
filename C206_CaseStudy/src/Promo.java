@@ -16,7 +16,7 @@ public class Promo {//YY
 	}
 	public void display() {
 
-		System.out.printf("%-10s %-20s \n",PromoName, Description);
+		System.out.printf("%-30s %-20s\n",PromoName, Description);
 
 	}
 	
