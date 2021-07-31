@@ -5,6 +5,7 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 		ArrayList<Food> foodList = new ArrayList<Food>();
+		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		int option = -1;
 
 		while (option != 16) {
@@ -36,10 +37,13 @@ public class C206_CaseStudy {
 				//
 			} else if (option == 10) {
 				//
+				//addPromo(promoList);
 			} else if (option == 11) {
 				//
+				//viewPromo(promoList);
 			} else if (option == 12) {
 				//
+				//deletePromo(promoList);
 			} else if (option == 13) {
 				//
 			} else if (option == 14) {
@@ -66,15 +70,13 @@ public class C206_CaseStudy {
 		manageFood(); // TY
 
 		C206_CaseStudy.setHeader("PURCHASE ORDER");
-		System.out.println(" 7. Add purchase order"); // WH
+		System.out.println(" 7. Add purchase order"); // WH90
 		System.out.println(" 8. Delete purchase order"); // WH
 		System.out.println(" 9. View purchase orders"); // WH
 
 		C206_CaseStudy.setHeader("PROMOTION OFFERS");
-		System.out.println("10. Add promotion offer"); // YY
-		System.out.println("11. View promotion offers"); // YY
-		System.out.println("12. Delete promotion offer"); // YY
-
+		managePromotion();
+		
 		C206_CaseStudy.setHeader("CUSTOMER");
 		System.out.println("13. Add food item to order"); // Adam
 		System.out.println("14. View food order"); // Adam
@@ -84,6 +86,9 @@ public class C206_CaseStudy {
 		System.out.println("16. Exit");
 
 	}
+
+	
+
 
 	public static void setHeader(String header) { // Ty - i think we can just use this to set the header, to make our
 													// codes simpler
@@ -260,4 +265,17 @@ public class C206_CaseStudy {
 	}
 
 //==============================================END OF FOOD===============================================================================
+// =============================================== START OF PROMOTION METHODS =======================================================
+	private static void managePromotion() {
+		System.out.println("10. Add promotion offer"); // YY
+		System.out.println("11. View promotion offers"); // YY
+		System.out.println("12. Delete promotion offer"); // YY
+
+		
+	}
+
+
+
+
+
 }
