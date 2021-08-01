@@ -6,16 +6,22 @@
  *
  * 20024783, 31 Jul 2021 10:00:26 pm
  */
-public class Order extends Food { //Adam
+public class Order extends Food { 
+	 
+//
+
+//Adam
 
 	private int quantity;
 	private int totalPrice;
+	
 	
 	public Order(int id, String name, int price, String stall, int quantity, int totalPrice) {
 		super(id, name, price, stall);
 		this.quantity = quantity;
 		this.totalPrice = totalPrice;
 	}
+
 	public int getQuantity() {
 		return quantity;
 	}
@@ -32,7 +38,7 @@ public class Order extends Food { //Adam
 	
 	public void display() {
 
-		System.out.printf("%-10s %-20s %-20s %-20s %-10s\n", super.getId(), super.getName(), super.getStall(), super.getPrice(), totalPrice);
+		System.out.printf("%-20s %-20s %-20s $%-20s %-10s\n", super.getId(), super.getName(), super.getStall(), super.getPrice(), totalPrice);
 
 	}
 }

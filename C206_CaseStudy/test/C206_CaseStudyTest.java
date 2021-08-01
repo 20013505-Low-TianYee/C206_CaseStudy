@@ -236,8 +236,10 @@ public class C206_CaseStudyTest {
 	assertEquals("Test if that Order arraylist size is 2?", 2, orderList.size());
 	
 	order = C206_CaseStudy.retrieveOrder(orderList);
-	testOutput = String.format("%-10s %-20s $%-20s %-20s $%-20s %-10s\n", 1, "Fries", 3, "Froot", 2, 6);
-	testOutput += String.format("%-10s %-20s $%-20s %-20s $%-20s %-10s\n", 2, "Rice", 15, "Helperoo", 2, 30);
+	testOutput = String.format("%-20s %-20s %-20s $%-20s %-10s\n", 1, "Fries","Froot", 3,2 );
+	testOutput+= "Total Price: $"+ 6;
+	testOutput += String.format("%-20s %-20s %-20s $%-20s %-10s\n", 2, "Rice",  "Helperoo",15, 2);
+	testOutput+= "Total Price: $" + 30;
 	assertEquals("Test that output is in the correct format", testOutput, order);
 	}
 
@@ -251,7 +253,6 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.deleteOrder(orderList, o2.getId());
 		assertEquals("Test if that Food arraylist is empty", 0, orderList.size());
 	}
-	
 	
 
 // END OF ORDERS BY CUSTOMERS =========================================================================================================

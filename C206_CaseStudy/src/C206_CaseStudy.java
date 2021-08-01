@@ -56,7 +56,7 @@ public class C206_CaseStudy {
 
 			} else if (option == 13) {
 				// Add Order
-				Order o = inputOrder();
+				Order o = inputOrder(foodList);
 				addOrder(orderList, o);
 			} else if (option == 14) {
 				// View Order
@@ -396,79 +396,80 @@ public class C206_CaseStudy {
 		}
 // =============================================== END OF PROMOTION METHODS =======================================================
 // =======================================START OF ORDERS BY CUSTOMERS METHODS BY ADAM=============================================
-
-	private static void manageOrders() {
-		System.out.println("13. Add food item to order"); // Adam
-		System.out.println("14. View food order"); // Adam
-		System.out.println("15. Delete food item from order"); // Adam
-	}
-	public static void viewOrder(ArrayList<Order> orderList) {
-		C206_CaseStudy.setHeader("ORDER LIST");
-		String output = String.format("%-10s %-20s %-20s %-20s %-10s\n", "FOOD ITEM ID", "FOOD NAME", "STALL", "PRICE", "QUANTITY");
-		if (orderList.isEmpty()) {
-			System.out.println("Order List is empty!");
-		}else {
-		 output += retrieveOrder(orderList);	
-		System.out.println(output);
+		private static void manageOrders() {
+			System.out.println("13. Add food item to order"); // Adam
+			System.out.println("14. View food order"); // Adam
+			System.out.println("15. Delete food item from order"); // Adam
 		}
-	}
 
-	public static String retrieveOrder(ArrayList<Order> orderList) {
-		String output = "";
-		
-		for (Order o : orderList) {
-			output += String.format("%-10s %-20s $%-20s %-10s\n", o.getId(),o.getName(),o.getStall(),o.getPrice(), o.getQuantity());
-		}
-		return output;
-	}
-
-	public static Order inputOrder() { // input details of new Order
-		int foodItemID = Helper.readInt("Enter Food Item ID > ");
-		String foodName = Helper.readString("Enter Name of Food > ");
-		int price = Helper.readInt("Enter Price of Food ($3-$15) > ");
-		
-		if (price >= 3 && price <= 15) {
-			String stall = Helper.readString("Enter stall name > ");
-			int quantity = Helper.readInt("Enter Quantity > ");
-			int totalPrice = quantity * price;
-			Order o = new Order(foodItemID, foodName, price, stall, quantity, totalPrice);
-			return o;
-		} else {
-			System.out.println("Food Price must be between $3 to $15!");
-			return null;
-		}
-	}
-	
-	public static void addOrder(ArrayList<Order> orderList, Order o) { // add the new Order into list
-		orderList.add(o);
-		System.out.println("Food Item added!");
-	}
-	
-	public static void deleteOrder(ArrayList<Order> orderList, int id) {
-		boolean isValid = false;
-		if (orderList.isEmpty()) {
-			System.out.println("Order List is empty");
-		} else {
-			for (int i = 0; i < orderList.size(); i++) {
-				if (orderList.get(i).getId() == id) {
-					
-					isValid = true;
-					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
-					orderList.get(i).display();
-					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
-					if (confirm.equalsIgnoreCase("y")) {
-						orderList.remove(orderList.get(i));
-					System.out.println("Delete successfully!");
-					}
-				} 
-			} 
-			if (isValid == false) {
-				
-					System.out.println("Food does not exist!");
-				
+		public static void viewOrder(ArrayList<Order> orderList) {
+			C206_CaseStudy.setHeader("ORDER LIST");
+			String output = String.format("%-20s %-20s %-20s %-20s %-10s\n", "FOOD ITEM ID", "FOOD NAME", "STALL", "PRICE",
+					"QUANTITY");
+			if (orderList.isEmpty()) {
+				System.out.println("Order List is empty!");
+			} else {
+				output += retrieveOrder(orderList);
+				System.out.println(output);
 			}
 		}
-	}
+
+		public static String retrieveOrder(ArrayList<Order> orderList) {
+			String output = "";
+
+			for (Order o : orderList) {
+				output += String.format("%-20s %-20s %-20s $%-20s %-10s\n", o.getId(), o.getName(), o.getStall(),
+						o.getPrice(), o.getQuantity());
+				output += "Total Price: $" + o.getTotalPrice();
+			}
+			return output;
+		}
+
+		public static Order inputOrder(ArrayList<Food> foodList ) { // input details of new Order
+			Order o = null;
+			int foodItemID = Helper.readInt("Enter Food Item ID > ");
+			int quantity = Helper.readInt("Enter Quantity > ");
+			for (Food f : foodList) {
+				if (foodItemID == f.getId()) {
+					int totalPrice = quantity * f.getPrice();
+					 o = new Order(foodItemID,f.getName(), f.getPrice(), f.getStall(), quantity, totalPrice);
+					
+				}
+			}
+			return o;
+		}
+
+		public static void addOrder(ArrayList<Order> orderList, Order o) { // add the new Order into list
+			orderList.add(o);
+			System.out.println("Food Item added!");
+		}
+
+		public static void deleteOrder(ArrayList<Order> orderList, int id) {
+			boolean isValid = false;
+			if (orderList.isEmpty()) {
+				System.out.println("Order List is empty");
+			} else {
+				for (int i = 0; i < orderList.size(); i++) {
+					if (orderList.get(i).getId() == id) {
+
+						isValid = true;
+						System.out.printf("%-20s %-20s %-20s %-20s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+						orderList.get(i).display();
+						String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
+						if (confirm.equalsIgnoreCase("y")) {
+							orderList.remove(orderList.get(i));
+							System.out.println("Delete successfully!");
+						}
+					}
+				}
+				if (isValid == false) {
+
+					System.out.println("Food does not exist!");
+
+				}
+			}
+		}
+
 	
 	//===========================================END OF ORDERS BY CUSTOMERS METHODS ======================================================
 }
