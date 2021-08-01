@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * @author 19020947
  *
- */
+ *///
 public class purchaseOrder {
 	private String ingredient;
 	private int quantity;
