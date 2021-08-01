@@ -468,7 +468,7 @@ public class C206_CaseStudy {
 				if (orderList.get(i).getId() == id) {
 
 					isValid = true;
-					System.out.printf("%-20s %-20s %-20s %-20s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+					System.out.printf("%-20s %-20s %-20s $%-20s %-10s\n", "ID", "FOOD NAME", "STALL","SELLING PRICE", "TOTAL PRICE");
 					orderList.get(i).display();
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {

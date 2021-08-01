@@ -38,7 +38,7 @@ public class Order extends Food {
 	
 	public void display() {
 
-		System.out.printf("%-20s %-20s %-20s $%-20s %-10s\n", super.getId(), super.getName(), super.getStall(), super.getPrice(), totalPrice);
+		System.out.printf("%-20s %-20s %-20s $%-20s $%-10s\n", super.getId(), super.getName(), super.getStall(), super.getPrice(), totalPrice);
 
 	}
 }
