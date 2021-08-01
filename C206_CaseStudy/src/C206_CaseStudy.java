@@ -5,9 +5,10 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 		ArrayList<Food> foodList = new ArrayList<Food>();
-		ArrayList<purchaseOrder> poList = new ArrayList<purchaseOrder>();
+		ArrayList<purchaseOrder> poList = new ArrayList<purchaseOrder>(8);
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>();
+
 		int option = -1;
 
 		while (option != 16) {
@@ -31,7 +32,7 @@ public class C206_CaseStudy {
 				foodToDelete(foodList, id);
 
 			} else if (option == 7) {
-				purchaseOrder po = inputPO();
+				purchaseOrder po = inputPO(poList);
 				addPurchaseOrder(poList, po);
 			} else if (option == 8) {
 				viewPurchaseOrder(poList);
@@ -40,16 +41,16 @@ public class C206_CaseStudy {
 				deletePurchaseOrder(poList, ingredientDel);
 			} else if (option == 10) {
 				//
-				//addPromo(promoList);
+				// addPromo(promoList);
 				Promo f = inputPromo();
 				addPromo(promoList, f);
 			} else if (option == 11) {
 				//
-				//viewPromo(promoList);
+				// viewPromo(promoList);
 				viewPromo(promoList);
 			} else if (option == 12) {
 				//
-				//deletePromo(promoList);
+				// deletePromo(promoList);
 				String PromoName = Helper.readString("Enter Promotion name of the promotion to delete > ");
 
 				PromoToDelete(promoList, PromoName);
@@ -85,19 +86,18 @@ public class C206_CaseStudy {
 		manageFood(); // TY
 
 		C206_CaseStudy.setHeader("PURCHASE ORDER");
-		managePurchaseOrders();//WH
+		managePurchaseOrders();// WH
 
 		C206_CaseStudy.setHeader("PROMOTION OFFERS");
-		managePromotion(); //YY
-		
+		managePromotion(); // YY
+
 		C206_CaseStudy.setHeader("CUSTOMER");
-		manageOrders(); //Adam
+		manageOrders(); // Adam
 
 		C206_CaseStudy.setHeader("EXIT");
 		System.out.println("16. Exit");
 
 	}
-
 
 	public static void setHeader(String header) { // Ty - i think we can just use this to set the header, to make our
 													// codes simpler
@@ -105,8 +105,9 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "-");
 	}
-	
-	//=========================================STALL METHODS=========================================================
+
+	// =========================================STALL
+	// METHODS=========================================================
 
 	private static void manageStalls() {
 		System.out.println(" 1. Add stall"); // Umar
@@ -191,35 +192,37 @@ public class C206_CaseStudy {
 		return stall;
 	}
 
-	//==============================================END OF STALL==========================================================================
+	// ==============================================END OF
+	// STALL==========================================================================
 	// METHODS============================================================================================================================
-	// =================================== FOOD METHODS by TY ============================================================================
-	private static void manageFood() { //options
+	// =================================== FOOD METHODS by TY
+	// ============================================================================
+	private static void manageFood() { // options
 		System.out.println(" 4. Add Food");
 		System.out.println(" 5. View Food");
 		System.out.println(" 6. Delete Food");
 	}
-
 
 	public static void viewFood(ArrayList<Food> foodList) {
 		C206_CaseStudy.setHeader("FOOD LIST");
 		String output = String.format("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
 		if (retrieveFood(foodList).isEmpty()) {
 			System.out.println("Food List is empty!");
-		}else {
-		 output += retrieveFood(foodList);	
-		System.out.println(output);
+		} else {
+			output += retrieveFood(foodList);
+			System.out.println(output);
 		}
 	}
 
 	public static String retrieveFood(ArrayList<Food> foodList) {
 		String output = "";
-		
+
 		for (Food f : foodList) {
-			output += String.format("%-10s %-20s $%-20s %-10s\n", f.getId(),f.getName(),f.getPrice(),f.getStall());
+			output += String.format("%-10s %-20s $%-20s %-10s\n", f.getId(), f.getName(), f.getPrice(), f.getStall());
 		}
 		return output;
 	}
+
 	public static Food inputFood() { // input details of new food
 		int idFood = Helper.readInt("Enter id for food > ");
 		String nameFood = Helper.readString("Enter name of food > ");
@@ -247,21 +250,21 @@ public class C206_CaseStudy {
 		} else {
 			for (int i = 0; i < foodList.size(); i++) {
 				if (foodList.get(i).getId() == id) {
-					
+
 					isValid = true;
 					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
 					foodList.get(i).display();
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {
 						foodList.remove(foodList.get(i));
-					System.out.println("Delete success!");
+						System.out.println("Delete success!");
 					}
-				} 
-			} 
+				}
+			}
 			if (isValid == false) {
-				
-					System.out.println("Food does not exist!");
-				
+
+				System.out.println("Food does not exist!");
+
 			}
 		}
 	}
@@ -273,35 +276,46 @@ public class C206_CaseStudy {
 		System.out.println(" 8. View purchase order"); // WH
 		System.out.println(" 9. Delete purchase orders"); // WH
 	}
+
 	public static void viewPurchaseOrder(ArrayList<purchaseOrder> poList) {
 		C206_CaseStudy.setHeader("ORDER LIST");
 		String output = String.format("%-30s %-5s\n", "INGREDIENTS", "QUANTITY");
 		if (poList.isEmpty()) {
 			System.out.println("Purchase Order List is empty!");
-		}else {
-		 output += retrievePO(poList);	
-		System.out.println(output);
+		} else {
+			output += retrievePO(poList);
+			System.out.println(output);
 		}
 	}
+
 	public static String retrievePO(ArrayList<purchaseOrder> poList) {
 		String output = "";
-		
+
 		for (purchaseOrder po : poList) {
 			output += String.format("%-30s %-5s\n", po.getIngredient(), po.getQuantity());
 		}
 		return output;
 	}
-	
-	public static purchaseOrder inputPO() {  
+
+	public static purchaseOrder inputPO(ArrayList<purchaseOrder> poList) {
+		purchaseOrder po = null;
 		String poIngredient = Helper.readString("Please enter the Ingredient name > ");
 		int poQuantity = Helper.readInt("Please enter the Ingredient quantity > ");
-		purchaseOrder po = new purchaseOrder(poIngredient, poQuantity);
+
+		po = new purchaseOrder(poIngredient, poQuantity);
+
 		return po;
 	}
-	public static void addPurchaseOrder(ArrayList<purchaseOrder> poList, purchaseOrder po) {  
-		poList.add(po);
-		System.out.println("Promotion offer added!");
+
+	public static void addPurchaseOrder(ArrayList<purchaseOrder> poList, purchaseOrder po) {
+		if (poList.size() != 8) {
+			poList.add(po);
+			System.out.println("Purchase order added!");
+		} else {
+			System.out.println("Adding failed! Purchase Order list is full for the day!");
+		}
 	}
+
 	public static void deletePurchaseOrder(ArrayList<purchaseOrder> poList, String Ingredient) {
 		boolean isValid = false;
 		if (poList.isEmpty()) {
@@ -309,167 +323,168 @@ public class C206_CaseStudy {
 		} else {
 			for (int i = 0; i < poList.size(); i++) {
 				if (poList.get(i).getIngredient().equalsIgnoreCase(Ingredient)) {
-					
+
 					isValid = true;
 					System.out.printf("%-30s %-5s\n", "INGREDIENTS", "QUANTITY");
 					poList.get(i).display();
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {
 						poList.remove(poList.get(i));
-					System.out.println("Delete success!");
+						System.out.println("Delete success!");
 					}
-				} 
-			} 
+				}
+			}
 			if (isValid == false) {
 				System.out.println("Purchase Order does not exist!");
 			}
 		}
 	}
-	
-	
+
 // ============================================END OF PURCHASE ORDERS METHODS=========================================================
 // ================================================START OF PROMOTION METHODS BY YY===================================================
-		private static void managePromotion() {
-			System.out.println("10. Add promotion offer"); // YY
-			System.out.println("11. View promotion offers"); // YY
-			System.out.println("12. Delete promotion offer"); // YY
-		}
-		public static void viewPromo(ArrayList<Promo> promoList) {
-			C206_CaseStudy.setHeader("PROMOTION LIST");
-			String output = String.format("%-30s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION");
-			if (retrievePromo(promoList).isEmpty()) {
-				System.out.println("Promotion List is empty!");
-			}else {
-			 output += retrievePromo(promoList);	
+	private static void managePromotion() {
+		System.out.println("10. Add promotion offer"); // YY
+		System.out.println("11. View promotion offers"); // YY
+		System.out.println("12. Delete promotion offer"); // YY
+	}
+
+	public static void viewPromo(ArrayList<Promo> promoList) {
+		C206_CaseStudy.setHeader("PROMOTION LIST");
+		String output = String.format("%-30s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION");
+		if (retrievePromo(promoList).isEmpty()) {
+			System.out.println("Promotion List is empty!");
+		} else {
+			output += retrievePromo(promoList);
 			System.out.println(output);
-			}
 		}
+	}
 
-		public static String retrievePromo(ArrayList<Promo> promoList) {
-			String output = "";
-			
-			for (Promo f : promoList) {
-				output += String.format("%-30s %-20s\n", f.getPromoName(), f.gerDescription());
-			}
-			return output;
+	public static String retrievePromo(ArrayList<Promo> promoList) {
+		String output = "";
+
+		for (Promo f : promoList) {
+			output += String.format("%-30s %-20s\n", f.getPromoName(), f.gerDescription());
 		}
-		public static Promo inputPromo() {  
-			String PromoName = Helper.readString("Please enter the name of the Promotion > ");
-			String Description = Helper.readString("Please enter the description of the promotion > ");
-			
-			
-			Promo f = new Promo(PromoName, Description);
-			return f;
-			
+		return output;
+	}
 
-		}
+	public static Promo inputPromo() {
+		String PromoName = Helper.readString("Please enter the name of the Promotion > ");
+		String Description = Helper.readString("Please enter the description of the promotion > ");
 
-		public static void addPromo(ArrayList<Promo> promoList, Promo f) {  
-			promoList.add(f);
-			System.out.println("Promotion offer added!");
-		}
+		Promo f = new Promo(PromoName, Description);
+		return f;
 
-		public static void PromoToDelete(ArrayList<Promo> promoList, String PromoName) {
-			boolean isValid = false;
-			if (promoList.isEmpty()) {
-				System.out.println("Promotion List is empty");
-			} else {
-				for (int i = 0; i < promoList.size(); i++) {
-					if (promoList.get(i).getPromoName().equalsIgnoreCase(PromoName)) {
-						
-						isValid = true;
-						System.out.printf("%-30s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION");
-						promoList.get(i).display();;
-						String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
-						if (confirm.equalsIgnoreCase("y")) {
-							promoList.remove(promoList.get(i));
+	}
+
+	public static void addPromo(ArrayList<Promo> promoList, Promo f) {
+		promoList.add(f);
+		System.out.println("Promotion offer added!");
+	}
+
+	public static void PromoToDelete(ArrayList<Promo> promoList, String PromoName) {
+		boolean isValid = false;
+		if (promoList.isEmpty()) {
+			System.out.println("Promotion List is empty");
+		} else {
+			for (int i = 0; i < promoList.size(); i++) {
+				if (promoList.get(i).getPromoName().equalsIgnoreCase(PromoName)) {
+
+					isValid = true;
+					System.out.printf("%-30s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION");
+					promoList.get(i).display();
+					;
+					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
+					if (confirm.equalsIgnoreCase("y")) {
+						promoList.remove(promoList.get(i));
 						System.out.println("Delete success!");
-						}
-					} 
-				} 
-				if (isValid == false) {
-					
-						System.out.println("Promotion does not exist!");
-					
-				}
-			}
-		}
-// =============================================== END OF PROMOTION METHODS =======================================================
-// =======================================START OF ORDERS BY CUSTOMERS METHODS BY ADAM=============================================
-		private static void manageOrders() {
-			System.out.println("13. Add food item to order"); // Adam
-			System.out.println("14. View food order"); // Adam
-			System.out.println("15. Delete food item from order"); // Adam
-		}
-
-		public static void viewOrder(ArrayList<Order> orderList) {
-			C206_CaseStudy.setHeader("ORDER LIST");
-			String output = String.format("%-20s %-20s %-20s %-20s %-10s\n", "FOOD ITEM ID", "FOOD NAME", "STALL", "PRICE",
-					"QUANTITY");
-			if (orderList.isEmpty()) {
-				System.out.println("Order List is empty!");
-			} else {
-				output += retrieveOrder(orderList);
-				System.out.println(output);
-			}
-		}
-
-		public static String retrieveOrder(ArrayList<Order> orderList) {
-			String output = "";
-
-			for (Order o : orderList) {
-				output += String.format("%-20s %-20s %-20s $%-20s %-10s\n", o.getId(), o.getName(), o.getStall(),
-						o.getPrice(), o.getQuantity());
-				output += "Total Price: $" + o.getTotalPrice();
-			}
-			return output;
-		}
-
-		public static Order inputOrder(ArrayList<Food> foodList ) { // input details of new Order
-			Order o = null;
-			int foodItemID = Helper.readInt("Enter Food Item ID > ");
-			int quantity = Helper.readInt("Enter Quantity > ");
-			for (Food f : foodList) {
-				if (foodItemID == f.getId()) {
-					int totalPrice = quantity * f.getPrice();
-					 o = new Order(foodItemID,f.getName(), f.getPrice(), f.getStall(), quantity, totalPrice);
-					
-				}
-			}
-			return o;
-		}
-
-		public static void addOrder(ArrayList<Order> orderList, Order o) { // add the new Order into list
-			orderList.add(o);
-			System.out.println("Food Item added!");
-		}
-
-		public static void deleteOrder(ArrayList<Order> orderList, int id) {
-			boolean isValid = false;
-			if (orderList.isEmpty()) {
-				System.out.println("Order List is empty");
-			} else {
-				for (int i = 0; i < orderList.size(); i++) {
-					if (orderList.get(i).getId() == id) {
-
-						isValid = true;
-						System.out.printf("%-20s %-20s %-20s %-20s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
-						orderList.get(i).display();
-						String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
-						if (confirm.equalsIgnoreCase("y")) {
-							orderList.remove(orderList.get(i));
-							System.out.println("Delete successfully!");
-						}
 					}
 				}
-				if (isValid == false) {
+			}
+			if (isValid == false) {
 
-					System.out.println("Food does not exist!");
+				System.out.println("Promotion does not exist!");
 
-				}
 			}
 		}
+	}
 
-	
-	//===========================================END OF ORDERS BY CUSTOMERS METHODS ======================================================
+// =============================================== END OF PROMOTION METHODS =======================================================
+// =======================================START OF ORDERS BY CUSTOMERS METHODS BY ADAM=============================================
+	private static void manageOrders() {
+		System.out.println("13. Add food item to order"); // Adam
+		System.out.println("14. View food order"); // Adam
+		System.out.println("15. Delete food item from order"); // Adam
+	}
+
+	public static void viewOrder(ArrayList<Order> orderList) {
+		C206_CaseStudy.setHeader("ORDER LIST");
+		String output = String.format("%-20s %-20s %-20s %-20s %-10s\n", "FOOD ITEM ID", "FOOD NAME", "STALL", "PRICE",
+				"QUANTITY");
+		if (orderList.isEmpty()) {
+			System.out.println("Order List is empty!");
+		} else {
+			output += retrieveOrder(orderList);
+			System.out.println(output);
+		}
+	}
+
+	public static String retrieveOrder(ArrayList<Order> orderList) {
+		String output = "";
+
+		for (Order o : orderList) {
+			output += String.format("%-20s %-20s %-20s $%-20s %-10s\n", o.getId(), o.getName(), o.getStall(),
+					o.getPrice(), o.getQuantity());
+			output += "Total Price: $" + o.getTotalPrice();
+		}
+		return output;
+	}
+
+	public static Order inputOrder(ArrayList<Food> foodList) { // input details of new Order
+		Order o = null;
+		int foodItemID = Helper.readInt("Enter Food Item ID > ");
+		int quantity = Helper.readInt("Enter Quantity > ");
+		for (Food f : foodList) {
+			if (foodItemID == f.getId()) {
+				int totalPrice = quantity * f.getPrice();
+				o = new Order(foodItemID, f.getName(), f.getPrice(), f.getStall(), quantity, totalPrice);
+
+			}
+		}
+		return o;
+	}
+
+	public static void addOrder(ArrayList<Order> orderList, Order o) { // add the new Order into list
+		orderList.add(o);
+		System.out.println("Food Item added!");
+	}
+
+	public static void deleteOrder(ArrayList<Order> orderList, int id) {
+		boolean isValid = false;
+		if (orderList.isEmpty()) {
+			System.out.println("Order List is empty");
+		} else {
+			for (int i = 0; i < orderList.size(); i++) {
+				if (orderList.get(i).getId() == id) {
+
+					isValid = true;
+					System.out.printf("%-20s %-20s %-20s %-20s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+					orderList.get(i).display();
+					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
+					if (confirm.equalsIgnoreCase("y")) {
+						orderList.remove(orderList.get(i));
+						System.out.println("Delete successfully!");
+					}
+				}
+			}
+			if (isValid == false) {
+
+				System.out.println("Food does not exist!");
+
+			}
+		}
+	}
+
+	// ===========================================END OF ORDERS BY CUSTOMERS METHODS
+	// ======================================================
 }
