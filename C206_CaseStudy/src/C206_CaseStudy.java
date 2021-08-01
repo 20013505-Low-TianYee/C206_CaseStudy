@@ -277,7 +277,7 @@ public class C206_CaseStudy {
 		if (poList.isEmpty()) {
 			System.out.println("Order List is empty!");
 		}else {
-		 output += retrieveOrder(poList);	
+		 output += retrievePO(poList);	
 		System.out.println(output);
 		}
 	}
