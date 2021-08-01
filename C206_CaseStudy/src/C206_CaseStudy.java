@@ -290,7 +290,39 @@ public class C206_CaseStudy {
 		return output;
 	}
 	
-	
+	public static purchaseOrder inputPO() {  
+		String poIngredient = Helper.readString("Please enter the Ingredient name > ");
+		int poQuantity = Helper.readInt("Please enter the Ingredient quantity > ");
+		purchaseOrder po = new purchaseOrder(poIngredient, poQuantity);
+		return po;
+	}
+	public static void addPurchaseOrder(ArrayList<purchaseOrder> poList, purchaseOrder po) {  
+		poList.add(po);
+		System.out.println("Promotion offer added!");
+	}
+	public static void deletePurchaseOrder(ArrayList<purchaseOrder> poList, String Ingredient) {
+		boolean isValid = false;
+		if (poList.isEmpty()) {
+			System.out.println("Promotion List is empty");
+		} else {
+			for (int i = 0; i < poList.size(); i++) {
+				if (poList.get(i).getIngredient().equalsIgnoreCase(Ingredient)) {
+					
+					isValid = true;
+					System.out.printf("%-30s %-5\n", "INGREDIENTS", "QUANTITY");
+					poList.get(i).display();;
+					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
+					if (confirm.equalsIgnoreCase("y")) {
+						poList.remove(poList.get(i));
+					System.out.println("Delete success!");
+					}
+				} 
+			} 
+			if (isValid == false) {
+				System.out.println("Purchase Order does not exist!");
+			}
+		}
+	}
 	
 	
 // ============================================END OF PURCHASE ORDERS METHODS=========================================================
