@@ -5,6 +5,7 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 		ArrayList<Food> foodList = new ArrayList<Food>();
+		ArrayList<purchaseOrder> poList = new ArrayList<purchaseOrder>();
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>();
 		int option = -1;
@@ -270,8 +271,24 @@ public class C206_CaseStudy {
 		System.out.println(" 8. View purchase order"); // WH
 		System.out.println(" 9. Delete purchase orders"); // WH
 	}
-	
-	public static void viewPO()
+	public static void viewPurchaseOrder(ArrayList<purchaseOrder> poList) {
+		C206_CaseStudy.setHeader("ORDER LIST");
+		String output = String.format("%-10s %-20s %-20s %-20s %-10s\n", "FOOD ITEM ID", "FOOD NAME", "STALL", "PRICE", "QUANTITY");
+		if (poList.isEmpty()) {
+			System.out.println("Order List is empty!");
+		}else {
+		 output += retrieveOrder(poList);	
+		System.out.println(output);
+		}
+	}
+	public static String retrievePO(ArrayList<purchaseOrder> poList) {
+		String output = "";
+		
+		for (purchaseOrder po : poList) {
+			output += String.format("%-30s %-5\\n", po.getIngredient(), po.getQuantity());
+		}
+		return output;
+	}
 	
 	
 	
