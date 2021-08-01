@@ -17,6 +17,7 @@ public class C206_CaseStudyTest {
 
 	private ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 	private ArrayList<Food> foodList = new ArrayList<Food>(10);
+	ArrayList<purchaseOrder> poList = new ArrayList<purchaseOrder>(8);
 	private ArrayList<Promo> promoList = new ArrayList<Promo>();
 	private ArrayList<Order> orderList = new ArrayList<Order>();
 	//=============================================
