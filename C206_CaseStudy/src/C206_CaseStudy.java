@@ -31,11 +31,13 @@ public class C206_CaseStudy {
 				foodToDelete(foodList, id);
 
 			} else if (option == 7) {
-				//
+				purchaseOrder po = inputPO();
+				addPurchaseOrder(poList, po);
 			} else if (option == 8) {
-				//
+				viewPurchaseOrder(poList);
 			} else if (option == 9) {
-				//
+				String ingredientDel = Helper.readString("Enter ingredient name to delete > ");
+				deletePurchaseOrder(poList, ingredientDel);
 			} else if (option == 10) {
 				//
 				//addPromo(promoList);
@@ -303,7 +305,7 @@ public class C206_CaseStudy {
 	public static void deletePurchaseOrder(ArrayList<purchaseOrder> poList, String Ingredient) {
 		boolean isValid = false;
 		if (poList.isEmpty()) {
-			System.out.println("Promotion List is empty");
+			System.out.println("Purchase Order List is empty");
 		} else {
 			for (int i = 0; i < poList.size(); i++) {
 				if (poList.get(i).getIngredient().equalsIgnoreCase(Ingredient)) {
