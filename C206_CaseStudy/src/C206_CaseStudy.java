@@ -273,9 +273,9 @@ public class C206_CaseStudy {
 	}
 	public static void viewPurchaseOrder(ArrayList<purchaseOrder> poList) {
 		C206_CaseStudy.setHeader("ORDER LIST");
-		String output = String.format("%-10s %-20s %-20s %-20s %-10s\n", "FOOD ITEM ID", "FOOD NAME", "STALL", "PRICE", "QUANTITY");
+		String output = String.format("%-30s %-5\n", "INGREDIENTS", "QUANTITY");
 		if (poList.isEmpty()) {
-			System.out.println("Order List is empty!");
+			System.out.println("Purchase Order List is empty!");
 		}else {
 		 output += retrievePO(poList);	
 		System.out.println(output);
@@ -285,10 +285,11 @@ public class C206_CaseStudy {
 		String output = "";
 		
 		for (purchaseOrder po : poList) {
-			output += String.format("%-30s %-5\\n", po.getIngredient(), po.getQuantity());
+			output += String.format("%-30s %-5\n", po.getIngredient(), po.getQuantity());
 		}
 		return output;
 	}
+	
 	
 	
 	
