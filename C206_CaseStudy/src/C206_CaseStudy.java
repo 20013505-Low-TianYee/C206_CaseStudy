@@ -271,6 +271,8 @@ public class C206_CaseStudy {
 		System.out.println(" 9. Delete purchase orders"); // WH
 	}
 	
+	public static void viewPO()
+	
 	
 	
 // ============================================END OF PURCHASE ORDERS METHODS=========================================================
