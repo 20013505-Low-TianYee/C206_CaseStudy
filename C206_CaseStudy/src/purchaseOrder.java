@@ -45,7 +45,7 @@ public class purchaseOrder {
 	}
 	
 	public void display() {
-		System.out.printf("%-30s %-s\n",ingredient, quantity);
+		System.out.printf("%-30s %-5s\n",ingredient, quantity);
 	}
 	
 }
