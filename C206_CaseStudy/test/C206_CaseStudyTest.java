@@ -10,19 +10,27 @@ public class C206_CaseStudyTest {
 	private Stall stall2;
 	private Food f1;
 	private Food f2;
+	private purchaseOrder po1;
+	private purchaseOrder po2;
 	private Promo p1;
 	private Promo p2;
 	private Order o1;
 	private Order o2;
 
 	private ArrayList<Stall> stallList = new ArrayList<Stall>(10);
+
 	private ArrayList<Food> foodList = new ArrayList<Food>();
+
+	
+	private ArrayList<purchaseOrder> poList = new ArrayList<purchaseOrder>(8);
+
 	private ArrayList<Promo> promoList = new ArrayList<Promo>();
 	private ArrayList<Order> orderList = new ArrayList<Order>();
 
 	// =============================================
 	@Before
 	public void setUp() throws Exception {
+
 		// stall
 		stall1 = new Stall("Froot", "Jack", "22/05/2021");
 		stall2 = new Stall("Helperoo", "Ruth", "29/03/2019");
@@ -36,6 +44,24 @@ public class C206_CaseStudyTest {
 		o1 = new Order(1, "Fries", 3, "Froot", 2, 6);
 		o2 = new Order(2, "Rice", 15, "Helperoo", 2, 30);
 
+
+		//stall
+	stall1= new Stall("Froot", "Jack", "22/05/2021");
+	stall2= new Stall("Helperoo", "Ruth", "29/03/2019");
+		//food
+	f1 = new Food(1,"Fries",3, "Froot");
+	f2 = new Food(2,"Rice",15, "Helperoo");
+		//purchaseOrder
+	po1 = new purchaseOrder("Potato",1);
+	po2 = new purchaseOrder("Apple",2);
+		//promotions
+	p1 = new Promo("Free delivery", "$0 Delivery Fee(min.$20 spend)");
+	p2 = new Promo("20% off Rice", "Available at selected outlets");
+		//order
+	o1 = new Order(1, "Fries", 3, "Froot", 2, 6);
+	o2 = new Order(2, "Rice", 15, "Helperoo", 2, 30);
+	
+
 	}
 
 	@After
@@ -43,9 +69,17 @@ public class C206_CaseStudyTest {
 		stall1 = null;
 		stall2 = null;
 		f1 = null;
+
 		f2 = null;
 		p1 = null;
 		p2 = null;
+
+		f2=null;
+		po1 = null;
+		po2 = null;
+		p1=null;
+		p2=null;
+
 		stallList = null;
 		foodList = null;
 		promoList = null;
@@ -209,6 +243,35 @@ public class C206_CaseStudyTest {
 	// END OF PROMO
 	// =======================================================================================================
 // START OF PURCHASE ORDER ========================================================================================================
+
+//By WH	
+	@Test
+	public void testAddPurchaseOrder() {
+		assertNotNull("Test that there is a purchaseOrder arrayList to add to", poList);
+		C206_CaseStudy.viewPurchaseOrder(poList);
+		C206_CaseStudy.addPurchaseOrder(poList, po1);
+		assertEquals("Test if purchaseOrder arraylist size is 1?", 1, poList.size());
+		C206_CaseStudy.addPurchaseOrder(poList, po1);
+		assertEquals("Test if purchaseOrder arraylist size is 2?", 2, poList.size());
+	}
+	
+	public void testviewPurchaseOrder() {
+		assertNotNull("Test that there is a list of ingredients",poList);
+		C206_CaseStudy.viewPurchaseOrder(poList);
+		assertNotNull("Check if there is valid purchaseOrder arraylist to view", poList);
+		}
+	
+	public void testDeletePurchaseOrder() {
+		assertNotNull("Test if there is valid Food arraylist to delete objects", poList);
+		C206_CaseStudy.addPurchaseOrder(poList, po1);
+		C206_CaseStudy.addPurchaseOrder(poList, po2);
+		C206_CaseStudy.deletePurchaseOrder(poList, po1.getIngredient());
+		assertEquals("Test if that Food arraylist size is 1?", 1, poList.size());
+		C206_CaseStudy.deletePurchaseOrder(poList, po2.getIngredient());
+		assertEquals("Test if that Food arraylist is empty", 0, poList.size());
+	}
+	
+	
 
 //END OF PURCHASE ORDER =========================================================================================================
 //START OF ORDERS BY CUSTOMER======================================================================================================
