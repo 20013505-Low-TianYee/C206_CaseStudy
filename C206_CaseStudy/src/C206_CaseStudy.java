@@ -7,8 +7,10 @@ public class C206_CaseStudy {
 		ArrayList<Food> foodList = new ArrayList<Food>();
 		ArrayList<purchaseOrder> poList = new ArrayList<purchaseOrder>(8);
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
-		ArrayList<Order> orderList = new ArrayList<Order>();
+		ArrayList<Order> orderList = new ArrayList<Order>(5);
 
+
+	
 		int option = -1;
 
 		while (option != 16) {
@@ -431,12 +433,15 @@ public class C206_CaseStudy {
 
 	public static String retrieveOrder(ArrayList<Order> orderList) {
 		String output = "";
+		int total = 0;
 
 		for (Order o : orderList) {
 			output += String.format("%-20s %-20s %-20s $%-20s %-10s\n", o.getId(), o.getName(), o.getStall(),
 					o.getPrice(), o.getQuantity());
-			output += "Total Price: $" + o.getTotalPrice();
+			total += o.getTotalPrice();
+		
 		}
+		output+= "Total Price: $"+ total; 
 		return output;
 	}
 
@@ -455,8 +460,12 @@ public class C206_CaseStudy {
 	}
 
 	public static void addOrder(ArrayList<Order> orderList, Order o) { // add the new Order into list
+		if (orderList.size() != 5){
 		orderList.add(o);
 		System.out.println("Food Item added!");
+		}else {
+			System.out.println("Adding failed! Order List is full!");
+		}
 	}
 
 	public static void deleteOrder(ArrayList<Order> orderList, int id) {

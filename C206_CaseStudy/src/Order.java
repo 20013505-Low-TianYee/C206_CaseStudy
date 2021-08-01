@@ -19,7 +19,7 @@ public class Order extends Food {
 	public Order(int id, String name, int price, String stall, int quantity, int totalPrice) {
 		super(id, name, price, stall);
 		this.quantity = quantity;
-		this.totalPrice = totalPrice;
+		this.totalPrice = quantity*super.getPrice();
 	}
 
 	public int getQuantity() {
