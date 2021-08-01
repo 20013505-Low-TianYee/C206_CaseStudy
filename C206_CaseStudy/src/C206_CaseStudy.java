@@ -312,7 +312,7 @@ public class C206_CaseStudy {
 					
 					isValid = true;
 					System.out.printf("%-30s %-5s\n", "INGREDIENTS", "QUANTITY");
-					poList.get(i).display();;
+					poList.get(i).display();
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {
 						poList.remove(poList.get(i));
