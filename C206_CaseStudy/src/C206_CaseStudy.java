@@ -9,8 +9,9 @@ public class C206_CaseStudy {
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
 
+		foodList.add(new Food(1, "Fries", 3, "Froot"));
+		orderList.add(new Order(1, "Fries", 3, "Froot", 4, 4));
 
-	
 		int option = -1;
 
 		while (option != 16) {
@@ -59,7 +60,7 @@ public class C206_CaseStudy {
 
 			} else if (option == 13) {
 				// Add Order
-				Order o = inputOrder(foodList);
+				Order o = inputOrder(foodList, orderList);
 				addOrder(orderList, o);
 			} else if (option == 14) {
 				// View Order
@@ -82,27 +83,26 @@ public class C206_CaseStudy {
 		C206_CaseStudy.setHeader("STALLS");
 //		menuHeader();
 //		stallHeader();
-		manageStalls();// Umar
+		manageStalls();// Umar code review
 
 		C206_CaseStudy.setHeader("FOOD");
-		manageFood(); // TY
+		manageFood(); // TY code review
 
 		C206_CaseStudy.setHeader("PURCHASE ORDER");
-		managePurchaseOrders();// WH
+		managePurchaseOrders();// WH code review
 
 		C206_CaseStudy.setHeader("PROMOTION OFFERS");
-		managePromotion(); // YY
+		managePromotion(); // YY code review
 
 		C206_CaseStudy.setHeader("CUSTOMER");
-		manageOrders(); // Adam
+		manageOrders(); // Adam code review
 
 		C206_CaseStudy.setHeader("EXIT");
 		System.out.println("16. Exit");
 
 	}
 
-	public static void setHeader(String header) { // Ty - i think we can just use this to set the header, to make our
-													// codes simpler
+	public static void setHeader(String header) { // Ty - code review
 		Helper.line(80, "-");
 		System.out.println(header);
 		Helper.line(80, "-");
@@ -439,32 +439,50 @@ public class C206_CaseStudy {
 			output += String.format("%-20s %-20s %-20s $%-20s %-10s\n", o.getId(), o.getName(), o.getStall(),
 					o.getPrice(), o.getQuantity());
 			total += o.getTotalPrice();
-		
+
 		}
-		output+= "Total Price: $"+ total; 
+		output += "Total Price: $" + total;
 		return output;
 	}
 
-	public static Order inputOrder(ArrayList<Food> foodList) { // input details of new Order
+	public static Order inputOrder(ArrayList<Food> foodList, ArrayList<Order> orderList) { // input details of new Order
 		Order o = null;
-		int foodItemID = Helper.readInt("Enter Food Item ID > ");
-		int quantity = Helper.readInt("Enter Quantity > ");
-		for (Food f : foodList) {
-			if (foodItemID == f.getId()) {
-				int totalPrice = quantity * f.getPrice();
-				o = new Order(foodItemID, f.getName(), f.getPrice(), f.getStall(), quantity, totalPrice);
-
-			}
+		int total = 0;
+		for (Order o1 : orderList) {
+			total += o1.getQuantity();
 		}
+		if (total < 5) {
+			int foodItemID = Helper.readInt("Enter Food Item ID > ");
+			int quantity = Helper.readInt("Enter Quantity > ");
+
+			for (Order i : orderList) {
+				total += quantity;
+				i.setTotalQuantity(total);
+			}
+			if (total <= 5) {
+			for (Food f : foodList) {
+				if (foodItemID == f.getId()) {
+
+					int totalPrice = quantity * f.getPrice();
+					o = new Order(foodItemID, f.getName(), f.getPrice(), f.getStall(), quantity, totalPrice);
+
+				}
+			}
+
+		}
+		}if (total>5) {
+			System.out.println("Only a maximum of 5 items are allowed!");
+		}
+
 		return o;
 	}
 
 	public static void addOrder(ArrayList<Order> orderList, Order o) { // add the new Order into list
-		if (orderList.size() != 5){
-		orderList.add(o);
-		System.out.println("Food Item added!");
-		}else {
-			System.out.println("Adding failed! Order List is full!");
+		if (o != null) {
+			orderList.add(o);
+			System.out.println("Food Item added!");
+		} else {
+			System.out.println("");
 		}
 	}
 
@@ -477,7 +495,8 @@ public class C206_CaseStudy {
 				if (orderList.get(i).getId() == id) {
 
 					isValid = true;
-					System.out.printf("%-20s %-20s %-20s $%-20s %-10s\n", "ID", "FOOD NAME", "STALL","SELLING PRICE", "TOTAL PRICE");
+					System.out.printf("%-20s %-20s %-20s $%-20s %-10s\n", "ID", "FOOD NAME", "STALL", "SELLING PRICE",
+							"TOTAL PRICE");
 					orderList.get(i).display();
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {

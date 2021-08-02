@@ -14,6 +14,7 @@ public class Order extends Food {
 
 	private int quantity;
 	private int totalPrice;
+	private int totalQuantity;
 	
 	
 	public Order(int id, String name, int price, String stall, int quantity, int totalPrice) {
@@ -36,6 +37,15 @@ public class Order extends Food {
 		this.totalPrice = totalPrice;
 	}
 	
+	
+	public int getTotalQuantity() {
+		return totalQuantity;
+	}
+
+	public void setTotalQuantity(int totalQuantity) {
+		this.totalQuantity = totalQuantity;
+	}
+
 	public void display() {
 
 		System.out.printf("%-20s %-20s %-20s $%-20s $%-10s\n", super.getId(), super.getName(), super.getStall(), super.getPrice(), totalPrice);
