@@ -468,7 +468,7 @@ public class C206_CaseStudy {
 
 				}
 			}
-
+//
 		}
 		}if (total>5) {
 			System.out.println("Only a maximum of 5 items are allowed!");
