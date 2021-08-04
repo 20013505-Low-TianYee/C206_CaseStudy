@@ -9,8 +9,6 @@ public class C206_CaseStudy {
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
 
-		foodList.add(new Food(1, "Fries", 3, "Froot"));
-		orderList.add(new Order(1, "Fries", 3, "Froot", 4, 4));
 
 		int option = -1;
 
