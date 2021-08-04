@@ -197,7 +197,7 @@ public class C206_CaseStudy {
 	// METHODS============================================================================================================================
 	// =================================== FOOD METHODS by TY
 	// ============================================================================
-	private static void manageFood() { // options
+	private static void manageFood() { // options - code review
 		System.out.println(" 4. Add Food");
 		System.out.println(" 5. View Food");
 		System.out.println(" 6. Delete Food");
