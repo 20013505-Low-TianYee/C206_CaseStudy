@@ -205,7 +205,7 @@ public class C206_CaseStudy {
 
 	public static void viewFood(ArrayList<Food> foodList) {
 		
-		if (retrieveFood(foodList).isEmpty()) {
+		if (foodList.isEmpty() == true) {
 			System.out.println("Food List is empty!");
 		} else {
 			String output = retrieveFood(foodList);
@@ -214,6 +214,7 @@ public class C206_CaseStudy {
 	}
 
 	public static String retrieveFood(ArrayList<Food> foodList) {
+		
 		C206_CaseStudy.setHeader("FOOD LIST");
 		String output = String.format("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
 		
