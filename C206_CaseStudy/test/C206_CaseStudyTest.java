@@ -93,7 +93,7 @@ public class C206_CaseStudyTest {
 
 	// STALL
 	// TESTS=====================================================================================================
-	//@Test
+	@Test
 	public void testAddStall() {
 		C206_CaseStudy.addStall(stallList, stall1);
 		assertNotNull("Test if stall is not empty after adding to the list.", stallList);
@@ -104,7 +104,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that size of list is updated to 2", 2, stallList.size());
 	}
 
-//	@Test
+	@Test
 	public void testViewStall() {
 		assertNotNull("Test if stall is not empty and can be displayed to the output.", stallList);
 
@@ -127,7 +127,7 @@ public class C206_CaseStudyTest {
 
 	}
 
-	//@Test
+	@Test
 	public void testDeleteStall() {
 		boolean outOfBounds = false;
 		C206_CaseStudy.addStall(stallList, stall1);
@@ -152,7 +152,7 @@ public class C206_CaseStudyTest {
 	// fOOD TESTS
 	// ======================================================================================================
 //done by TY
-//@Test
+@Test
 	public void testAddFood() {
 
 		assertNotNull("Test that there is a Food arrayList to add to", foodList);
@@ -186,7 +186,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that output is in the correct format", testOutput, food);
 	}
 
-//	@Test
+	@Test
 	public void testDeleteFood() {
 		assertNotNull("Test if there is valid Food arraylist to delete objects", foodList);
 		C206_CaseStudy.addFood(foodList, f1);
@@ -213,7 +213,7 @@ public class C206_CaseStudyTest {
 
 	}
 
-	//@Test
+	@Test
 	public void testRetrievePromo() {
 		assertNotNull("Test if there is valid Promo arraylist to retrieve from", promoList);
 		String pro = C206_CaseStudy.retrievePromo(promoList);
@@ -230,7 +230,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that output is in the correct format", testOutput, pro);
 	}
 
-//	@Test
+	@Test
 	public void testDeletePromo() {
 		assertNotNull("Test if there is valid Promo arraylist to delete objects", promoList);
 		C206_CaseStudy.addPromo(promoList, p1);
@@ -245,7 +245,7 @@ public class C206_CaseStudyTest {
 // START OF PURCHASE ORDER ========================================================================================================
 
 //By WH	
-	//@Test
+	@Test
 	public void testAddPurchaseOrder() {
 		assertNotNull("Test that there is a purchaseOrder arrayList to add to", poList);
 		C206_CaseStudy.viewPurchaseOrder(poList);
@@ -276,7 +276,7 @@ public class C206_CaseStudyTest {
 //END OF PURCHASE ORDER =========================================================================================================
 //START OF ORDERS BY CUSTOMER======================================================================================================
 // By Adam
-	//@Test
+	@Test
 	public void testAddOrder() {
 
 		assertNotNull("Test that there is a Order arrayList to add to", orderList);
@@ -288,7 +288,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test if orderlist size is 2 ?", 2, orderList.size());
 	}
 
-//	@Test
+	@Test
 	public void testRetrieveOrder() {
 		assertNotNull("Test if there is valid Order arraylist to retrieve from", orderList);
 		String order = C206_CaseStudy.retrieveOrder(orderList);
@@ -308,7 +308,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that output is in the correct format", testOutput, order);
 	}
 
-	//@Test
+	@Test
 	public void testDeleteOrder() {
 		assertNotNull("Test if there is valid Food arraylist to delete objects", orderList);
 		C206_CaseStudy.addOrder(orderList, o1);
