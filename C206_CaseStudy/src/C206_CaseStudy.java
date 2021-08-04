@@ -204,18 +204,19 @@ public class C206_CaseStudy {
 	}
 
 	public static void viewFood(ArrayList<Food> foodList) {
-		C206_CaseStudy.setHeader("FOOD LIST");
-		String output = String.format("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+		
 		if (retrieveFood(foodList).isEmpty()) {
 			System.out.println("Food List is empty!");
 		} else {
-			output += retrieveFood(foodList);
+			String output = retrieveFood(foodList);
 			System.out.println(output);
 		}
 	}
 
 	public static String retrieveFood(ArrayList<Food> foodList) {
-		String output = "";
+		C206_CaseStudy.setHeader("FOOD LIST");
+		String output = String.format("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+		
 
 		for (Food f : foodList) {
 			output += String.format("%-10s %-20s $%-20s %-10s\n", f.getId(), f.getName(), f.getPrice(), f.getStall());
