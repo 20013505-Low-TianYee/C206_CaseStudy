@@ -177,8 +177,13 @@ public class C206_CaseStudy {
 	}
 
 	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
-		stallList.add(stall);
-		System.out.println("Stall added!");
+		if(stallList.size()<10) {
+			stallList.add(stall);
+			System.out.println("Stall added!");
+		}
+		else {
+			System.out.println("Stall list is full!");
+		}
 	}
 
 	public static Stall inputStall() {
