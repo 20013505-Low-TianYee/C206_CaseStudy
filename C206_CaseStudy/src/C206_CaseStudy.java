@@ -246,7 +246,7 @@ public class C206_CaseStudy {
 				} else {
 					System.out.println("Stall does not exist!");
 				}
-			}
+			}//
 		} else {
 			System.out.println("Selling price must be between $3 to $15!");
 
