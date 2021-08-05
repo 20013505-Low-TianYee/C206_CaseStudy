@@ -50,8 +50,8 @@ public class C206_CaseStudyTest {
 		f1 = new Food(1, "Fries", 3, "Froot");
 		f2 = new Food(2, "Rice", 15, "Helperoo");
 		// purchaseOrder
-		po1 = new purchaseOrder("Potato", 1);
-		po2 = new purchaseOrder("Apple", 2);
+		po1 = new purchaseOrder("Potato", 1, "Froot");
+		po2 = new purchaseOrder("Apple", 2, "Froot");
 		// promotions
 		p1 = new Promo("Free delivery", "$0 Delivery Fee(min.$20 spend)");
 		p2 = new Promo("20% off Rice", "Available at selected outlets");
