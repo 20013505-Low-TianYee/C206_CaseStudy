@@ -300,7 +300,7 @@ public class C206_CaseStudy {
 
 	public static void viewPurchaseOrder(ArrayList<purchaseOrder> poList) {
 		C206_CaseStudy.setHeader("ORDER LIST");
-		String output = String.format("%-30s %-5s %-10s\n", "INGREDIENTS", "QUANTITY");
+		String output = String.format("%-30s %-5s %-10s\n", "INGREDIENTS", "QUANTITY", "STALL NAME");
 		if (poList.isEmpty()) {
 			System.out.println("Purchase Order List is empty!");
 		} else {
