@@ -9,7 +9,6 @@ public class C206_CaseStudy {
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
 
-
 		int option = -1;
 
 		while (option != 16) {
@@ -24,7 +23,7 @@ public class C206_CaseStudy {
 			} else if (option == 3) {
 				deleteStallIfElse(stallList);
 			} else if (option == 4) { // add food
-				Food f = inputFood();
+				Food f = inputFood(stallList, foodList);
 				addFood(foodList, f);
 			} else if (option == 5) { // view food
 				viewFood(foodList);
@@ -204,7 +203,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void viewFood(ArrayList<Food> foodList) {
-		
+
 		if (foodList.isEmpty() == true) {
 			System.out.println("Food List is empty!");
 		} else {
@@ -214,10 +213,9 @@ public class C206_CaseStudy {
 	}
 
 	public static String retrieveFood(ArrayList<Food> foodList) {
-		
+
 		C206_CaseStudy.setHeader("FOOD LIST");
 		String output = String.format("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
-		
 
 		for (Food f : foodList) {
 			output += String.format("%-10s %-20s $%-20s %-10s\n", f.getId(), f.getName(), f.getPrice(), f.getStall());
@@ -225,24 +223,37 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	public static Food inputFood() { // input details of new food
+	public static Food inputFood(ArrayList<Stall> stallList, ArrayList<Food> foodList) { // input details of new food
+		Food f = null;
 		int idFood = Helper.readInt("Enter id for food > ");
+
 		String nameFood = Helper.readString("Enter name of food > ");
 		int priceFood = Helper.readInt("Enter selling price of food ($3 - $15)> ");
 		if (priceFood >= 3 && priceFood <= 15) {
 			String stallFood = Helper.readString("Enter stall > ");
-			Food f = new Food(idFood, nameFood, priceFood, stallFood);
-			return f;
+			for (Stall s : stallList) {
+				if (stallFood.equalsIgnoreCase(s.getStoreName())) {
+					f = new Food(idFood, nameFood, priceFood, stallFood);
+
+				} else {
+					System.out.println("Stall does not exist!");
+				}
+			}
 		} else {
 			System.out.println("Selling price must be between $3 to $15!");
-			return null;
+
 		}
 
+		return f;
 	}
 
 	public static void addFood(ArrayList<Food> foodList, Food f) { // add the new food into list
-		foodList.add(f);
-		System.out.println("Food added!");
+		if (f != null) {
+			foodList.add(f);
+			System.out.println("Food added!");
+		} else {
+			System.out.println("Adding failed! Stall does not exist!");
+		}
 	}
 
 	public static void foodToDelete(ArrayList<Food> foodList, int id) {
@@ -460,17 +471,18 @@ public class C206_CaseStudy {
 				i.setTotalQuantity(total);
 			}
 			if (total <= 5) {
-			for (Food f : foodList) {
-				if (foodItemID == f.getId()) {
+				for (Food f : foodList) {
+					if (foodItemID == f.getId()) {
 
-					int totalPrice = quantity * f.getPrice();
-					o = new Order(foodItemID, f.getName(), f.getPrice(), f.getStall(), quantity, totalPrice);
+						int totalPrice = quantity * f.getPrice();
+						o = new Order(foodItemID, f.getName(), f.getPrice(), f.getStall(), quantity, totalPrice);
 
+					}
 				}
-			}
 //
+			}
 		}
-		}if (total>5) {
+		if (total > 5) {
 			System.out.println("Only a maximum of 5 items are allowed!");
 		}
 
@@ -512,7 +524,7 @@ public class C206_CaseStudy {
 			}
 		}
 	}
-	
+
 	// ===========================================END OF ORDERS BY CUSTOMERS METHODS
 	// ======================================================
 }
