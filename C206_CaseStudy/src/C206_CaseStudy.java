@@ -42,7 +42,7 @@ public class C206_CaseStudy {
 			} else if (option == 10) {
 				//
 				// addPromo(promoList);
-				Promo f = inputPromo();
+				Promo f = inputPromo(promoList, stallList);
 				addPromo(promoList, f);
 			} else if (option == 11) {
 				//
@@ -390,11 +390,18 @@ public class C206_CaseStudy {
 		return output;
 	}
 
-	public static Promo inputPromo() {
+	public static Promo inputPromo(ArrayList<Promo> promoList, ArrayList<Stall> stallList) {
+		Promo f = null;
+		
 		String PromoName = Helper.readString("Please enter the name of the Promotion > ");
 		String Description = Helper.readString("Please enter the description of the promotion > ");
 
-		Promo f = new Promo(PromoName, Description);
+		for(Stall s : stallList) {
+			f = new Promo(s.getStoreName(), s.getOwnerName(), s.getOperationDate(), PromoName,Description );
+		}
+		
+		
+		
 		return f;
 
 	}
