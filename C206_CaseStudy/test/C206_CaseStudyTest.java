@@ -12,7 +12,7 @@ public class C206_CaseStudyTest {
 	private Food f2;
 	private purchaseOrder po1;
 	private purchaseOrder po2;
-	private Promo p1;
+	private Promo p1;//
 	private Promo p2;
 	private Order o1;
 	private Order o2;
