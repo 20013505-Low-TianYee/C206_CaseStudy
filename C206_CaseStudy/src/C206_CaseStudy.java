@@ -9,7 +9,6 @@ public class C206_CaseStudy {
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
 
-
 		int option = -1;
 
 		while (option != 16) {
