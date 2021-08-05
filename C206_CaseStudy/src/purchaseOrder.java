@@ -14,8 +14,10 @@ public class purchaseOrder {
 	private String ingredient;
 	private int quantity;
 	private int poNum;
+	private String stallName;
 	
-	public purchaseOrder(String ingredient, int quantity) {
+	public purchaseOrder(String ingredient, int quantity, String stallName) {
+		this.stallName = stallName;
 		this.ingredient = ingredient;
 		this.quantity = quantity;
 	}
@@ -44,8 +46,16 @@ public class purchaseOrder {
 		this.poNum = poNum;
 	}
 	
+	public String getStallName() {
+		return stallName;
+	}
+	
+	public void setStallName(String stallName) {
+		this.stallName = stallName;
+	}
+
 	public void display() {
-		System.out.printf("%-30s %-5s\n",ingredient, quantity);
+		System.out.printf("%-30s %-5s %10s\n",ingredient, quantity, stallName);
 	}
 	
 }

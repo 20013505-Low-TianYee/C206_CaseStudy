@@ -300,7 +300,7 @@ public class C206_CaseStudy {
 
 	public static void viewPurchaseOrder(ArrayList<purchaseOrder> poList) {
 		C206_CaseStudy.setHeader("ORDER LIST");
-		String output = String.format("%-30s %-5s\n", "INGREDIENTS", "QUANTITY");
+		String output = String.format("%-30s %-5s %-10s\n", "INGREDIENTS", "QUANTITY");
 		if (poList.isEmpty()) {
 			System.out.println("Purchase Order List is empty!");
 		} else {
@@ -313,7 +313,7 @@ public class C206_CaseStudy {
 		String output = "";
 
 		for (purchaseOrder po : poList) {
-			output += String.format("%-30s %-5s\n", po.getIngredient(), po.getQuantity());
+			output += String.format("%-30s %-5s %-10s\n", po.getIngredient(), po.getQuantity(), po.getStallName());
 		}
 		return output;
 	}
@@ -322,8 +322,9 @@ public class C206_CaseStudy {
 		purchaseOrder po = null;
 		String poIngredient = Helper.readString("Please enter the Ingredient name > ");
 		int poQuantity = Helper.readInt("Please enter the Ingredient quantity > ");
-
-		po = new purchaseOrder(poIngredient, poQuantity);
+		String poStallName = Helper.readString("Please enter the Ingredient name > ");
+		
+		po = new purchaseOrder(poIngredient, poQuantity, poStallName);
 
 		return po;
 	}
@@ -346,7 +347,7 @@ public class C206_CaseStudy {
 				if (poList.get(i).getIngredient().equalsIgnoreCase(Ingredient)) {
 
 					isValid = true;
-					System.out.printf("%-30s %-5s\n", "INGREDIENTS", "QUANTITY");
+					System.out.printf("%-30s %-5s %-10s\n", "INGREDIENTS", "QUANTITY", "STALL NAME");
 					poList.get(i).display();
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {
