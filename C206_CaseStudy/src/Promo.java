@@ -17,7 +17,7 @@ public class Promo extends Stall {//YY
 	}
 	public void display() {
 
-		System.out.printf("%-30s %-30s %-20s\n",super.getStoreName(), PromoName, Description);
+		System.out.printf("%-30s %-30s %-30s\n",super.getStoreName(), PromoName, Description);
 
 	}
 	

@@ -368,7 +368,7 @@ public class C206_CaseStudy {
 
 	public static void viewPromo(ArrayList<Promo> promoList) {
 		C206_CaseStudy.setHeader("PROMOTION LIST");
-		String output = String.format("%-30s %-20s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION", "STALL");
+		String output = String.format("%-30s %-30s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION", "STALL");
 		if (promoList.isEmpty()) {
 			System.out.println("Promotion List is empty!");
 		} else {
@@ -381,7 +381,7 @@ public class C206_CaseStudy {
 		String output = "";
 
 		for (Promo f : promoList) {
-			output += String.format("%-30s %-20s %-20s\n", f.getPromoName(), f.gerDescription(), f.getStoreName());
+			output += String.format("%-30s %-30s %-20s\n", f.getPromoName(), f.gerDescription(), f.getStoreName());
 		}
 		return output;
 	}
@@ -425,7 +425,7 @@ public class C206_CaseStudy {
 			for (int i = 0; i < promoList.size(); i++) {
 				if (isPromoValid(promoList, PromoName) == true) {
 
-					System.out.printf("%-30s %-30s %-20s\n", "STALL", "PROMOTION OFFERS NAME", "DESCRIPTION");
+					System.out.printf("%-30s %-30s %-30s\n", "STALL", "PROMOTION OFFERS NAME", "DESCRIPTION");
 					promoList.get(i).display();
 					
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
