@@ -153,7 +153,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void deleteStall(ArrayList<Stall> stallList, int stallNo) {
-		String confirm = Helper.readString("Are you sure you want to delete the stall? (Y/N)");
+		String confirm = Helper.readString("Are you sure you want to delete the stall? (Y/N) > ");
 		if (confirm.equalsIgnoreCase("y")) {
 			for (int i = 0; i < stallList.size(); i++) {
 				if (stallList.get(i) != null) {
