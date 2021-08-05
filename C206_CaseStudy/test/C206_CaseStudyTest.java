@@ -36,25 +36,12 @@ public class C206_CaseStudyTest {
 		// food
 		f1 = new Food(1, "Fries", 3, "Froot");
 		f2 = new Food(2, "Rice", 15, "Helperoo");
-		// promotions
-		p1 = new Promo("Free delivery", "$0 Delivery Fee(min.$20 spend)");
-		p2 = new Promo("20% off Rice", "Available at selected outlets");
-		// order
-		o1 = new Order(1, "Fries", 3, "Froot", 2, 6);
-		o2 = new Order(2, "Rice", 15, "Helperoo", 2, 30);
-
-		// stall
-		stall1 = new Stall("Froot", "Jack", "22/05/2021");
-		stall2 = new Stall("Helperoo", "Ruth", "29/03/2019");
-		// food
-		f1 = new Food(1, "Fries", 3, "Froot");
-		f2 = new Food(2, "Rice", 15, "Helperoo");
 		// purchaseOrder
 		po1 = new purchaseOrder("Potato", 1, "Froot");
 		po2 = new purchaseOrder("Apple", 2, "Froot");
 		// promotions
-		p1 = new Promo("Free delivery", "$0 Delivery Fee(min.$20 spend)");
-		p2 = new Promo("20% off Rice", "Available at selected outlets");
+		p1 = new Promo("Froot", "Jack", "22/05/2021", "Free delivery", "$0 Delivery Fee(min.$20 spend)");
+		p2 = new Promo("Froot", "Jack", "22/05/2021", "20% off Rice", "Available at selected outlets");
 		// order
 		o1 = new Order(1, "Fries", 3, "Froot", 2, 6);
 		o2 = new Order(2, "Rice", 15, "Helperoo", 2, 30);
@@ -90,7 +77,7 @@ public class C206_CaseStudyTest {
 
 	// STALL
 	// TESTS=====================================================================================================
-	//Done by: Umar
+	// Done by: Umar
 	@Test
 	public void testAddStall() {
 		C206_CaseStudy.addStall(stallList, stall1);
@@ -253,13 +240,15 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addPurchaseOrder(poList, po1);
 		assertEquals("Test if purchaseOrder arraylist size is 2?", 2, poList.size());
 	}
-@Test
+
+	@Test
 	public void testviewPurchaseOrder() {
 		assertNotNull("Test that there is a list of ingredients", poList);
 		C206_CaseStudy.viewPurchaseOrder(poList);
 		assertNotNull("Check if there is valid purchaseOrder arraylist to view", poList);
 	}
-@Test
+
+	@Test
 	public void testDeletePurchaseOrder() {
 		assertNotNull("Test if there is valid Food arraylist to delete objects", poList);
 		C206_CaseStudy.addPurchaseOrder(poList, po1);
