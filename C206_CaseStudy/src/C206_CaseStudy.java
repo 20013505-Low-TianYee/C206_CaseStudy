@@ -8,7 +8,8 @@ public class C206_CaseStudy {
 		ArrayList<purchaseOrder> poList = new ArrayList<purchaseOrder>(8);
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
-
+stallList.add(new Stall("Froot", "Jack", "22/05/2021"));
+foodList.add(new Food(1,"Apple",10,"Froot"));
 		int option = -1;
 
 		while (option != 16) {
@@ -115,9 +116,7 @@ public class C206_CaseStudy {
 	}
 
 	public static String retrieveAllStalls(ArrayList<Stall> stallList) {
-		Helper.line(80, "-");
-		System.out.println("STALL LIST");
-		Helper.line(80, "-");
+		C206_CaseStudy.setHeader("STALL LIST");
 		String output = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name",
 				"Operation Date");
 
@@ -157,9 +156,11 @@ public class C206_CaseStudy {
 		if (confirm.equalsIgnoreCase("y")) {
 			for (int i = 0; i < stallList.size(); i++) {
 				if (stallList.get(i) != null) {
+					
 					stallList.remove(stallNo - 1);
 					System.out.println("Stall deleted!");
 					break;
+					
 				} else {
 					System.out.println("No stall found!");
 				}
@@ -170,6 +171,7 @@ public class C206_CaseStudy {
 	public static int inputStallNoRemove() {
 
 		int deleteStallNo = Helper.readInt("Enter store number to delete > ");
+	
 		return deleteStallNo;
 	}
 
@@ -260,12 +262,13 @@ public class C206_CaseStudy {
 	}
 
 	public static void foodToDelete(ArrayList<Food> foodList, int id) {
-	
+	boolean isValid = false;
 		if (foodList.isEmpty() == true) {
 			System.out.println("Food List is empty");
 		} else {
 			for (int i = 0; i < foodList.size(); i++) {
-				if (isFoodValid(foodList, id) == true) {
+				if (foodList.get(i).getId() == id) {
+					isValid = true;
 					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
 					foodList.get(i).display();
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
@@ -273,9 +276,9 @@ public class C206_CaseStudy {
 						foodList.remove(foodList.get(i));
 						System.out.println("Delete success!");
 					}
-				}else {
-					System.out.println("Food does not exist!");
 				}
+			}if (isValid == false) {
+				System.out.println("Food does not exist!");
 			}
 			
 		}
