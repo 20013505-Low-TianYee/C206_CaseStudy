@@ -300,7 +300,7 @@ public class C206_CaseStudy {
 
 	public static void viewPurchaseOrder(ArrayList<purchaseOrder> poList) {
 		C206_CaseStudy.setHeader("ORDER LIST");
-		String output = String.format("%-30s %-5s %-10s\n", "INGREDIENTS", "QUANTITY", "STALL NAME");
+		String output = String.format("%-30s %-9s %-10s\n", "INGREDIENTS", "QUANTITY", "STALL NAME");
 		if (poList.isEmpty()) {
 			System.out.println("Purchase Order List is empty!");
 		} else {
@@ -313,7 +313,7 @@ public class C206_CaseStudy {
 		String output = "";
 
 		for (purchaseOrder po : poList) {
-			output += String.format("%-30s %-5s %-10s\n", po.getIngredient(), po.getQuantity(), po.getStallName());
+			output += String.format("%-30s %-9s %-10s\n", po.getIngredient(), po.getQuantity(), po.getStallName());
 		}
 		return output;
 	}
@@ -347,7 +347,7 @@ public class C206_CaseStudy {
 				if (poList.get(i).getIngredient().equalsIgnoreCase(Ingredient)) {
 
 					isValid = true;
-					System.out.printf("%-30s %-5s %-10s\n", "INGREDIENTS", "QUANTITY", "STALL NAME");
+					System.out.printf("%-30s %-9s %-10s\n", "INGREDIENTS", "QUANTITY", "STALL NAME");
 					poList.get(i).display();
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {
