@@ -322,7 +322,7 @@ public class C206_CaseStudy {
 		purchaseOrder po = null;
 		String poIngredient = Helper.readString("Please enter the Ingredient name > ");
 		int poQuantity = Helper.readInt("Please enter the Ingredient quantity > ");
-		String poStallName = Helper.readString("Please enter the Ingredient name > ");
+		String poStallName = Helper.readString("Please enter the stall name > ");
 		
 		po = new purchaseOrder(poIngredient, poQuantity, poStallName);
 
