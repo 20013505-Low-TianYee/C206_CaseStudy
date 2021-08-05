@@ -92,7 +92,7 @@ public class C206_CaseStudy {
 		managePromotion(); // YY code review
 
 		C206_CaseStudy.setHeader("CUSTOMER");
-		manageOrders(); // Adam code review
+		manageOrders(); // Adam code review//
 
 		C206_CaseStudy.setHeader("EXIT");
 		System.out.println("16. Exit");
@@ -100,9 +100,9 @@ public class C206_CaseStudy {
 	}
 
 	public static void setHeader(String header) { // Ty - code review
-		Helper.line(80, "-");
+		Helper.line(100, "-");
 		System.out.println(header);
-		Helper.line(80, "-");
+		Helper.line(100, "-");
 	}
 
 	// =========================================STALL
@@ -290,7 +290,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void viewPurchaseOrder(ArrayList<purchaseOrder> poList) {
-		C206_CaseStudy.setHeader("ORDER LIST");
+		C206_CaseStudy.setHeader("PURCHASE ORDER LIST");
 		String output = String.format("%-30s %-9s %-10s\n", "INGREDIENTS", "QUANTITY", "STALL NAME");
 		if (poList.isEmpty()) {
 			System.out.println("Purchase Order List is empty!");
@@ -490,16 +490,19 @@ public class C206_CaseStudy {
 				i.setTotalQuantity(total);
 			}
 			if (total <= 5) {
-				for (Food f : foodList) {
-					if (foodItemID == f.getId()) {
+				
+					if (isFoodValid(foodList,foodItemID) == true) {
+						for (Food f : foodList) {
 
 						int totalPrice = quantity * f.getPrice();
 						o = new Order(foodItemID, f.getName(), f.getPrice(), f.getStall(), quantity, totalPrice);
-
+						}
+					}else {
+						System.out.println("Food item does not exist!");
 					}
 				}
 //
-			}
+			
 		}
 		if (total > 5) {
 			System.out.println("Only a maximum of 5 items are allowed!");
@@ -512,9 +515,7 @@ public class C206_CaseStudy {
 		if (o != null) {
 			orderList.add(o);
 			System.out.println("Food Item added!");
-		} else {
-			System.out.println("");
-		}
+		} 
 	}
 
 	public static void deleteOrder(ArrayList<Order> orderList, int id) {
