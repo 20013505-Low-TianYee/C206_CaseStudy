@@ -14,7 +14,7 @@ public class C206_CaseStudy {
 		while (option != 16) {
 			menu();
 			option = Helper.readInt("Enter choice > ");
-			Helper.line(80, "=");
+			Helper.line(100, "=");
 
 			if (option == 1) {
 				addStallInputMethodMenu(stallList);
