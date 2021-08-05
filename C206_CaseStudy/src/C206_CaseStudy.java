@@ -115,8 +115,9 @@ public class C206_CaseStudy {
 	}
 
 	public static String retrieveAllStalls(ArrayList<Stall> stallList) {
-		Helper.line(80, "=");
+		Helper.line(80, "-");
 		System.out.println("STALL LIST");
+		Helper.line(80, "-");
 		String output = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name",
 				"Operation Date");
 
@@ -152,14 +153,16 @@ public class C206_CaseStudy {
 	}
 
 	public static void deleteStall(ArrayList<Stall> stallList, int stallNo) {
-
-		for (int i = 0; i < stallList.size(); i++) {
-			if (stallList.get(i) != null) {
-				stallList.remove(stallNo - 1);
-				System.out.println("Stall deleted!");
-				break;
-			} else {
-				System.out.println("No stall found!");
+		String confirm = Helper.readString("Are you sure you want to delete the stall? (Y/N)");
+		if (confirm.equalsIgnoreCase("y")) {
+			for (int i = 0; i < stallList.size(); i++) {
+				if (stallList.get(i) != null) {
+					stallList.remove(stallNo - 1);
+					System.out.println("Stall deleted!");
+					break;
+				} else {
+					System.out.println("No stall found!");
+				}
 			}
 		}
 	}
@@ -176,8 +179,13 @@ public class C206_CaseStudy {
 	}
 
 	public static void addStall(ArrayList<Stall> stallList, Stall stall) {
-		stallList.add(stall);
-		System.out.println("Stall added!");
+		if(stallList.size()<10) {
+			stallList.add(stall);
+			System.out.println("Stall added!");
+		}
+		else {
+			System.out.println("Stall list is full!");
+		}
 	}
 
 	public static Stall inputStall() {

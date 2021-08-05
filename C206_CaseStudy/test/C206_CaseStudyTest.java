@@ -90,6 +90,7 @@ public class C206_CaseStudyTest {
 
 	// STALL
 	// TESTS=====================================================================================================
+	//Done by: Umar
 	@Test
 	public void testAddStall() {
 		C206_CaseStudy.addStall(stallList, stall1);
