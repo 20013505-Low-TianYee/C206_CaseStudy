@@ -26,7 +26,7 @@ public class C206_CaseStudyTest {
 	private ArrayList<Promo> promoList = new ArrayList<Promo>();
 	private ArrayList<Order> orderList = new ArrayList<Order>();
 
-	// =============================================
+	// ==============================================
 	@Before
 	public void setUp() throws Exception {
 
