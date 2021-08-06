@@ -116,20 +116,6 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 		System.out.println(" 3. Delete stall"); // Umar
 		System.out.println(" 4. Update stall name");
 	}
-	private static void updateStallDetails(ArrayList<Stall> stallList) {
-		if (stallList.isEmpty() == true) {
-			System.out.println("No stalls to update!");
-		}
-		else {
-			String stallUpdate = inputStallNameUpdate();
-			String confirm = Helper.readString("Are you sure you want to update this stall number? > (Y/N) ");
-			if (confirm.equalsIgnoreCase("y")) {
-				String newStallName = newStallName();
-				String newOperationDate = newOperationDate();
-				updateStallMethod(stallList, newStallName, newOperationDate, stallUpdate);
-			}
-		}
-	}
 	public static String retrieveAllStalls(ArrayList<Stall> stallList) {
 		C206_CaseStudy.setHeader("STALL LIST");
 		String output = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name",
@@ -214,9 +200,23 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 		stall = new Stall(storeName, ownerName, operationDate);
 		return stall;
 	}
-	private static void StallInputMethodMenu(ArrayList<Stall> stallList) {
+	private static void stallInputMethodMenu(ArrayList<Stall> stallList) {
 		Stall stall = inputStall();
 		addStall(stallList, stall);
+	}
+	private static void updateStallDetails(ArrayList<Stall> stallList) {
+		if (stallList.isEmpty() == true) {
+			System.out.println("No stalls to update!");
+		}
+		else {
+			String stallUpdate = inputStallNameUpdate();
+			String confirm = Helper.readString("Are you sure you want to update this stall number? > (Y/N) ");
+			if (confirm.equalsIgnoreCase("y")) {
+				String newStallName = newStallName();
+				String newOperationDate = newOperationDate();
+				updateStallMethod(stallList, newStallName, newOperationDate, stallUpdate);
+			}
+		}
 	}
 	public static String inputStallNameUpdate() {
 
