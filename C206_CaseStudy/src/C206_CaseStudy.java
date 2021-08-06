@@ -12,7 +12,7 @@ stallList.add(new Stall("Froot", "Jack", "22/05/2021"));
 foodList.add(new Food(1,"Apple",10,"Froot"));
 		int option = -1;
 
-		while (option != 17) {
+		while (option != 21) {
 			menu();
 			option = Helper.readInt("Enter choice > ");
 			Helper.line(100, "=");
@@ -33,44 +33,60 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 			} else if (option == 7) { // delete food
 				int id = Helper.readInt("Enter id of food to delete > ");
 				foodToDelete(foodList, id);
-			} else if (option == 8) {
+			} else if (option == 8) { //update food
+				
+				
+				
+			} else if (option == 9) { //add PO
 				purchaseOrder po = inputPO(poList, stallList);
 				addPurchaseOrder(poList, po);
-			} else if (option == 9) {
+				
+			} else if (option == 10) { //view PO
 				viewPurchaseOrder(poList);
-			} else if (option == 10) {
+				
+			} else if (option == 11) {// delete PO
 				String ingredientDel = Helper.readString("Enter ingredient name to delete > ");
 				deletePurchaseOrder(poList, ingredientDel);
-			} else if (option == 11) {
-				//
-				// addPromo(promoList);
+				
+				
+			} else if (option == 12) { //update
+				
+			
+			} else if (option == 13) { //add promo
 				Promo f = inputPromo(promoList, stallList);
 				addPromo(promoList, f);
-			} else if (option == 12) {
-				//
-				// viewPromo(promoList);
+				
+			
+			} else if (option == 14) { //view promo
 				viewPromo(promoList);
-			} else if (option == 13) {
-				//
-				// deletePromo(promoList);
+				
+				
+			} else if (option == 15) { //delete promom
 				String PromoName = Helper.readString("Enter Promotion name of the promotion to delete > ");
 
 				PromoToDelete(promoList, PromoName);
-
-			} else if (option == 14) {
-				// Add Order
+				
+			} else if (option == 16) { //update promo
+			
+			} else if (option == 17) { //add order
 				Order o = inputOrder(foodList, orderList);
 				addOrder(orderList, o);
-			} else if (option == 15) {
+				
+		
+			}else if(option == 18) {//view order
 				// View Order
 				viewOrder(orderList);
-			} else if (option == 16) {
+			}else if(option == 19) {//delete order
 				// Delete Order
 				int id = Helper.readInt("Enter Food Item ID to remove for OrderList > ");
 				deleteOrder(orderList, id);
-			} else if (option == 17) {
+			}else if(option == 20) { //update order
+				
+			}else if(option == 21) {
 				System.out.println("We are sad to see you go =("); // added a goodbye message when application quit - TY
-			} else {
+			}
+				else { //invalid option entered
+			
 				System.out.println("Invalid option entered.");
 			}
 		}
@@ -80,8 +96,7 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 	public static void menu() {
 		C206_CaseStudy.setHeader("OPTIONS MENU");
 		C206_CaseStudy.setHeader("STALLS");
-//		menuHeader();
-//		stallHeader();
+
 		manageStalls();// Umar code review
 
 		C206_CaseStudy.setHeader("FOOD");
@@ -97,7 +112,7 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 		manageOrders(); // Adam code review//
 
 		C206_CaseStudy.setHeader("EXIT");
-		System.out.println("16. Exit");
+		System.out.println("21. Exit");
 
 	}
 
@@ -249,9 +264,10 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 	// =================================== FOOD METHODS by TY
 	// ============================================================================
 	private static void manageFood() { // options 
-		System.out.println(" 4. Add Food");
-		System.out.println(" 5. View Food");
-		System.out.println(" 6. Delete Food");
+		System.out.println(" 5. Add Food");
+		System.out.println(" 6. View Food");
+		System.out.println(" 7. Delete Food");
+		System.out.println(" 8. Update Food");
 	}
 
 	public static void viewFood(ArrayList<Food> foodList) {
@@ -330,9 +346,10 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 //==============================================END OF FOOD===========================================================================
 // ==========================================START OF PURCHASE ORDERS METHODS BY WH===================================================
 	private static void managePurchaseOrders() {
-		System.out.println(" 7. Add purchase order"); // WH
-		System.out.println(" 8. View purchase order"); // WH
-		System.out.println(" 9. Delete purchase orders"); // WH
+		System.out.println(" 9. Add purchase order"); // WH
+		System.out.println(" 10. View purchase order"); // WH
+		System.out.println(" 11. Delete purchase orders"); // WH
+		System.out.println(" 12. _Type your option here_"); // WH
 	}
 
 	public static void viewPurchaseOrder(ArrayList<purchaseOrder> poList) {
@@ -407,9 +424,10 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 // ============================================END OF PURCHASE ORDERS METHODS=========================================================
 // ================================================START OF PROMOTION METHODS BY YY===================================================
 	private static void managePromotion() {
-		System.out.println("10. Add promotion offer"); // YY
-		System.out.println("11. View promotion offers"); // YY
-		System.out.println("12. Delete promotion offer"); // YY
+		System.out.println("13. Add promotion offer"); // YY
+		System.out.println("14. View promotion offers"); // YY
+		System.out.println("15. Delete promotion offer"); // YY
+		System.out.println("16. ______Type your option here __"); // YY
 	}
 
 	public static void viewPromo(ArrayList<Promo> promoList) {
@@ -490,9 +508,10 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 // =============================================== END OF PROMOTION METHODS =======================================================
 // =======================================START OF ORDERS BY CUSTOMERS METHODS BY ADAM=============================================
 	private static void manageOrders() {
-		System.out.println("13. Add food item to order"); // Adam
-		System.out.println("14. View food order"); // Adam
-		System.out.println("15. Delete food item from order"); // Adam
+		System.out.println("17. Add food item to order"); // Adam
+		System.out.println("18. View food order"); // Adam
+		System.out.println("19. Delete food item from order"); // Adam
+		System.out.println("20. ______Type your option here __");
 	}
 
 	public static void viewOrder(ArrayList<Order> orderList) {
