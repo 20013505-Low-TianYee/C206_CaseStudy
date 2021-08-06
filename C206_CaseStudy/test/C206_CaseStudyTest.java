@@ -202,6 +202,21 @@ public class C206_CaseStudyTest {
 			C206_CaseStudy.foodToDelete(foodList, f2.getId());
 			assertEquals("Test if that Food arraylist is empty", 0, foodList.size());
 		}
+		
+		@Test
+		public void testUpdateFood() {
+			assertNotNull("Test if there is valid Food arraylist to update objects", foodList);
+			C206_CaseStudy.addFood(foodList, f1);
+			C206_CaseStudy.addFood(foodList, f2);
+			C206_CaseStudy.priceToUpdate(foodList, f1.getId());
+			double newPriceD = f1.getPrice() * 1.3;
+			int newPrice = (int) Math.round(newPriceD);
+			f1.setPrice(newPrice);
+			assertEquals("Test if price is increased by 30%",newPrice,f1.getPrice() );
+			
+		}
+		
+		
 
 		// END OF FOOD
 		// =======================================================================================================
@@ -339,4 +354,5 @@ public class C206_CaseStudyTest {
 		}
 
 	// END OF ORDERS BY CUSTOMERS =========================================================================================================
+
 	}
