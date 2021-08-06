@@ -78,6 +78,7 @@ public class C206_CaseStudyTest {
 	// STALL
 	// TESTS=====================================================================================================
 	// Done by: Umar
+	
 	@Test
 	public void testAddStall() {
 		C206_CaseStudy.addStall(stallList, stall1);
@@ -208,7 +209,7 @@ public class C206_CaseStudyTest {
 			assertNotNull("Test if there is valid Food arraylist to update objects", foodList);
 			C206_CaseStudy.addFood(foodList, f1);
 			C206_CaseStudy.addFood(foodList, f2);
-			
+			assertEquals("Test if foodList size is 2 after adding foods", 2, foodList.size());
 			double newPriceD = f1.getPrice() * 1.3;
 			int newPrice = (int) Math.round(newPriceD);
 			C206_CaseStudy.foodToUpdate(foodList, f1.getId());
@@ -340,7 +341,7 @@ public class C206_CaseStudyTest {
 
 		@Test
 		public void testDeleteOrder() {
-			assertNotNull("Test if there is valid Food arraylist to delete objects", orderList);
+			assertNotNull("Test if there is valid Order arraylist to delete objects", orderList);
 			C206_CaseStudy.addOrder(orderList, o1);
 			C206_CaseStudy.addOrder(orderList, o2);
 			C206_CaseStudy.deleteOrder(orderList, o1.getId());
@@ -350,10 +351,11 @@ public class C206_CaseStudyTest {
 		}
 		
 		@Test
-		//INCOMPLETE
+		
 		public void testUpdateOrder() {
-			assertNotNull("Test if there is valid Food arraylist to update objects", orderList);
+			assertNotNull("Test if there is valid Order arraylist to update objects", orderList);
 			C206_CaseStudy.addOrder(orderList, o1);
+			assertEquals("Test if orderList is 1", 1, orderList.size());
 			C206_CaseStudy.updateOrder(orderList, o1.getId());
 			assertEquals("Test if that Food Item Quantity increased by 3?", 3, o1.getQuantity());
 			
