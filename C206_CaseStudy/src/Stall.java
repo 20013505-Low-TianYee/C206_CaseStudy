@@ -23,6 +23,12 @@ public class Stall { //Umar
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
 	}
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
+	public void setOperationDate(String operationDate) {
+		this.operationDate = operationDate;
+	}
 	public String toStringStall() {
 		String stallInfo = String.format("%-25s %-25s %-25s", storeName, ownerName, operationDate);
 		return stallInfo;
