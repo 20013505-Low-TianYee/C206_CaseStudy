@@ -8,8 +8,10 @@ public class C206_CaseStudy {
 		ArrayList<purchaseOrder> poList = new ArrayList<purchaseOrder>(8);
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
-stallList.add(new Stall("Froot", "Jack", "22/05/2021"));
-foodList.add(new Food(1,"Apple",10,"Froot"));
+		
+		stallList.add(new Stall("Froot", "Jack", "22/05/2021"));
+		foodList.add(new Food(1, "Apple", 10, "Froot"));
+		
 		int option = -1;
 
 		while (option != 21) {
@@ -81,6 +83,8 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 				int id = Helper.readInt("Enter Food Item ID to remove for OrderList > ");
 				deleteOrder(orderList, id);
 			}else if(option == 20) { //update order
+				int id = Helper.readInt("Enter Food Item ID to remove for OrderList > ");
+				updateOrder(orderList, id);
 				
 			}else if(option == 21) {
 				System.out.println("We are sad to see you go =("); // added a goodbye message when application quit - TY
@@ -628,6 +632,28 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 						orderList.remove(orderList.get(i));
 						System.out.println("Delete successfully!");
 					}
+				}
+			}
+			if (isValid == false) {
+
+				System.out.println("Order does not exist!");
+
+			}
+		}
+	}
+	
+	public static void updateOrder(ArrayList<Order> orderList, int id) {
+		boolean isValid = false;
+		if (orderList.isEmpty()) {
+			System.out.println("Order List is empty");
+		} else {
+			for (int i = 0; i < orderList.size(); i++) {
+				if (orderList.get(i).getId() == id) {
+
+					isValid = true;
+					orderList.get(i).setQuantity(orderList.get(i).getQuantity() + 1);
+					System.out.println("Food Item " + orderList.get(i).getName() + " quantity updated!");
+					
 				}
 			}
 			if (isValid == false) {
