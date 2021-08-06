@@ -624,7 +624,7 @@ public class C206_CaseStudy {
 
 					isValid = true;
 					orderList.get(i).setQuantity(orderList.get(i).getQuantity() + 1);
-					System.out.println("Food Item Number " + orderList.get(i).getName() + " quantity updated!");
+					System.out.println("Food Item " + orderList.get(i).getName() + " quantity updated!");
 					
 				}
 			}
