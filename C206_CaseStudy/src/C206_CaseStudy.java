@@ -12,7 +12,7 @@ stallList.add(new Stall("Froot", "Jack", "22/05/2021"));
 foodList.add(new Food(1,"Apple",10,"Froot"));
 		int option = -1;
 
-		while (option != 16) {
+		while (option != 17) {
 			menu();
 			option = Helper.readInt("Enter choice > ");
 			Helper.line(100, "=");
@@ -23,51 +23,57 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 				viewStallIfElse(stallList);
 			} else if (option == 3) {
 				deleteStallIfElse(stallList);
-			} else if (option == 4) { // add food
+			} else if (option == 4) {
+				if (stallList.isEmpty() == true) {
+					System.out.println("No stalls to update!");
+				}
+				else {
+					updateStallMethod();
+				}
+			} else if (option == 5) { // add food
 				Food f = inputFood(stallList, foodList);
 				addFood(foodList, f);
-			} else if (option == 5) { // view food
+			} else if (option == 6) { // view food
 				viewFood(foodList);
-			} else if (option == 6) { // delete food
+			} else if (option == 7) { // delete food
 				int id = Helper.readInt("Enter id of food to delete > ");
 				foodToDelete(foodList, id);
-
-			} else if (option == 7) {
+			} else if (option == 8) {
 				purchaseOrder po = inputPO(poList, stallList);
 				addPurchaseOrder(poList, po);
-			} else if (option == 8) {
-				viewPurchaseOrder(poList);
 			} else if (option == 9) {
+				viewPurchaseOrder(poList);
+			} else if (option == 10) {
 				String ingredientDel = Helper.readString("Enter ingredient name to delete > ");
 				deletePurchaseOrder(poList, ingredientDel);
-			} else if (option == 10) {
+			} else if (option == 11) {
 				//
 				// addPromo(promoList);
 				Promo f = inputPromo(promoList, stallList);
 				addPromo(promoList, f);
-			} else if (option == 11) {
+			} else if (option == 12) {
 				//
 				// viewPromo(promoList);
 				viewPromo(promoList);
-			} else if (option == 12) {
+			} else if (option == 13) {
 				//
 				// deletePromo(promoList);
 				String PromoName = Helper.readString("Enter Promotion name of the promotion to delete > ");
 
 				PromoToDelete(promoList, PromoName);
 
-			} else if (option == 13) {
+			} else if (option == 14) {
 				// Add Order
 				Order o = inputOrder(foodList, orderList);
 				addOrder(orderList, o);
-			} else if (option == 14) {
+			} else if (option == 15) {
 				// View Order
 				viewOrder(orderList);
-			} else if (option == 15) {
+			} else if (option == 16) {
 				// Delete Order
 				int id = Helper.readInt("Enter Food Item ID to remove for OrderList > ");
 				deleteOrder(orderList, id);
-			} else if (option == 16) {
+			} else if (option == 17) {
 				System.out.println("We are sad to see you go =("); // added a goodbye message when application quit - TY
 			} else {
 				System.out.println("Invalid option entered.");
@@ -113,6 +119,7 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 		System.out.println(" 1. Add stall"); // Umar
 		System.out.println(" 2. View stalls"); // Umar
 		System.out.println(" 3. Delete stall"); // Umar
+		System.out.println(" 4. Update stall name");
 	}
 
 	public static String retrieveAllStalls(ArrayList<Stall> stallList) {
@@ -198,6 +205,10 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 
 		stall = new Stall(storeName, ownerName, operationDate);
 		return stall;
+	}
+	
+	public static void updateStallMethod() {
+		
 	}
 
 	// ==============================================END OF
