@@ -345,7 +345,7 @@ public class C206_CaseStudy {
 				System.out.println("Food does not exist!");
 			}
 			
-		}
+		}//
 	}
 	public static void priceToUpdate (ArrayList<Food> foodList, int id) {
 		boolean isValid = false;
