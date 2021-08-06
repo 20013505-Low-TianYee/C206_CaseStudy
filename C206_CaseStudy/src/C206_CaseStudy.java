@@ -36,7 +36,8 @@ public class C206_CaseStudy {
 				int id = Helper.readInt("Enter id of food to delete > ");
 				foodToDelete(foodList, id);
 			} else if (option == 8) { //update food
-				
+				int id = Helper.readInt("Enter id of food to update > ");
+				foodToUpdate(foodList, id);
 				
 				
 			} else if (option == 9) { //add PO
@@ -83,7 +84,7 @@ public class C206_CaseStudy {
 				int id = Helper.readInt("Enter Food Item ID to remove for OrderList > ");
 				deleteOrder(orderList, id);
 			}else if(option == 20) { //update order
-				int id = Helper.readInt("Enter Food Item ID to remove for OrderList > ");
+				int id = Helper.readInt("Enter Food Item ID to update for OrderList > ");
 				updateOrder(orderList, id);
 				
 			}else if(option == 21) {
@@ -346,13 +347,12 @@ public class C206_CaseStudy {
 			
 		}
 	}
-	public static void foodToUpdate (ArrayList<Food> foodList, int id) {
+	public static void priceToUpdate (ArrayList<Food> foodList, int id) {
 		boolean isValid = false;
 		if (foodList.isEmpty() == true) {
 			System.out.println("Food List is empty");
 		} else {
 			for (int i = 0; i < foodList.size(); i++) {
-				if (isFoodValid( foodList,id) == true) {
 					isValid = true;
 					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
 					foodList.get(i).display();
@@ -364,24 +364,42 @@ public class C206_CaseStudy {
 						foodList.get(i).setPrice(newPrice);
 						System.out.println("Update success!");
 						}else {
-							System.out.println("Selling price must be between $3 and $15");
+							System.out.println("Selling price must be between $3 and $15!");
 						}
 					}
-				}
+				
 			}if (isValid == false) {
 				System.out.println("Food does not exist!");
 			}
 			
 		}
 	}
-
+	
+	public static void foodToUpdate(ArrayList<Food> foodList, int id) {
+		if (isFoodValid(foodList, id) == true) {
+		int option = -1;
+			while (option != 2 ) {
+				C206_CaseStudy.menuUpdate();
+				option = Helper.readInt("Enter option > ");
+				if (option ==1) {
+				C206_CaseStudy.priceToUpdate(foodList, id);
+				}
+			}
+		}else {
+			System.out.println("Food does not exist!");
+		}
+	}
+public static void menuUpdate() {
+	C206_CaseStudy.setHeader("UPDATE FOOD");
+	System.out.println("1. Increase selling price by 30%\n2. Quit");
+}
 //==============================================END OF FOOD===========================================================================
 // ==========================================START OF PURCHASE ORDERS METHODS BY WH===================================================
 	private static void managePurchaseOrders() {
 		System.out.println(" 9. Add purchase order"); // WH
 		System.out.println(" 10. View purchase order"); // WH
 		System.out.println(" 11. Delete purchase orders"); // WH
-		System.out.println(" 12. _Type your option here_"); // WH
+		System.out.println(" 12. Update purchase orders"); // WH
 	}
 
 	public static void viewPurchaseOrder(ArrayList<purchaseOrder> poList) {
@@ -459,7 +477,7 @@ public class C206_CaseStudy {
 		System.out.println("13. Add promotion offer"); // YY
 		System.out.println("14. View promotion offers"); // YY
 		System.out.println("15. Delete promotion offer"); // YY
-		System.out.println("16. ______Type your option here __"); // YY
+		System.out.println("16. Update promotion offer"); // YY
 	}
 
 	public static void viewPromo(ArrayList<Promo> promoList) {
@@ -543,7 +561,7 @@ public class C206_CaseStudy {
 		System.out.println("17. Add food item to order"); // Adam
 		System.out.println("18. View food order"); // Adam
 		System.out.println("19. Delete food item from order"); // Adam
-		System.out.println("20. ______Type your option here __");
+		System.out.println("20. Update food item in order");
 	}
 
 	public static void viewOrder(ArrayList<Order> orderList) {
