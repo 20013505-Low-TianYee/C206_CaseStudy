@@ -212,9 +212,16 @@ public class C206_CaseStudyTest {
 			double newPriceD = f1.getPrice() * 1.3;
 			int newPrice = (int) Math.round(newPriceD);
 			C206_CaseStudy.foodToUpdate(foodList, f1.getId());
+			double newPriceD2 = f2.getPrice() * 1.3;
+			int newPrice2 = (int) Math.round(newPriceD2);
 			
+			C206_CaseStudy.foodToUpdate(foodList, f2.getId());
+			if (newPrice <= 3 && newPrice >=15) {
+				if (newPrice2 <= 3 && newPrice2 >=15) {
 			assertEquals("Test if price is increased by 30%",newPrice,f1.getPrice() );
-			
+			assertEquals("Test if price is increased by 30%",newPrice2,f2.getPrice() );
+				}
+			}
 		}
 		
 		
