@@ -9,9 +9,7 @@ public class C206_CaseStudy {
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
 		
-		stallList.add(new Stall("Froot", "Jack", "22/05/2021"));
-		foodList.add(new Food(1, "Apple", 10, "Froot"));
-		
+
 		int option = -1;
 
 		while (option != 21) {
@@ -352,7 +350,7 @@ public class C206_CaseStudy {
 		if (foodList.isEmpty() == true) {
 			System.out.println("Food List is empty");
 		} else {
-			for (int i = 0; i < foodList.size(); i++) {
+			for (int i = 0; i < foodList.size(); i++) { 
 					isValid = true;
 					if (foodList.get(i).getId() == id) {
 					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");

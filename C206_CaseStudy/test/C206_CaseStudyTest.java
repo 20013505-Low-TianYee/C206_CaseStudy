@@ -199,7 +199,7 @@ public class C206_CaseStudyTest {
 			C206_CaseStudy.addFood(foodList, f2);
 			C206_CaseStudy.foodToDelete(foodList, f1.getId());
 			assertEquals("Test if foodList size is 1 after deleting one object", 1, foodList.size());
-			C206_CaseStudy.foodToDelete(foodList, f2.getId());
+			C206_CaseStudy.foodToDelete(foodList, f2.getId()); 
 			assertEquals("Test if that Food arraylist is empty", 0, foodList.size());
 		}
 		
@@ -346,11 +346,10 @@ public class C206_CaseStudyTest {
 		public void testUpdateOrder() {
 			assertNotNull("Test if there is valid Food arraylist to update objects", orderList);
 			C206_CaseStudy.addOrder(orderList, o1);
-			C206_CaseStudy.addOrder(orderList, o2);
 			C206_CaseStudy.updateOrder(orderList, o1.getId());
-			assertEquals("Test if that Food Item Quantity increased by 1?", 1, orderList.size());
-			C206_CaseStudy.updateOrder(orderList, o2.getId());
-			assertEquals("Test if that Food arraylist is empty", 0, orderList.size());
+			assertEquals("Test if that Food Item Quantity increased by 3?", 3, o1.getQuantity());
+			
+			
 		}
 
 	// END OF ORDERS BY CUSTOMERS =========================================================================================================
