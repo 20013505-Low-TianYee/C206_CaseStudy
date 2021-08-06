@@ -144,7 +144,7 @@ public class C206_CaseStudyTest {
 		String allStalls = C206_CaseStudy.retrieveAllStalls(stallList);
 		assertEquals("Check that stall output is same before update", testOutput, allStalls);
 		
-		C206_CaseStudy.updateStallMethod(stallList, 1, "Freta", "23/04/2021");
+		C206_CaseStudy.updateStallMethod(stallList, "Freta", "23/04/2021", "Froot");
 		allStalls = C206_CaseStudy.retrieveAllStalls(stallList);
 		String testOutput2 = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name",
 				"Operation Date");
