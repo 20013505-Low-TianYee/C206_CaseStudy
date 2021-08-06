@@ -37,7 +37,6 @@ public class Order extends Food {
 		this.totalPrice = totalPrice;
 	}
 	
-	
 	public int getTotalQuantity() {
 		return totalQuantity;
 	}
