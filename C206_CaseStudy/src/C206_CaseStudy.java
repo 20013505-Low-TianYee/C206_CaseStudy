@@ -61,7 +61,7 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 				viewPromo(promoList);
 				
 				
-			} else if (option == 15) { //delete promom
+			} else if (option == 15) { //delete promo
 				String PromoName = Helper.readString("Enter Promotion name of the promotion to delete > ");
 
 				PromoToDelete(promoList, PromoName);
@@ -326,7 +326,7 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 			System.out.println("Food List is empty");
 		} else {
 			for (int i = 0; i < foodList.size(); i++) {
-				if (foodList.get(i).getId() == id) {
+				if (isFoodValid( foodList,id) == true) {
 					isValid = true;
 					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
 					foodList.get(i).display();
@@ -334,6 +334,34 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 					if (confirm.equalsIgnoreCase("y")) {
 						foodList.remove(foodList.get(i));
 						System.out.println("Delete success!");
+					}
+				}
+			}if (isValid == false) {
+				System.out.println("Food does not exist!");
+			}
+			
+		}
+	}
+	public static void foodToUpdate (ArrayList<Food> foodList, int id) {
+		boolean isValid = false;
+		if (foodList.isEmpty() == true) {
+			System.out.println("Food List is empty");
+		} else {
+			for (int i = 0; i < foodList.size(); i++) {
+				if (isFoodValid( foodList,id) == true) {
+					isValid = true;
+					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+					foodList.get(i).display();
+					String confirm = Helper.readString("Are you sure you want to increase the selling price by 30%? (Y/N) > ");
+					if (confirm.equalsIgnoreCase("y")) {
+						double newPriceD = foodList.get(i).getPrice() * 1.3;
+						int newPrice = (int) Math.round(newPriceD);
+						if (newPrice >= 3 && newPrice <=15 ) {
+						foodList.get(i).setPrice(newPrice);
+						System.out.println("Update success!");
+						}else {
+							System.out.println("Selling price must be between $3 and $15");
+						}
 					}
 				}
 			}if (isValid == false) {
