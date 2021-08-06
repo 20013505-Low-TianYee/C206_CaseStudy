@@ -354,6 +354,7 @@ public class C206_CaseStudy {
 		} else {
 			for (int i = 0; i < foodList.size(); i++) {
 					isValid = true;
+					if (foodList.get(i).getId() == id) {
 					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
 					foodList.get(i).display();
 					String confirm = Helper.readString("Are you sure you want to increase the selling price by 30%? (Y/N) > ");
@@ -368,7 +369,9 @@ public class C206_CaseStudy {
 						}
 					}
 				
-			}if (isValid == false) {
+			}
+					}
+					if (isValid == false) {
 				System.out.println("Food does not exist!");
 			}
 			
