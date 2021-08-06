@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
 
-public class C206_CaseStudyTest {
+public class C206_CaseStudyTest { 
 	private Stall stall1;
 	private Stall stall2;
 	private Food f1;
