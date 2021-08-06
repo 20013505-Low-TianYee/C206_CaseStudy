@@ -24,12 +24,7 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 			} else if (option == 3) {
 				deleteStallIfElse(stallList);
 			} else if (option == 4) {
-				if (stallList.isEmpty() == true) {
-					System.out.println("No stalls to update!");
-				}
-				else {
-					updateStallMethod();
-				}
+				updateStallDetails(stallList);
 			} else if (option == 5) { // add food
 				Food f = inputFood(stallList, foodList);
 				addFood(foodList, f);
@@ -77,6 +72,21 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 				System.out.println("We are sad to see you go =("); // added a goodbye message when application quit - TY
 			} else {
 				System.out.println("Invalid option entered.");
+			}
+		}
+	}
+
+	private static void updateStallDetails(ArrayList<Stall> stallList) {
+		if (stallList.isEmpty() == true) {
+			System.out.println("No stalls to update!");
+		}
+		else {
+			int stallUpdate = inputStallNoUpdate();
+			String confirm = Helper.readString("Are you sure you want to update this stall number? > (Y/N) ");
+			if (confirm.equalsIgnoreCase("y")) {
+				String newStallName = newStallName();
+				String newOperationDate = newOperationDate();
+				updateStallMethod(stallList, stallUpdate, newStallName, newOperationDate);
 			}
 		}
 	}
@@ -206,9 +216,37 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 		stall = new Stall(storeName, ownerName, operationDate);
 		return stall;
 	}
-	
-	public static void updateStallMethod() {
+	private static void StallInputMethodMenu(ArrayList<Stall> stallList) {
+		Stall stall = inputStall();
+		addStall(stallList, stall);
+	}
+	public static int inputStallNoUpdate() {
+
+		int updateStallNo = Helper.readInt("Enter store number to update > ");
+		return updateStallNo;
+	}
+	private static String newStallName() {
+		String stallName = Helper.readString("Enter a new stall name > ");
 		
+		return stallName;
+	}
+	private static String newOperationDate() {
+		String newOperationDate = Helper.readString("Enter a new operation date > ");
+		
+		return newOperationDate;
+	}
+	public static void updateStallMethod(ArrayList<Stall> stallList, int stallNo, String storeName, String operationDate) {
+		for (int i = 0; i < stallList.size(); i++) {
+			if (stallList.get(i) != null) {
+				stallList.get(stallNo - 1).setStoreName(storeName);
+				stallList.get(stallNo-1).setOperationDate(operationDate);
+				System.out.println("Stall updated!");
+				break;
+					
+			} else {
+				System.out.println("No stall found!");
+			}
+		}
 	}
 
 	// ==============================================END OF
