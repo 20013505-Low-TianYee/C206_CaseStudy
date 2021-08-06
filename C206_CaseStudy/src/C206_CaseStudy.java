@@ -200,10 +200,6 @@ foodList.add(new Food(1,"Apple",10,"Froot"));
 		stall = new Stall(storeName, ownerName, operationDate);
 		return stall;
 	}
-	private static void stallInputMethodMenu(ArrayList<Stall> stallList) {
-		Stall stall = inputStall();
-		addStall(stallList, stall);
-	}
 	private static void updateStallDetails(ArrayList<Stall> stallList) {
 		if (stallList.isEmpty() == true) {
 			System.out.println("No stalls to update!");
