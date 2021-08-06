@@ -9,7 +9,7 @@ public class C206_CaseStudy {
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
 		
-
+ 
 		int option = -1;
 
 		while (option != 21) {
@@ -337,6 +337,8 @@ public class C206_CaseStudy {
 					if (confirm.equalsIgnoreCase("y")) {
 						foodList.remove(foodList.get(i));
 						System.out.println("Delete success!");
+					}else if (!confirm.equalsIgnoreCase("Y") ||!confirm.equalsIgnoreCase("N") ) {
+						System.out.println("Invalid input");
 					}
 				}
 			}if (isValid == false) {
@@ -365,6 +367,8 @@ public class C206_CaseStudy {
 						}else {
 							System.out.println("Selling price must be between $3 and $15!");
 						}
+					}else if (!confirm.equalsIgnoreCase("Y") ||!confirm.equalsIgnoreCase("N") ) {
+						System.out.println("Invalid input");
 					}
 				
 			}
