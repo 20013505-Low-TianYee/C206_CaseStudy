@@ -9,8 +9,10 @@ public class C206_CaseStudy {
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
 		stallList.add(new Stall("Froot", "Jack", "22/05/2021"));
-		stallList.add(new Stall("West", "Jackie", "22/05/2021"));
- 
+		foodList.add(new Food(1, "Apple", 3, "Froot"));
+		foodList.add(new Food(2, "Banana", 5, "Froot"));
+//orderList.add(new Order(1, "Apples", 3, "Froot", 3, 6));
+//orderList.add(new Order(2, "Banana", 3, "Froot", 1, 6));
 		int option = -1;
 
 		while (option != 21) {
@@ -34,63 +36,56 @@ public class C206_CaseStudy {
 			} else if (option == 7) { // delete food
 				int id = Helper.readInt("Enter id of food to delete > ");
 				foodToDelete(foodList, id);
-			} else if (option == 8) { //update food
+			} else if (option == 8) { // update food
 				int id = Helper.readInt("Enter id of food to update > ");
 				foodToUpdate(foodList, id);
-				
-				
-			} else if (option == 9) { //add PO
+
+			} else if (option == 9) { // add PO
 				purchaseOrder po = inputPO(poList, stallList);
 				addPurchaseOrder(poList, po);
-				
-			} else if (option == 10) { //view PO
+
+			} else if (option == 10) { // view PO
 				viewPurchaseOrder(poList);
-				
+
 			} else if (option == 11) {// delete PO
 				String ingredientDel = Helper.readString("Enter ingredient name to delete > ");
 				deletePurchaseOrder(poList, ingredientDel);
-				
-				
-			} else if (option == 12) { //update
-				
-			
-			} else if (option == 13) { //add promo
+
+			} else if (option == 12) { // update
+
+			} else if (option == 13) { // add promo
 				Promo f = inputPromo(promoList, stallList);
 				addPromo(promoList, f);
-				
-			
-			} else if (option == 14) { //view promo
+
+			} else if (option == 14) { // view promo
 				viewPromo(promoList);
-				
-				
-			} else if (option == 15) { //delete promo
+
+			} else if (option == 15) { // delete promo
 				String PromoName = Helper.readString("Enter Promotion name of the promotion to delete > ");
 
 				PromoToDelete(promoList, PromoName);
-				
-			} else if (option == 16) { //update promo
-			
-			} else if (option == 17) { //add order
+
+			} else if (option == 16) { // update promo
+
+			} else if (option == 17) { // add order
 				Order o = inputOrder(foodList, orderList);
 				addOrder(orderList, o);
-				
-		
-			}else if(option == 18) {//view order
+
+			} else if (option == 18) {// view order
 				// View Order
 				viewOrder(orderList);
-			}else if(option == 19) {//delete order
+			} else if (option == 19) {// delete order
 				// Delete Order
 				int id = Helper.readInt("Enter Food Item ID to remove for OrderList > ");
 				deleteOrder(orderList, id);
-			}else if(option == 20) { //update order
+			} else if (option == 20) { // update order
 				int id = Helper.readInt("Enter Food Item ID to update for OrderList > ");
 				updateOrder(orderList, id);
-				
-			}else if(option == 21) {
+
+			} else if (option == 21) {
 				System.out.println("We are sad to see you go =("); // added a goodbye message when application quit - TY
-			}
-				else { //invalid option entered
-			
+			} else { // invalid option entered
+
 				System.out.println("Invalid option entered.");
 			}
 		}
@@ -135,6 +130,7 @@ public class C206_CaseStudy {
 		System.out.println(" 3. Delete stall"); // Umar
 		System.out.println(" 4. Update stall name");
 	}
+
 	public static String retrieveAllStalls(ArrayList<Stall> stallList) {
 		C206_CaseStudy.setHeader("STALL LIST");
 		String output = String.format("%-25s %-25s %-25s %-25s\n", "Store Number", "Store Name", "Owner Name",
@@ -176,11 +172,11 @@ public class C206_CaseStudy {
 		if (confirm.equalsIgnoreCase("y")) {
 			for (int i = 0; i < stallList.size(); i++) {
 				if (stallList.get(i) != null) {
-					
+
 					stallList.remove(stallNo - 1);
 					System.out.println("Stall deleted!");
 					break;
-					
+
 				} else {
 					System.out.println("No stall found!");
 				}
@@ -191,7 +187,7 @@ public class C206_CaseStudy {
 	public static int inputStallNoRemove() {
 
 		int deleteStallNo = Helper.readInt("Enter store number to delete > ");
-	
+
 		return deleteStallNo;
 	}
 
@@ -219,11 +215,11 @@ public class C206_CaseStudy {
 		stall = new Stall(storeName, ownerName, operationDate);
 		return stall;
 	}
+
 	private static void updateStallDetails(ArrayList<Stall> stallList) {
 		if (stallList.isEmpty() == true) {
 			System.out.println("No stalls to update!");
-		}
-		else {
+		} else {
 			String stallUpdate = inputStallNameUpdate();
 			String confirm = Helper.readString("Are you sure you want to update this stall number? > (Y/N) ");
 			if (confirm.equalsIgnoreCase("y")) {
@@ -233,22 +229,27 @@ public class C206_CaseStudy {
 			}
 		}
 	}
+
 	public static String inputStallNameUpdate() {
 
 		String updateStallNo = Helper.readString("Enter store name to update > ");
 		return updateStallNo;
 	}
+
 	private static String newStallName() {
 		String stallName = Helper.readString("Enter a new stall name > ");
-		
+
 		return stallName;
 	}
+
 	private static String newOperationDate() {
 		String newOperationDate = Helper.readString("Enter a new operation date > ");
-		
+
 		return newOperationDate;
 	}
-	public static void updateStallMethod(ArrayList<Stall> stallList, String storeName, String operationDate, String oldStoreName) {
+
+	public static void updateStallMethod(ArrayList<Stall> stallList, String storeName, String operationDate,
+			String oldStoreName) {
 		boolean isValid = false;
 		for (int i = 0; i < stallList.size(); i++) {
 			if (stallList.get(i).getStoreName().equalsIgnoreCase(oldStoreName)) {
@@ -257,9 +258,10 @@ public class C206_CaseStudy {
 				stallList.get(i).setOperationDate(operationDate);
 				System.out.println("Stall updated!");
 				break;
-					
-			} 
-		} if (isValid == false) {
+
+			}
+		}
+		if (isValid == false) {
 			System.out.println("No stall found!");
 		}
 	}
@@ -269,7 +271,7 @@ public class C206_CaseStudy {
 	// METHODS============================================================================================================================
 	// =================================== FOOD METHODS by TY
 	// ============================================================================
-	private static void manageFood() { // options 
+	private static void manageFood() { // options
 		System.out.println(" 5. Add Food");
 		System.out.println(" 6. View Food");
 		System.out.println(" 7. Delete Food");
@@ -327,80 +329,89 @@ public class C206_CaseStudy {
 	}
 
 	public static void foodToDelete(ArrayList<Food> foodList, int id) {
-	boolean isValid = false;
-		if (foodList.isEmpty() == true) {
-			System.out.println("Food List is empty");
-		} else {
-			for (int i = 0; i < foodList.size(); i++) {
-				if (isFoodValid( foodList,id) == true) {
-					isValid = true;
-					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
-					foodList.get(i).display();
-					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
-					if (confirm.equalsIgnoreCase("y")) {
-						foodList.remove(foodList.get(i));
-						System.out.println("Delete success!");
-					}else if (!confirm.equalsIgnoreCase("Y") ||!confirm.equalsIgnoreCase("N") ) {
-						System.out.println("Invalid input");
-					}
-				}
-			}if (isValid == false) {
-				System.out.println("Food does not exist!");
-			}
-			
-		}//
-	}
-	public static void priceToUpdate (ArrayList<Food> foodList, int id) {
 		boolean isValid = false;
 		if (foodList.isEmpty() == true) {
 			System.out.println("Food List is empty");
 		} else {
-			for (int i = 0; i < foodList.size(); i++) { 
-					isValid = true;
+			for (int i = 0; i < foodList.size(); i++) {
+				if (isFoodValid(foodList, id) == true) {
 					if (foodList.get(i).getId() == id) {
+						isValid = true;
+
+						System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
+						foodList.get(i).display();
+						String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
+						if (confirm.equalsIgnoreCase("y")) {
+							foodList.remove(foodList.get(i));
+							System.out.println("Delete success!");
+						} else if (!confirm.equalsIgnoreCase("Y") || !confirm.equalsIgnoreCase("N")) {
+							System.out.println("Invalid input");
+						}
+					}
+
+				}
+			}
+			if (isValid == false) {
+				System.out.println("Food does not exist!");
+			}
+
+		} //
+	}
+
+	public static void priceToUpdate(ArrayList<Food> foodList, int id) {
+		boolean isValid = false;
+		if (foodList.isEmpty() == true) {
+			System.out.println("Food List is empty");
+		} else {
+			for (int i = 0; i < foodList.size(); i++) {
+				isValid = true;
+				if (foodList.get(i).getId() == id) {
 					System.out.printf("%-10s %-20s %-20s %-10s\n", "ID", "FOOD NAME", "SELLING PRICE", "STALL");
 					foodList.get(i).display();
-					String confirm = Helper.readString("Are you sure you want to increase the selling price by 30%? (Y/N) > ");
+					String confirm = Helper
+							.readString("Are you sure you want to increase the selling price by 30%? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {
 						double newPriceD = foodList.get(i).getPrice() * 1.3;
 						int newPrice = (int) Math.round(newPriceD);
-						if (newPrice >= 3 && newPrice <=15 ) {
-						foodList.get(i).setPrice(newPrice);
-						System.out.println("Update success!");
-						}else {
+						if (newPrice >= 3 && newPrice <= 15) {
+							foodList.get(i).setPrice(newPrice);
+							System.out.println("Update success!");
+						} else {
 							System.out.println("Selling price must be between $3 and $15!");
 						}
-					}else if (!confirm.equalsIgnoreCase("Y") ||!confirm.equalsIgnoreCase("N") ) {
+					} else if (!confirm.equalsIgnoreCase("Y") || !confirm.equalsIgnoreCase("N")) {
 						System.out.println("Invalid input");
 					}
-				
-			}
-					}
-					if (isValid == false) {
-				System.out.println("Food does not exist!");
-			}
-			
-		}
-	}
-	
-	public static void foodToUpdate(ArrayList<Food> foodList, int id) {
-		if (isFoodValid(foodList, id) == true) {
-		int option = -1;
-			while (option != 2 ) {
-				C206_CaseStudy.menuUpdate();
-				option = Helper.readInt("Enter option > ");
-				if (option ==1) {
-				C206_CaseStudy.priceToUpdate(foodList, id);
+
 				}
 			}
-		}else {
+			if (isValid == false) {
+				System.out.println("Food does not exist!");
+			}
+
+		}
+	}
+
+	public static void foodToUpdate(ArrayList<Food> foodList, int id) {
+		if (isFoodValid(foodList, id) == true) {
+			int option = -1;
+			while (option != 2) {
+				C206_CaseStudy.menuUpdate();
+				option = Helper.readInt("Enter option > ");
+				if (option == 1) {
+					C206_CaseStudy.priceToUpdate(foodList, id);
+				}
+			}
+		} else {
 			System.out.println("Food does not exist!");
 		}
 	}
-public static void menuUpdate() {
-	C206_CaseStudy.setHeader("UPDATE FOOD");
-	System.out.println("1. Increase selling price by 30%\n2. Quit");
-}
+
+	public static void menuUpdate() {
+		C206_CaseStudy.setHeader("UPDATE FOOD");
+		System.out.println("1. Increase selling price by 30%\n2. Quit");
+	}
+
 //==============================================END OF FOOD===========================================================================
 // ==========================================START OF PURCHASE ORDERS METHODS BY WH===================================================
 	private static void managePurchaseOrders() {
@@ -435,12 +446,12 @@ public static void menuUpdate() {
 		String poIngredient = Helper.readString("Please enter the Ingredient name > ");
 		int poQuantity = Helper.readInt("Please enter the Ingredient quantity > ");
 		String poStallName = Helper.readString("Please enter the stall name > ");
-			if (isStallValid(stallList, poStallName) == true ) {
-					po = new purchaseOrder(poIngredient, poQuantity, poStallName);
-			}else {
-					System.out.println("Stall does not exist!");
-				}
-			
+		if (isStallValid(stallList, poStallName) == true) {
+			po = new purchaseOrder(poIngredient, poQuantity, poStallName);
+		} else {
+			System.out.println("Stall does not exist!");
+		}
+
 		return po;
 	}
 
@@ -515,18 +526,17 @@ public static void menuUpdate() {
 		String Description = Helper.readString("Please enter the description of the promotion > ");
 		String stall = Helper.readString("Please enter the stall > ");
 
-	if(isStallValid(stallList, stall) == true) {
-		if (isStallPromo(promoList, stall) == false) {
-		for (Stall s : stallList) {
-		f = new Promo(s.getStoreName(), s.getOwnerName(), s.getOperationDate(), PromoName, Description);
+		if (isStallValid(stallList, stall) == true) {
+			if (isStallPromo(promoList, stall) == false) {
+				for (Stall s : stallList) {
+					f = new Promo(s.getStoreName(), s.getOwnerName(), s.getOperationDate(), PromoName, Description);
+				}
+			} else {
+				System.out.println("There can be only one promotion food item per stall per day!");
+			}
+		} else {
+			System.out.println("Stall does not exist!");
 		}
-		}else {
-			System.out.println("There can be only one promotion food item per stall per day!");
-		}
-	}else {
-		System.out.println("Stall does not exist!");
-	}
-
 
 		return f;
 
@@ -534,13 +544,13 @@ public static void menuUpdate() {
 
 	public static void addPromo(ArrayList<Promo> promoList, Promo f) {
 		if (f != null) {
-		promoList.add(f);
-		System.out.println("Promotion offer added!");
+			promoList.add(f);
+			System.out.println("Promotion offer added!");
 		}
 	}
 
 	public static void PromoToDelete(ArrayList<Promo> promoList, String PromoName) {
-		
+
 		if (promoList.isEmpty()) {
 			System.out.println("Promotion List is empty");
 		} else {
@@ -549,17 +559,17 @@ public static void menuUpdate() {
 
 					System.out.printf("%-30s %-30s %-30s\n", "STALL", "PROMOTION OFFERS NAME", "DESCRIPTION");
 					promoList.get(i).display();
-					
+
 					String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
 					if (confirm.equalsIgnoreCase("y")) {
 						promoList.remove(promoList.get(i));
 						System.out.println("Delete success!");
 					}
-				}else {
+				} else {
 					System.out.println("Promotion does not exist!");
 				}
 			}
-		
+
 		}
 	}
 
@@ -600,34 +610,34 @@ public static void menuUpdate() {
 
 	public static Order inputOrder(ArrayList<Food> foodList, ArrayList<Order> orderList) { // input details of new Order
 		Order o = null;
-		int total = 0;
-		for (Order o1 : orderList) {
-			total += o1.getQuantity();
-		}
-		if (total < 5) {
+
+	
+		if (checkTotalQuantity(orderList)  == 5) {
+			System.out.println("Order list is already full!");
+		} else if (checkTotalQuantity(orderList)  < 5) {
 			int foodItemID = Helper.readInt("Enter Food Item ID > ");
 			int quantity = Helper.readInt("Enter Quantity > ");
 
-			for (Order i : orderList) {
-				total += quantity;
-				i.setTotalQuantity(total);
-			}
-			if (total <= 5) {
-				
-					if (isFoodValid(foodList,foodItemID) == true) {
-						for (Food f : foodList) {
+	
+			if (checkTotalQuantity(orderList)  <= 5) {
 
-						int totalPrice = quantity * f.getPrice();
-						o = new Order(foodItemID, f.getName(), f.getPrice(), f.getStall(), quantity, totalPrice);
+				if (isFoodValid(foodList, foodItemID) == true) {
+					for (Food f : foodList) {
+						if (f.getId() == foodItemID) {
+
+							int totalPrice = quantity * f.getPrice();
+							o = new Order(f.getId(), f.getName(), f.getPrice(), f.getStall(), quantity, totalPrice);
+							break;
 						}
-					}else {
-						System.out.println("Food item does not exist!");
 					}
+				} else {
+					System.out.println("Food item does not exist!");
 				}
+			}
 //
-			
+
 		}
-		if (total > 5) {
+		if (checkTotalQuantity(orderList) > 5) {
 			System.out.println("Only a maximum of 5 items are allowed!");
 		}
 
@@ -638,7 +648,7 @@ public static void menuUpdate() {
 		if (o != null) {
 			orderList.add(o);
 			System.out.println("Food Item added!");
-		} 
+		}
 	}
 
 	public static void deleteOrder(ArrayList<Order> orderList, int id) {
@@ -667,7 +677,7 @@ public static void menuUpdate() {
 			}
 		}
 	}
-	
+
 	public static void updateOrder(ArrayList<Order> orderList, int id) {
 		boolean isValid = false;
 		if (orderList.isEmpty()) {
@@ -675,17 +685,24 @@ public static void menuUpdate() {
 		} else {
 			for (int i = 0; i < orderList.size(); i++) {
 				if (orderList.get(i).getId() == id) {
-
-					isValid = true;
-					orderList.get(i).setQuantity(orderList.get(i).getQuantity() + 1);
-					System.out.println("Food Item " + orderList.get(i).getName() + " quantity updated!");
-					
+					if (checkTotalQuantity(orderList) <5) {
+						isValid = true;
+						orderList.get(i).setQuantity(orderList.get(i).getQuantity() + 1);
+						System.out.println("Food Item " + orderList.get(i).getName() + " quantity updated!");
+					}else {
+						System.out.println("Order list is already full!");
+						break;
+					}
 				}
 			}
+			for (Order o:orderList) {
+				if ( checkTotalQuantity(orderList) <5) {
 			if (isValid == false) {
 
 				System.out.println("Order does not exist!");
 
+			}
+				}
 			}
 		}
 	}
@@ -727,6 +744,7 @@ public static void menuUpdate() {
 		return idFood;
 
 	}
+
 	public static boolean isPromoValid(ArrayList<Promo> promoList, String name) {
 		boolean isValid = false;
 		if (promoList.isEmpty() == false) {
@@ -739,6 +757,7 @@ public static void menuUpdate() {
 		return isValid;
 
 	}
+
 	public static boolean isStallPromo(ArrayList<Promo> promoList, String stallName) {
 		boolean isValid = false;
 		if (promoList.isEmpty() == false) {
@@ -752,5 +771,15 @@ public static void menuUpdate() {
 
 	}
 	
+	public static int checkTotalQuantity(ArrayList<Order> orderList) {
+		int total = 0;
+		if (orderList.isEmpty() == false) {
+			for (Order p : orderList) {
+				total+=p.getQuantity();
+			}
+		}
+		return total ;
+
+	}
 
 }//

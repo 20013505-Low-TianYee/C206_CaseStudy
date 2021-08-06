@@ -34,7 +34,7 @@ public class C206_CaseStudyTest {
 		stall1 = new Stall("Froot", "Jack", "22/05/2021");
 		stall2 = new Stall("Helperoo", "Ruth", "29/03/2019");
 		// food
-		f1 = new Food(1, "Fries", 3, "Froot");
+		f1 = new Food(1, "Apple", 3, "Froot");
 		f2 = new Food(2, "Rice", 15, "Helperoo");
 		// purchaseOrder
 		po1 = new purchaseOrder("Potato", 1, "Froot");
@@ -43,7 +43,7 @@ public class C206_CaseStudyTest {
 		p1 = new Promo("Froot", "Jack", "22/05/2021", "Free delivery", "$0 Delivery Fee(min.$20 spend)");
 		p2 = new Promo("Froot", "Jack", "22/05/2021", "20% off Rice", "Available at selected outlets");
 		// order
-		o1 = new Order(1, "Fries", 3, "Froot", 2, 6);
+		o1 = new Order(1, "Apples", 3, "Froot", 2, 6);
 		o2 = new Order(2, "Rice", 15, "Helperoo", 2, 30);
 
 	}
@@ -188,7 +188,7 @@ public class C206_CaseStudyTest {
 			assertEquals("Test if foodList size is 2 after 2 objects are added.", 2, foodList.size());
 
 			food = C206_CaseStudy.retrieveFood(foodList);
-			testOutput += String.format("%-10s %-20s $%-20s %-10s\n", 1, "Fries", 3, "Froot");
+			testOutput += String.format("%-10s %-20s $%-20s %-10s\n", 1, "Apple", 3, "Froot");
 			testOutput += String.format("%-10s %-20s $%-20s %-10s\n", 2, "Rice", 15, "Helperoo");
 			assertEquals("Test that output is in the correct format", testOutput, food);
 		}
@@ -331,7 +331,7 @@ public class C206_CaseStudyTest {
 			assertEquals("Test if that Order arraylist size is 2?", 2, orderList.size());
 
 			order = C206_CaseStudy.retrieveOrder(orderList);
-			testOutput = String.format("%-20s %-20s %-20s $%-20s %-10s\n", 1, "Fries", "Froot", 3, 2);
+			testOutput = String.format("%-20s %-20s %-20s $%-20s %-10s\n", 1, "Apples", "Froot", 3, 2);
 
 			testOutput += String.format("%-20s %-20s %-20s $%-20s %-10s\n", 2, "Rice", "Helperoo", 15, 2);
 			total = o1.getTotalPrice() + o2.getTotalPrice();

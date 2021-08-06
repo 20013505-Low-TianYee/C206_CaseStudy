@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * I declare that this code was written by Goh Sean Adam.
@@ -14,13 +15,15 @@ public class Order extends Food {
 
 	private int quantity;
 	private int totalPrice;
-	private int totalQuantity;
+	
 	
 	
 	public Order(int id, String name, int price, String stall, int quantity, int totalPrice) {
 		super(id, name, price, stall);
 		this.quantity = quantity;
 		this.totalPrice = quantity*super.getPrice();
+		
+		
 	}
 
 	public int getQuantity() {
@@ -37,13 +40,6 @@ public class Order extends Food {
 		this.totalPrice = totalPrice;
 	}
 	
-	public int getTotalQuantity() {
-		return totalQuantity;
-	}
-
-	public void setTotalQuantity(int totalQuantity) {
-		this.totalQuantity = totalQuantity;
-	}
 
 	public void display() {
 
