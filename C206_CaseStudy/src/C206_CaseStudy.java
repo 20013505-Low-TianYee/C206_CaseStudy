@@ -8,7 +8,8 @@ public class C206_CaseStudy {
 		ArrayList<purchaseOrder> poList = new ArrayList<purchaseOrder>(8);
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
-		
+		stallList.add(new Stall("Froot", "Jack", "22/05/2021"));
+		stallList.add(new Stall("West", "Jackie", "22/05/2021"));
  
 		int option = -1;
 
@@ -248,16 +249,18 @@ public class C206_CaseStudy {
 		return newOperationDate;
 	}
 	public static void updateStallMethod(ArrayList<Stall> stallList, String storeName, String operationDate, String oldStoreName) {
+		boolean isValid = false;
 		for (int i = 0; i < stallList.size(); i++) {
 			if (stallList.get(i).getStoreName().equalsIgnoreCase(oldStoreName)) {
+				isValid = true;
 				stallList.get(i).setStoreName(storeName);
 				stallList.get(i).setOperationDate(operationDate);
 				System.out.println("Stall updated!");
 				break;
 					
-			} else {
-				System.out.println("No stall found!");
-			}
+			} 
+		} if (isValid == false) {
+			System.out.println("No stall found!");
 		}
 	}
 
