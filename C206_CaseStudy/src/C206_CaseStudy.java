@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
-
+//
 	public static void main(String[] args) {
 		ArrayList<Stall> stallList = new ArrayList<Stall>(10);
 		ArrayList<Food> foodList = new ArrayList<Food>();

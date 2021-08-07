@@ -266,9 +266,9 @@ public class C206_CaseStudyTest {
 			assertNotNull("Test if there is valid Promo arraylist to delete objects", promoList);
 			C206_CaseStudy.addPromo(promoList, p1);
 			C206_CaseStudy.addPromo(promoList, p2);
-			C206_CaseStudy.PromoToDelete(promoList, p1.getPromoName());
+			C206_CaseStudy.PromoToDelete(promoList, p1.getStoreName());
 			assertEquals("Test if that Promo arraylist size is 1?", 1, promoList.size());
-			C206_CaseStudy.PromoToDelete(promoList, p2.getPromoName());
+			C206_CaseStudy.PromoToDelete(promoList, p2.getStoreName());
 			assertEquals("Test if that Promo arraylist is empty", 0, promoList.size());
 		}
 		
