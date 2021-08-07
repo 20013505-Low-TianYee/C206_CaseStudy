@@ -51,8 +51,9 @@ public class C206_CaseStudy {
 				String ingredientDel = Helper.readString("Enter ingredient name to delete > ");
 				deletePurchaseOrder(poList, ingredientDel);
 
-			} else if (option == 12) { // update
-
+			} else if (option == 12) { // update PO
+				updatePurchaseOrder(poList);
+			
 			} else if (option == 13) { // add promo
 				Promo f = inputPromo(promoList, stallList);
 				addPromo(promoList, f);
@@ -487,6 +488,42 @@ public class C206_CaseStudy {
 			if (isValid == false) {
 				System.out.println("Purchase Order does not exist!");
 			}
+		}
+	}
+	private static void updatePurchaseOrder(ArrayList<purchaseOrder> poList) {
+		if (poList.isEmpty() == true) {
+			System.out.println("No purchase order to update!");
+		} else {
+			String inputIngredientName = inputIngredientName();
+			String confirm = Helper.readString("Are you sure you want to update this stall number? > (Y/N) ");
+			if (confirm.equalsIgnoreCase("y")) {
+				int newIngredientQuantity = newIngredientQuantity();
+				updatePOrderMethod(poList, inputIngredientName, newIngredientQuantity);
+			}
+		}
+	}
+	public static String inputIngredientName() {
+		String getIngredientName = Helper.readString("Enter Ingredient name to update > ");
+		return getIngredientName;
+	}
+
+	private static int newIngredientQuantity() {
+		int updateIngredientQuantity = Helper.readInt("Enter a new Ingredient quantity > ");
+		return updateIngredientQuantity;
+	}
+	public static void updatePOrderMethod(ArrayList<purchaseOrder> poList, String inputIngredientName, int inputQuantity) {
+		boolean isValid = false;
+		for (int i = 0; i < poList.size(); i++) {
+			if (poList.get(i).getIngredient().equalsIgnoreCase(inputIngredientName)) {
+				poList.get(i).setQuantity(inputQuantity);
+				isValid = true;
+				System.out.println("Stall updated!");
+				break;
+
+			}
+		}
+		if (isValid == false) {
+			System.out.println("No stall found!");
 		}
 	}
 
