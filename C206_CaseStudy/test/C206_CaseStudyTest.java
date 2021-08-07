@@ -41,7 +41,7 @@ public class C206_CaseStudyTest {
 		po2 = new purchaseOrder("Apple", 2, "Froot");
 		// promotions
 		p1 = new Promo("Froot", "Jack", "22/05/2021", "Free delivery", "$0 Delivery Fee(min.$20 spend)");
-		p2 = new Promo("Froot", "Jack", "22/05/2021", "20% off Rice", "Available at selected outlets");
+		p2 = new Promo("Helperoo", "Ruth", "29/03/2019", "20% off Apple", "Available only for today!");
 		// order
 		o1 = new Order(1, "Apples", 3, "Froot", 2, 6);
 		o2 = new Order(2, "Rice", 15, "Helperoo", 2, 30);
