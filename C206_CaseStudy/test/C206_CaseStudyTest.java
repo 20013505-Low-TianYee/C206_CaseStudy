@@ -271,6 +271,22 @@ public class C206_CaseStudyTest {
 			C206_CaseStudy.PromoToDelete(promoList, p2.getPromoName());
 			assertEquals("Test if that Promo arraylist is empty", 0, promoList.size());
 		}
+		
+		public void testUpdatePromo() {
+			C206_CaseStudy.addPromo(promoList, p1);
+			assertNotNull("Test if list is not empty", promoList);
+			assertEquals("Test if the promo list size is 1 so that there is an element that can be updated.", 1, promoList.size());
+			
+			String pro = C206_CaseStudy.retrievePromo(promoList);
+			String testOutput = "";
+			pro = C206_CaseStudy.retrievePromo(promoList);
+			testOutput = String.format("%-30s %-30s %-20s\n",p1.getPromoName(), p1.gerDescription(), p1.getStoreName());
+			testOutput += String.format("%-30s %-30s %-20s\n", p2.getPromoName(), p2.gerDescription(), p2.getStoreName());
+			assertEquals("Test that output is in the correct format", testOutput, pro);
+			
+			
+
+			}
 		// END OF PROMO
 		// =======================================================================================================
 	// START OF PURCHASE ORDER ========================================================================================================
@@ -303,6 +319,8 @@ public class C206_CaseStudyTest {
 			C206_CaseStudy.deletePurchaseOrder(poList, po2.getIngredient());
 			assertEquals("Test if that Food arraylist is empty", 0, poList.size());
 		}
+		
+		 
 
 	//END OF PURCHASE ORDER =========================================================================================================
 	//START OF ORDERS BY CUSTOMER======================================================================================================

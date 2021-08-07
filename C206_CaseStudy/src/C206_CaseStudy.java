@@ -572,7 +572,49 @@ public class C206_CaseStudy {
 
 		}
 	}
+		
+	public static void updatePromo(ArrayList<Promo> promoList, ArrayList<Stall> stallList, String storeName) {
+		boolean isValid = false;
+		if (promoList.isEmpty()) {
+			System.out.println("Promotion List is empty");
+		} else {
+			for (int i = 0; i < promoList.size(); i++) {
+				isValid = true;
+				if (promoList.get(i).getStoreName()  == storeName) {
+					System.out.printf("%-30s %-30s %-30s\n", "STALL", "PROMOTION OFFERS NAME", "DESCRIPTION");
+					promoList.get(i).display();
+					String confirm = Helper
+							.readString("Are you sure you want to update the promotion offers?(Y/N) > ");
+					if (confirm.equalsIgnoreCase("y")) {
+						String stall = Helper.readString("Please enter the stall promotion you want to update > ");
+						if (isStallValid(stallList, stall) == true) {
+							if (isStallPromo(promoList, stall) == true) {
+								String PromoName = Helper.readString("Please enter the name of the Promotion you want to update > ");
+								String Description = Helper.readString("Please enter the description of the promotion you want to update > ");
+								if(promoList.get(i).getStoreName() == stall) {
+									promoList.get(i).setPromoName(PromoName);
+									promoList.get(i).setDescription(Description);
+								}
+								
+							} else {
+								System.out.println("There is no promotion offer in this stall!");
+							}
+						} else {
+							System.out.println("Stall does not exist!");
+						}
+					} else if (!confirm.equalsIgnoreCase("Y") || !confirm.equalsIgnoreCase("N")) {
+						System.out.println("Invalid input");
+					}
 
+				}
+			}
+			if (isValid == false) {
+				System.out.println("Promo does not exist!");
+			}
+
+		}
+		 
+	}
 // =============================================== END OF PROMOTION METHODS =======================================================
 // =======================================START OF ORDERS BY CUSTOMERS METHODS BY ADAM=============================================
 	private static void manageOrders() {
@@ -781,5 +823,6 @@ public class C206_CaseStudy {
 		return total ;
 
 	}
-
+	
+	
 }//
