@@ -41,7 +41,7 @@ public class C206_CaseStudyTest {
 		po2 = new purchaseOrder("Apple", 2, "Froot");
 		// promotions
 		p1 = new Promo("Froot", "Jack", "22/05/2021", "Free delivery", "$0 Delivery Fee(min.$20 spend)");
-		p2 = new Promo("Froot", "Jack", "22/05/2021", "20% off Rice", "Available at selected outlets");
+		p2 = new Promo("Helperoo", "Ruth", "29/03/2019", "20% off Apple", "Available only for today!");
 		// order
 		o1 = new Order(1, "Apples", 3, "Froot", 2, 6);
 		o2 = new Order(2, "Rice", 15, "Helperoo", 2, 30);
@@ -266,9 +266,9 @@ public class C206_CaseStudyTest {
 			assertNotNull("Test if there is valid Promo arraylist to delete objects", promoList);
 			C206_CaseStudy.addPromo(promoList, p1);
 			C206_CaseStudy.addPromo(promoList, p2);
-			C206_CaseStudy.PromoToDelete(promoList, p1.getPromoName());
+			C206_CaseStudy.PromoToDelete(promoList, p1.getStoreName());
 			assertEquals("Test if that Promo arraylist size is 1?", 1, promoList.size());
-			C206_CaseStudy.PromoToDelete(promoList, p2.getPromoName());
+			C206_CaseStudy.PromoToDelete(promoList, p2.getStoreName());
 			assertEquals("Test if that Promo arraylist is empty", 0, promoList.size());
 		}
 		
