@@ -495,7 +495,7 @@ public class C206_CaseStudy {
 			System.out.println("No purchase order to update!");
 		} else {
 			String inputIngredientName = inputIngredientName();
-			String confirm = Helper.readString("Are you sure you want to update this stall number? > (Y/N) ");
+			String confirm = Helper.readString("Are you sure you want to update this Ingredient? > (Y/N) ");
 			if (confirm.equalsIgnoreCase("y")) {
 				int newIngredientQuantity = newIngredientQuantity();
 				updatePOrderMethod(poList, inputIngredientName, newIngredientQuantity);
@@ -517,7 +517,7 @@ public class C206_CaseStudy {
 			if (poList.get(i).getIngredient().equalsIgnoreCase(inputIngredientName)) {
 				poList.get(i).setQuantity(inputQuantity);
 				isValid = true;
-				System.out.println("Stall updated!");
+				System.out.println("Ingredient updated!");
 				break;
 
 			}
