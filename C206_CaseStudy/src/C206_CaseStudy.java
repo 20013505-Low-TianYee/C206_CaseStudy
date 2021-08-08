@@ -501,8 +501,8 @@ public class C206_CaseStudy {
 			}
 		}
 	}
-
-	private static void updatePurchaseOrder(ArrayList<purchaseOrder> poList) {
+	
+	public static void updatePurchaseOrder(ArrayList<purchaseOrder> poList) {
 		if (poList.isEmpty() == true) {
 			System.out.println("No purchase order to update!");
 		} else {
