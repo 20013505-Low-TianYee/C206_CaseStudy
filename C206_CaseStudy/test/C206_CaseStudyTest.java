@@ -319,14 +319,15 @@ public class C206_CaseStudyTest {
 			C206_CaseStudy.deletePurchaseOrder(poList, po2.getIngredient());
 			assertEquals("Test if that Food arraylist is empty", 0, poList.size());
 		}
-		
+		@Test
 		public void testUpdatePurchaseOrder() {
 			assertNotNull("Test if there is valid Food arraylist to delete objects", poList);
 			C206_CaseStudy.addPurchaseOrder(poList, po1);
 			C206_CaseStudy.addPurchaseOrder(poList, po2);
 			C206_CaseStudy.updatePurchaseOrder(poList);
-			assertEquals("Test if that Food arraylist size is 1?", 1, poList.size());
+			assertEquals("Test if that Food arraylist size is 2?", 2, poList.size());
 			C206_CaseStudy.deletePurchaseOrder(poList, po2.getIngredient());
+			C206_CaseStudy.deletePurchaseOrder(poList, po1.getIngredient());
 			assertEquals("Test if that Food arraylist is empty", 0, poList.size());
 		}
 
