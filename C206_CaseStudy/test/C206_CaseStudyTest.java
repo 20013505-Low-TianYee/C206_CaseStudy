@@ -324,7 +324,10 @@ public class C206_CaseStudyTest {
 			assertNotNull("Test if there is valid Food arraylist to delete objects", poList);
 			C206_CaseStudy.addPurchaseOrder(poList, po1);
 			C206_CaseStudy.addPurchaseOrder(poList, po2);
+			int beginning = po1.getQuantity();
 			C206_CaseStudy.updatePurchaseOrder(poList);
+			int ending = po1.getQuantity();
+			assertNotEquals("Test that quantity is different",beginning,ending );
 			assertEquals("Test if that Food arraylist size is 2?", 2, poList.size());
 			C206_CaseStudy.deletePurchaseOrder(poList, po2.getIngredient());
 			C206_CaseStudy.deletePurchaseOrder(poList, po1.getIngredient());
