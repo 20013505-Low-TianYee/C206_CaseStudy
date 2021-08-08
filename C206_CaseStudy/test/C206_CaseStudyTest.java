@@ -330,7 +330,7 @@ public class C206_CaseStudyTest {
 			C206_CaseStudy.deletePurchaseOrder(poList, po1.getIngredient());
 			assertEquals("Test if that Food arraylist is empty", 0, poList.size());
 		}
-
+//test
 	//END OF PURCHASE ORDER =========================================================================================================
 	//START OF ORDERS BY CUSTOMER======================================================================================================
 	// By Adam
