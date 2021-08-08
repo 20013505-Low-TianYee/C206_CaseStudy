@@ -260,7 +260,7 @@ public class C206_CaseStudyTest {
 			testOutput += String.format("%-30s %-30s %-20s\n", p2.getPromoName(), p2.gerDescription(), p2.getStoreName());
 			assertEquals("Test that output is in the correct format", testOutput, pro);
 		}
-
+//
 		@Test
 		public void testDeletePromo() {
 			assertNotNull("Test if there is valid Promo arraylist to delete objects", promoList);
