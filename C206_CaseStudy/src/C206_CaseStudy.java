@@ -8,13 +8,12 @@ public class C206_CaseStudy {
 		ArrayList<purchaseOrder> poList = new ArrayList<purchaseOrder>(8);
 		ArrayList<Promo> promoList = new ArrayList<Promo>();
 		ArrayList<Order> orderList = new ArrayList<Order>(5);
-		stallList.add(new Stall("Froot", "Jack", "22/05/2021"));
-		stallList.add(new Stall("Helperoo", "Ruth", "29/03/2019"));
+//		stallList.add(new Stall("Froot", "Jack", "22/05/2021"));
+//		stallList.add(new Stall("Helperoo", "Ruth", "29/03/2019"));
 //		foodList.add(new Food(1, "Apple", 3, "Froot"));
 //		foodList.add(new Food(2, "Banana", 5, "Froot"));
 //		promoList.add(new Promo("Froot", "Jack", "22/05/2021", "Free delivery", "$0 Delivery Fee(min.$20 spend)"));
 //		promoList.add(new Promo("Helperoo", "Ruth", "29/03/2019", "20% off Apple", "Available only for today!"));
-
 //orderList.add(new Order(1, "Apples", 3, "Froot", 3, 6));
 //orderList.add(new Order(2, "Banana", 3, "Froot", 1, 6));
 		int option = -1;
