@@ -271,22 +271,20 @@ public class C206_CaseStudyTest {
 			C206_CaseStudy.PromoToDelete(promoList, p2.getStoreName());
 			assertEquals("Test if that Promo arraylist is empty", 0, promoList.size());
 		}
-		
+		@Test
 		public void testUpdatePromo() {
 			C206_CaseStudy.addPromo(promoList, p1);
 			assertNotNull("Test if list is not empty", promoList);
 			assertEquals("Test if the promo list size is 1 so that there is an element that can be updated.", 1, promoList.size());
 			
-			String pro = C206_CaseStudy.retrievePromo(promoList);
-			String testOutput = "";
-			pro = C206_CaseStudy.retrievePromo(promoList);
-			testOutput = String.format("%-30s %-30s %-20s\n",p1.getPromoName(), p1.gerDescription(), p1.getStoreName());
-			testOutput += String.format("%-30s %-30s %-20s\n", p2.getPromoName(), p2.gerDescription(), p2.getStoreName());
-			assertEquals("Test that output is in the correct format", testOutput, pro);
-			
-			
-
+			C206_CaseStudy.updatePromo( promoList,  stallList, "Froot");
+			String allPromo = C206_CaseStudy.retrievePromo( promoList);
+			allPromo = C206_CaseStudy.retrievePromo( promoList);
+			String testOutput2 = String.format("%-30s %-30s %-20s\n", "PROMOTION OFFERS NAME", "DESCRIPTION", "STALL");
+			testOutput2 += String.format("%-30s %-30s %-20s\n","Froot", "Free delivery", "$0 Delivery Fee(min.$20 spend)");
+			assertNotEquals("Test that stall output is same as the output before update", testOutput2, allPromo);
 			}
+		
 		// END OF PROMO
 		// =======================================================================================================
 	// START OF PURCHASE ORDER ========================================================================================================

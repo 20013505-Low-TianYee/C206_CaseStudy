@@ -611,7 +611,7 @@ public class C206_CaseStudy {
 			for (int i = 0; i < promoList.size(); i++) {
 				if (isStallPromo(promoList, stallName) == true) {
 					if (stallName.equals(promoList.get(i).getStoreName())) {
-						System.out.printf("%-30s %-30s %-30s\n", "STALL", "PROMOTION OFFERS NAME", "DESCRIPTION");
+						System.out.printf("%-30s %-30s %-20s\n", "STALL", "PROMOTION OFFERS NAME", "DESCRIPTION");
 						promoList.get(i).display();
 
 						String confirm = Helper.readString("Are you sure you want to delete? (Y/N) > ");
@@ -637,7 +637,7 @@ public class C206_CaseStudy {
 
 				if (isStallPromo(promoList, storeName) == true) {
 					if (promoList.get(i).getStoreName().equals(storeName)) {
-						System.out.printf("%-30s %-30s %-30s\n", "STALL", "PROMOTION OFFERS NAME", "DESCRIPTION");
+						System.out.printf("%-30s %-30s %-20s\n", "STALL", "PROMOTION OFFERS NAME", "DESCRIPTION");
 						promoList.get(i).display();
 						String confirm = Helper
 								.readString("Are you sure you want to update the promotion offers?(Y/N) > ");
